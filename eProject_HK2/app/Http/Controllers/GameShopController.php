@@ -25,7 +25,7 @@ class GameShopController extends Controller
         if(!empty($user) && $user->PASSWORD == $pass){
             $request->session()->push('user',$user);
             if($user->TYPE == 1){
-                return redirect("admin/users");
+                return redirect("admin/home");
             }else{
                 return redirect("user/details");
             }
@@ -34,10 +34,8 @@ class GameShopController extends Controller
         }
     }
 
-    public function users(){
-        //Hien thong tin game
-        // $game = DB::table('game')->get();
-        return view('admin.users');
-    }
-    
+    public function adminHome(){
+        $users = DB::table('user')->get();
+        return view('admin.member.home')->with(["users"=>$users]);
+    } 
 }

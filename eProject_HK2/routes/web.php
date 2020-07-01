@@ -21,7 +21,7 @@ Route::get('/login','GameShopController@login');
 Route::post('/checkLog','GameShopController@checkLog');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
-        Route::get('users','GameShopController@users');
+        Route::get('home','GameShopController@adminHome');
         Route::get('displayUser','GameShopController@displayUser');
         Route::post('addUser','GameShopController@addUser');
         Route::get('resetPassword/{accountid}','GameShopController@resetPassword');
