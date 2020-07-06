@@ -14,15 +14,14 @@ class CreateGameRequiremensTable extends Migration
     public function up()
     {
         Schema::create('game_requirement', function (Blueprint $table) {
-            $table->bigIncrements('ID')->primary();
-            $table->integer('GAME_ID')->nullable();
-            $table->integer('AGE_REQ')->nullable();
-            $table->string('CPU',150)->nullable();
-            $table->string('GPU',150)->nullable();
-            $table->integer('RAM',10)->nullable();
-            $table->integer('STORAGE')->nullable();
-            $table->string('OS',50)->nullable();
-            $table->unique('GAME_ID');
+            $table->integer('ID')->primary();
+            $table->integer('GAME_ID')->unique();
+            $table->integer('AGE_REQ');
+            $table->string('CPU',150);
+            $table->string('GPU',150); 
+            $table->integer('STORAGE');
+            $table->string('OS',50);
+            $table->integer('RAM');
             $table->timestamps();
         });
         Schema::table('game_requirement', function(Blueprint $table) {

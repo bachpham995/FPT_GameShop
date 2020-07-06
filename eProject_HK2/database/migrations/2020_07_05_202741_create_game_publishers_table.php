@@ -14,8 +14,9 @@ class CreateGamePublishersTable extends Migration
     public function up()
     {
         Schema::create('game_publisher', function (Blueprint $table) {
-            $table->integer('GAME_ID')->nullable()->primary();
-            $table->integer('PUBLISHER_ID')->nullable()->primary();
+            $table->integer('GAME_ID');
+            $table->integer('PUBLISHER_ID');
+            $table->primary(array('GAME_ID', 'PUBLISHER_ID'));
             $table->timestamps();
         });
         Schema::table('game_publisher', function(Blueprint $table) {

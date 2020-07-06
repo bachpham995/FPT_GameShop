@@ -14,7 +14,7 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('game', function (Blueprint $table) {
-            $table->bigIncrements('ID');
+            $table->integer('ID')->primary();
             $table->string('NAME',100)->nullable();
             $table->longText('DESCRIPTION')->nullable();
             $table->integer('RATING')->nullable();

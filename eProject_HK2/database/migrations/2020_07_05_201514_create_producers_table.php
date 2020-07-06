@@ -14,7 +14,7 @@ class CreateProducersTable extends Migration
     public function up()
     {
         Schema::create('producer', function (Blueprint $table) {
-            $table->bigIncrements('ID');
+            $table->integer('ID')->primary();
             $table->string('NAME',30)->nullable();
             $table->timestamps();
         });

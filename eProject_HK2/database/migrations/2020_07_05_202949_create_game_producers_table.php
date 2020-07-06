@@ -14,8 +14,9 @@ class CreateGameProducersTable extends Migration
     public function up()
     {
         Schema::create('game_producer', function (Blueprint $table) {
-            $table->integer('GAME_ID')->nullable()->primary();
-            $table->integer('PRODUCER_ID')->nullable()->primary();
+            $table->integer('GAME_ID');
+            $table->integer('PRODUCER_ID');
+            $table->primary(array('GAME_ID', 'PRODUCER_ID'));
             $table->timestamps();
         });
         Schema::table('game_producer', function(Blueprint $table) {
