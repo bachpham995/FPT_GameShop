@@ -40,7 +40,7 @@
                         <li class="nav-item">
                             <a href="{{ url('admin/create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Create a Product</p>
+                                <p>Add new user</p>
                             </a>
                         </li>
                     </ul>
