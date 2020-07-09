@@ -53,9 +53,6 @@
                                 <td>{{ $u->PHONE }}</td>
                                 <td>{{ $u->TYPE==1?"Admin":"User" }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
-                                        <i class="fas fa-folder"></i> View
-                                    </a>
                                     <a class="btn btn-info btn-sm" href="{{ url('product/update/'.$u->ID) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>

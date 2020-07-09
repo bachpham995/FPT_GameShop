@@ -21,10 +21,19 @@ Route::get('/login','GameShopController@login');
 Route::post('/checkLog','GameShopController@checkLog');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
+        //User
         Route::get('home','GameShopController@adminHome');
         Route::get('displayUser','GameShopController@displayUser');
         Route::post('addUser','GameShopController@addUser');
         Route::get('resetPassword/{accountid}','GameShopController@resetPassword');
+        //Publisher
+        Route::get('homePublisher','PublisherController@publisherHome');
+        //Create Publisher
+        Route::get('PublisherCreate','PublisherController@create');
+        Route::post('publisherCreate','PublisherController@publisherCreate');
+        //Delete Publisher
+        Route::get('publisher/delete{id}','PublisherController@delete');
+
     });
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){

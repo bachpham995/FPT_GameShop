@@ -18,7 +18,7 @@ class CreateGameRequiremensTable extends Migration
             $table->integer('GAME_ID')->unique();
             $table->integer('AGE_REQ');
             $table->string('CPU',150);
-            $table->string('GPU',150); 
+            $table->string('GPU',150);
             $table->integer('STORAGE');
             $table->string('OS',50);
             $table->integer('RAM');
