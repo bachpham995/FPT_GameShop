@@ -13,10 +13,6 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="txt-name">Publisher ID</label>
-                        <input type="text" class="form-control" id="txt-name" name="ID" placeholder="Input ID">
-                    </div>
-                    <div class="form-group">
                         <label for="txt-name">Publisher Name</label>
                         <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name">
                     </div>

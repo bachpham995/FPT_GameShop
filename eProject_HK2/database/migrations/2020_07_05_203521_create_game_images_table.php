@@ -14,8 +14,8 @@ class CreateGameImagesTable extends Migration
     public function up()
     {
         Schema::create('game_images', function (Blueprint $table) {
-            $table->integer('ID')->primary();
-            $table->integer('GAME_ID')->nullable();
+            $table->bigIncrements('ID');
+            $table->unsignedBigInteger('GAME_ID')->nullable();
             $table->string('DIRECTORY',200)->nullable();
             $table->timestamps();
         });

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class cart_item extends Model
 {
     protected $table = "cart_item";
-    protected $primaryKey = "CART_ITEM_ID";
-    public $incrementing = true;
+    public $incrementing = false;
+    protected $fillable = ['GAME_QUANTITY','DISCOUNT','created_at','updated_at'];
 }

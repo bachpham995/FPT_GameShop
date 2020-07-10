@@ -14,8 +14,8 @@ class CreateGameRequiremensTable extends Migration
     public function up()
     {
         Schema::create('game_requirement', function (Blueprint $table) {
-            $table->integer('ID')->primary();
-            $table->integer('GAME_ID')->unique();
+            $table->bigIncrements('ID');
+            $table->unsignedBigInteger('GAME_ID')->unique();
             $table->integer('AGE_REQ');
             $table->string('CPU',150);
             $table->string('GPU',150);

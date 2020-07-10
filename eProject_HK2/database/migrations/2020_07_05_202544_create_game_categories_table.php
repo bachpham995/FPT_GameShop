@@ -14,8 +14,9 @@ class CreateGameCategoriesTable extends Migration
     public function up()
     {
         Schema::create('game_category', function (Blueprint $table) {
-            $table->integer('GAME_ID');
-            $table->integer('CATEGORY_ID');
+            $table->unsignedBigInteger('GAME_ID');
+            $table->unsignedBigInteger('CATEGORY_ID');
+            $table->primary(array('GAME_ID', 'CATEGORY_ID'));
             $table->timestamps();
         });
         Schema::table('game_category', function(Blueprint $table) {
