@@ -1,5 +1,5 @@
 <!-- lưu tại /resources/views/product/create.blade.php -->
-@extends('layout.layout')
+@extends('admin.layout')
 @section('title', 'product - create new')
 @section('content')
 <section class="content">

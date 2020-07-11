@@ -1,15 +1,19 @@
+<!-- lưu tại /resources/views/product/create.blade.php -->
+@extends('admin.layout')
+@section('title', 'product - create new')
+@section('content')
+<section class="content">
+    <div class="container-fluid">
 <div class="row">
-    <div class="offset-md-3 col-md-6">
+    <div class="offset-md-3 col-md-6 mt-5">
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">Create Publisher</h3>
-
             </div>
-
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="{{ url('admin/publisherCreate') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ url('admin/postCeate') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
@@ -26,3 +30,14 @@
         <!-- /.card -->
     </div>
 </div>
+</div>
+</section>
+@endsection
+@section('script-section')
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        bsCustomFileInput.init();
+    });
+</script>
+@endsection
