@@ -33,6 +33,17 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::get('publisher/delete/{id}','PublisherController@delete');
         Route::get('publisher/update/{id}','PublisherController@update');
         Route::post('publisher/postUpdate/{id}','PublisherController@postUpdate');
+        
+
+        //product
+        Route::get('products/home','ProductController@home');
+        Route::get('products/create','ProductController@create');
+        Route::post('postCeate','ProductController@postCreate');
+        Route::get('products/delete/{id}','ProductController@delete');
+        Route::get('products/update/{id}','ProductController@update');
+        Route::post('products/postUpdate/{id}','ProductController@postUpdate');
+
+        
     });
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){
