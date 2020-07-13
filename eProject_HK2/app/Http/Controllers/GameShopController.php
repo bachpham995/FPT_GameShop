@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReflectionClass;
+use ReflectionClass as GlobalReflectionClass;
 
 class GameShopController extends Controller
 {
@@ -37,5 +39,5 @@ class GameShopController extends Controller
     public function adminHome(){
         $users = DB::table('user')->get();
         return view('admin.member.home')->with(["users"=>$users]);
-    } 
+    }
 }
