@@ -63,3 +63,11 @@ Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){
         Route::get('details/{accountid}','GameShopController@details');
     });
+
+/* -------------------User ------------------------------------------------------*/
+Route::get('user/register','UserController@register');
+Route::post('user/postRegister', 'UserController@postRegister');
+Route::get('user/myAccount','UserController@myAccount');
+Route::get('user/signin','UserController@signin');
+Route::post('user/checkSignin','UserController@checkSignin');
+Route::get('admin/userList', 'UserController@userList');
