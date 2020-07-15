@@ -21,10 +21,29 @@ Route::get('/login','GameShopController@login');
 Route::post('/checkLog','GameShopController@checkLog');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
+        //admin
         Route::get('home','GameShopController@adminHome');
         Route::get('displayUser','GameShopController@displayUser');
         Route::post('addUser','GameShopController@addUser');
         Route::get('resetPassword/{accountid}','GameShopController@resetPassword');
+        //publisher
+        Route::get('publisher/home','PublisherController@home');
+        Route::get('publisher/create','PublisherController@create');
+        Route::post('postCeate','PublisherController@postCreate');
+        Route::get('publisher/delete/{id}','PublisherController@delete');
+        Route::get('publisher/update/{id}','PublisherController@update');
+        Route::post('publisher/postUpdate/{id}','PublisherController@postUpdate');
+        
+
+        //product
+        Route::get('products/home','ProductController@home');
+        Route::get('products/create','ProductController@create');
+        Route::post('postCeate','ProductController@postCreate');
+        Route::get('products/delete/{id}','ProductController@delete');
+        Route::get('products/update/{id}','ProductController@update');
+        Route::post('products/postUpdate/{id}','ProductController@postUpdate');
+
+        
     });
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){
