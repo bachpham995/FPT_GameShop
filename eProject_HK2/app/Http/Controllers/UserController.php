@@ -65,6 +65,3 @@ class UserController extends Controller
     }
 
 }
-//  Date: July 11 2020
-// Author : Do Thinh
-// Note: 
