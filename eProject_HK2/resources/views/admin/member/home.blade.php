@@ -52,14 +52,11 @@
                                 <td>{{ $u->ADDRESS }}</td>
                                 <td>{{ $u->PHONE }}</td>
                                 <td>{{ $u->TYPE==1?"Admin":"User" }}</td>
-                                <td class="text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
-                                        <i class="fas fa-folder"></i> View
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="{{ url('product/update/'.$u->ID) }}">
+                                <td class="text-center">
+                                    <a class="btn btn-info btn-sm" href="{{ url('admin/member/update/'.$u->ID) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('product/delete/'.$u->ID) }}">
+                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/member/delete/'.$u->ID) }}">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
                                 </td>

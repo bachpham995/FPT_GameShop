@@ -30,5 +30,9 @@ class OsController extends Controller
             $o->update(['NAME'=>$os['NAME']]);
             return redirect()->action('OsController@home');
     }
-   
+    public function delete($id)
+    {
+        os::where("ID", $id)->delete();
+        return redirect()->action('OsController@home');
+    }
 }

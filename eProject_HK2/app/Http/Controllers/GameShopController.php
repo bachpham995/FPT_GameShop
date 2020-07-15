@@ -27,17 +27,12 @@ class GameShopController extends Controller
         if(!empty($user) && $user->PASSWORD == $pass){
             $request->session()->push('user',$user);
             if($user->TYPE == 1){
-                return redirect("admin/home");
+                return redirect("admin/member/home");
             }else{
-                return redirect("user/details");
+                return redirect("user/signin");
             }
         }else{
             return redirect('login');
         }
-    }
-
-    public function adminHome(){
-        $users = DB::table('user')->get();
-        return view('admin.member.home')->with(["users"=>$users]);
     }
 }

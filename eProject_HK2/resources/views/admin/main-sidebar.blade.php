@@ -26,21 +26,21 @@
                     <a href="#" class="nav-link text-light">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Users
+                            Member
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/home') }}" class="nav-link">
+                            <a href="{{ url('admin/member/home') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>View Users</p>
+                                <p>View Member</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/create') }}" class="nav-link">
+                            <a href="{{ url('admin/member/create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add new user</p>
+                                <p>Add new member</p>
                             </a>
                         </li>
                     </ul>
