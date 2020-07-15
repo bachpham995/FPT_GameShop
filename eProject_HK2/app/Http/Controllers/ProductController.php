@@ -31,10 +31,8 @@ class ProductController extends Controller
     }
     public function postUpdate(Request $request,$id){
             $product = $request->all();
-            $pls = game::where('ID',$id);
-            //$pls->update(['NAME'=>$publisher['NAME']]);
-
-
+            $pds = game::where('ID',$id);
+            $pds->update(['NAME'=>$product['NAME']]);
             return redirect()->action('ProductController@home');
     }
 

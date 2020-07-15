@@ -1,6 +1,6 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('admin.layout')
-@section('title', 'Publisher')
+@section('title', 'Producer')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -26,29 +26,28 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">DataTable with minimal features & hover style</h3>
-                {{-- <a href="{{ url('admin/publisher/create') }}">Create</a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Publisher ID</th>
-                            <th>Publisher Name</th>
+                            <th>Producer ID</th>
+                            <th>Producer Name</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($publisher as $pls)
+                        @foreach($producer as $pdc)
                         <tr>
-                            <td>{{ $pls->ID }}</td>
-                            <td>{{ $pls->NAME }}</td>
+                            <td>{{ $pdc->ID }}</td>
+                            <td>{{ $pdc->NAME }}</td>
                             <td class="text-right">
-                                <a class="btn btn-info btn-sm" href="{{ url('admin/publisher/update/'.$pls->ID) }}">
+                                <a class="btn btn-info btn-sm" href="{{ url('admin/producer/update/'.$pdc->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
 
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/publisher/delete/'.$pls->ID) }}">
+                                <a class="btn btn-danger btn-sm" href="{{ url('admin/producer/delete/'.$pdc->ID) }}">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
@@ -57,8 +56,8 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Publisher ID</th>
-                            <th>Publisher Name</th>
+                            <th>Producer ID</th>
+                            <th>Producer Name</th>
                             <th></th>
                         </tr>
                     </tfoot>

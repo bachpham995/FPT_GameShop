@@ -1,5 +1,6 @@
+<!-- lưu tại /resources/views/product/create.blade.php -->
 @extends('admin.layout')
-@section('title', 'product - create new')
+@section('title', 'Create new os')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -8,21 +9,16 @@
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Update Publisher</h3>
-
+                <h3 class="card-title">Create OS</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="{{ url("admin/publisher/postUpdate/".$publisher->ID) }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ url('admin/postCreateOS') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="txt-name" >ID</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$publisher->ID}}" readonly="readonly">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt-name" >Name</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$publisher->NAME}}">
+                        <label for="txt-name">OS Name</label>
+                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name">
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -39,7 +35,6 @@
 @endsection
 @section('script-section')
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         bsCustomFileInput.init();
