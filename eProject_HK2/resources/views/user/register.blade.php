@@ -56,6 +56,7 @@
                             <div style="text-align: right">Address: </div>
                         </td>
                         <td>
+                        
                             <input type="text" id="id_address" name="txtAdress" required>
                         </td>
                     </tr>

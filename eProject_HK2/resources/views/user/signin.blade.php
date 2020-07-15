@@ -33,12 +33,19 @@
                             <input type="password" id="id_account_pass" name="txtAccountPass" required>
                         </td>
                     </tr>
-                    <tr align="right">
-                        <td colspan="2">
+                    <tr align="">
+                        <td>
+                                                               
+                        </td>
+                        <td>
                             <div>
                                  <input type="submit" name="btnAdd" value="Sign in" />
-                            </div>                                            
+                            </div>  
+                            <div>
+                                 <a href="{{url('user/register')}}">Register</a>
+                            </div>                                           
                         </td>
+
                     </tr>
                 </tbody>
             </table>

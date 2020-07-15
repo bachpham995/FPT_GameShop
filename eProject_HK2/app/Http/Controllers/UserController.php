@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Support\Facades\DB;
@@ -14,32 +15,23 @@ class UserController extends Controller
     }
 
     public function postRegister (Request $request) {
-
-        $type = 0;
         $fname = $request->input('txtFirstName');
         $lname = $request->input('txtLastName');
         $email = $request->input('txtEmail');
         $phone = $request->input('txtPhone');
 		$address = $request->input('txtAdress');
-        // $accountName = $request->input('txtAccountName');
         $accountPass = $request->input('txtAccountPass');
-		$confirmPass = $request->input('txtConfirmPass');
-        $status = 1;
-        
-        DB::table('user')->insert([
-
-            'type' => $type,
-            'fname' => $fname,
-            'lname' => $lname,
-            'email' => $email,
-            'phone' => $phone,
-            'address' => $address,
-            // 'username' => $accountName,
-            'password' => $accountPass,
-            'status' => $status
-        ]);
-        // not finish yet
-        return redirect()->action('UserController@myAccount');
+        // login table
+        $user = new user();
+        $user->TYPE = 2;
+        $user->FNAME = $fname;
+        $user->LNAME = $lname;
+        $user->EMAIL = $email;
+        $user->PASSWORD = $accountPass;
+        $user->ADDRESS = $address;
+        $user->PHONE = $phone;
+        $user->save();
+        return redirect()->action('UserController@signin');
     }
 
     public function signin () {
@@ -58,7 +50,7 @@ class UserController extends Controller
                 //
             } else {
                 $request->session()->put('customer', $user);
-                return redirect("/");
+                return $this->userList();
             }
         }
     }

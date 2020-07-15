@@ -29,7 +29,7 @@ class GameShopController extends Controller
             if($user->TYPE == 1){
                 return redirect("admin/home");
             }else{
-                return redirect("user/details");
+                return redirect("user/signin");
             }
         }else{
             return redirect('login');

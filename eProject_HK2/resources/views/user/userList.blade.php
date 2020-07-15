@@ -21,7 +21,7 @@
                 <th width="100px">Phone</th>
                 <th width="100px">Address</th>
                 <th width="100px">Role</th>
-                <th width="100px">Status</th>
+                {{-- <th width="100px">Status</th> --}}
             </tr>
             @foreach($users as $user)
                 <tr>
@@ -31,7 +31,7 @@
                     <td>{{ $user->PHONE }}</td>
                     <td>{{ $user->ADDRESS }}</td>
                     <td>{{ $user->TYPE }}</td>
-                    <td>{{ $user->STATUS }}</td>
+                    {{-- <td>{{ $user->STATUS }}</td> --}}
                 </tr>
             @endforeach
         <table>
