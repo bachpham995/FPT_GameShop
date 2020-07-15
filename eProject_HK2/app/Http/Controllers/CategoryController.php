@@ -31,4 +31,9 @@ class CategoryController extends Controller
         $c->update(['NAME'=>$category['NAME']]);
         return redirect()->action('CategoryController@home');
     }
+    public function delete($id)
+    {
+        category::where("ID", $id)->delete();
+        return redirect()->action('CategoryController@home');
+    }
 }

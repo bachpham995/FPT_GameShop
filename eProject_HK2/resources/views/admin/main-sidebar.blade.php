@@ -32,13 +32,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/home') }}" class="nav-link">
+                            <a href="{{ url('admin/member/home') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View Member</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/create') }}" class="nav-link">
+                            <a href="{{ url('admin/member/create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add new member</p>
                             </a>

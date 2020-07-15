@@ -22,10 +22,14 @@ Route::post('/checkLog','GameShopController@checkLog');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
         //admin
-        Route::get('home','GameShopController@adminHome');
-        Route::get('displayUser','GameShopController@displayUser');
-        Route::post('addUser','GameShopController@addUser');
         Route::get('resetPassword/{accountid}','GameShopController@resetPassword');
+        //member
+        Route::get('member/home','MemberController@home');
+        Route::get('member/delete/{id}','MemberController@delete');
+        Route::get('member/create','MemberController@create');
+        Route::post('member/postCreateMember','MemberController@postCreate');
+        Route::get('member/update/{id}','MemberController@update');
+        Route::post('member/postUpdate/{id}','MemberController@postUpdate');
         //publisher
         Route::get('publisher/home','PublisherController@home');
         Route::get('publisher/create','PublisherController@create');
@@ -46,18 +50,22 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::post('postCreateProducer','ProducerController@postCreate');
         Route::get('producer/update/{id}','ProducerController@update');
         Route::post('producer/postUpdate/{id}','ProducerController@postUpdate');
+        Route::get('producer/delete/{id}','ProducerController@delete');
         //caletory
         Route::get('category/home','CategoryController@home');
         Route::get('category/create','CategoryController@create');
         Route::post('postCeateCategory','CategoryController@postCreate');
         Route::get('category/update/{id}','CategoryController@update');
         Route::post('category/postUpdate/{id}','CategoryController@postUpdate');
+        Route::get('category/delete/{id}','CategoryController@delete');
         //OS
         Route::get('os/home','OsController@home');
         Route::get('os/create','OsController@create');
         Route::post('postCreateOS','OsController@postCreate');
         Route::get('os/update/{id}','OsController@update');
         Route::post('os/postUpdateOs/{id}','OsController@postUpdate');
+        Route::get('os/delete/{id}','OsController@delete');
+
     });
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){

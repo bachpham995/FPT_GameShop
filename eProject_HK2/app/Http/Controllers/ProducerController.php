@@ -34,4 +34,9 @@ class ProducerController extends Controller
        $p->update(['NAME'=>$producer['NAME']]);
        return redirect()->action('ProducerController@home');
     }
+    public function delete($id)
+    {
+        producer::where("ID", $id)->delete();
+        return redirect()->action('ProducerController@home');
+    }
 }
