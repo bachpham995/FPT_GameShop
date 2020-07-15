@@ -1,6 +1,6 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('admin.layout')
-@section('title', 'User')
+@section('title', 'Member')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
