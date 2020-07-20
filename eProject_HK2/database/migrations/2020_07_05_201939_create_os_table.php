@@ -18,8 +18,12 @@ class CreateOsTable extends Migration
             $table->string('NAME',100)->nullable();
             $table->timestamps();
         });
+        Schema::table('os', function(Blueprint $table) {
+            $table->foreign('ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+        });
     }
 //CREATE TABLE `gameshop`.`os` ( `ID` INT NOT NULL AUTO_INCREMENT , `NAME` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+//ALTER TABLE `os` ADD CONSTRAINT `OS-FK` FOREIGN KEY (`ID`) REFERENCES `game`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 /**
      * Reverse the migrations.
      *

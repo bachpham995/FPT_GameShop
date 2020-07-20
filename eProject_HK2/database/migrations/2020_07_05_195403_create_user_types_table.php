@@ -18,6 +18,9 @@ class CreateUserTypesTable extends Migration
             $table->string('NAME',20)->nullable();
             $table->timestamps();
         });
+        Schema::table('user_type', function(Blueprint $table) {
+            $table->foreign('ID')->references('ID')->on('user')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+        });
     }
 
     /**
