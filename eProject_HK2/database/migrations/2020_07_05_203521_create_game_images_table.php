@@ -13,13 +13,13 @@ class CreateGameImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_images', function (Blueprint $table) {
+        Schema::create('game_image', function (Blueprint $table) {
             $table->bigIncrements('ID');
             $table->unsignedBigInteger('GAME_ID')->nullable();
-            $table->string('DIRECTORY',200)->nullable();
+            $table->longText('URL')->nullable();
             $table->timestamps();
         });
-        Schema::table('game_images', function(Blueprint $table) {
+        Schema::table('game_image', function(Blueprint $table) {
             $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
         });
     }

@@ -20,9 +20,15 @@ class CreateGamesTable extends Migration
             $table->integer('RATING')->nullable();
             $table->string('STATUS',30)->nullable();
             $table->integer('PRICE')->nullable();
-            $table->string('KEY',12)->nullable();
+            $table->string('LINKDOWLOAD',255)->nullable();
             $table->integer('SALE')->nullable();
-            $table->unique('KEY');
+            $table->integer('AGE_REQ');
+            $table->string('CPU',150);
+            $table->string('GPU',150);
+            $table->integer('STORAGE');
+            $table->string('OS',50);
+            $table->integer('RAM');
+            $table->unique('LINKDOWLOAD');
             $table->timestamps();
         });
     }

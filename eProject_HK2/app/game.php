@@ -11,7 +11,7 @@ use ReflectionClass;
 class game extends Model
 {
     protected $table = "game";
-    protected $fillable = ['NAME','DESCRIPTION','RATING','STATUS','PRICE','KEY','SALE','created_at','updated_at'];
+    protected $fillable = ['NAME','DESCRIPTION','RATING','STATUS','PRICE','SALE','AGE_REQ','CPU','GPU','STORAGE','OS','RAM','LINKDOWLOAD','created_at','updated_at'];
 
     public function getCategories(){
         $game_categories = game_category::where("GAME_ID" , "=" ,$this->ID)->pluck("CATEGORY_ID")->all();
