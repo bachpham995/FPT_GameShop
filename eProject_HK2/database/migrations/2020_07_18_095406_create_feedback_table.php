@@ -15,12 +15,11 @@ class CreateFeedbackTable extends Migration
     public function up()
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->unsignedBigInteger('USER_ID')->primary();
-            $table->integer('RATE')->length(5)->nullable();
+            $table->integer('ID')->primary();
+            $table->string('NAME',100);
+            $table->string('EMAIL');
+            $table->longText('MESSAGE')->nullable();
             $table->timestamps();
-        });
-        Schema::table('feedback', function(Blueprint $table) {
-            $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('RESTRICT')->onUpdate('RESTRICT');
         });
     }
 

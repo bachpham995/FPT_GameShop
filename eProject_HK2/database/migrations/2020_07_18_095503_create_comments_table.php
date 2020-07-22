@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('ID');
             $table->unsignedBigInteger('GAME_ID')->nullable();
             $table->unsignedBigInteger('USER_ID')->nullable();
+            $table->integer('RATING')->nullable();
             $table->string('DESCRIPTION',255)->nullable();
             $table->timestamps();
         });
