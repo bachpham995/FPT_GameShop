@@ -29,7 +29,4 @@ class user extends Model
         }
     }
 
-    function CurrentUser(){
-        return auth()->user();
-    }
 }
