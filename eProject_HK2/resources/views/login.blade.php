@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form method="POST" action="{{url("checkLog")}}">
-    @csrf
-        <table>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" name="emailLogin"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" name="passwordLogin"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value='Login'></td>
-            </tr>
-        </table>
+@extends('layout.layout')
+@section('title', 'login')
+@section('content')
+
+<div class="main">
+
+    <h3>Please Log In, or <a href="#">Sign Up</a></h3>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="#" class="btn btn-lg btn-info btn-block">Google</a>
+        </div>
+    </div>
+    <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">or</span>
+    </div>
+
+    <form role="form" action="{{ url('checkLog') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="inputUsernameEmail">Username or email</label>
+            <input type="text" class="form-control" id="inputUsernameEmail" name="emailLogin">
+        </div>
+        <div class="form-group">
+            <a class="pull-right" href="#">Forgot password?</a>
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" name="passwordLogin">
+        </div>
+        <div class="checkbox pull-right">
+        <label><input type="checkbox"> Remember me </label>
+        </div>
+        <button type="submit" class="btn btn btn-primary">
+            Log In
+        </button>
     </form>
-</body>
-</html>
+  </div>
+
+@endsection
