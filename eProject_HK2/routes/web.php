@@ -67,6 +67,23 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::get('os/delete/{id}','OsController@delete');
 
     });
+//------------------------- SUPERVISOR-----------------------------------------------------------------------------
+    Route::prefix('supervisor')->name('supervisor')->middleware('CheckLogin')
+    ->group(function(){
+        //supervisor
+        Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
+        //member
+        Route::get('member/home','Supervisor\MemberController@home');
+        Route::get('member/delete/{id}','Supervisor\MemberController@delete');
+        Route::get('member/create','Supervisor\MemberController@create');
+        Route::post('member/postCreateMember','Supervisor\MemberController@postCreate');
+        Route::get('member/update/{id}','Supervisor\MemberController@update');
+        Route::post('member/postUpdate/{id}','Supervisor\MemberController@postUpdate');
+       
+
+    });
+
+
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){
         // Route::get('details/{accountid}','GameShopController@details');
