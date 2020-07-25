@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="header-logo">
                     <a class="logo" href="{{ url('/index') }}">
-                        <img src="./img/logo.png" alt="">
+                        <img src="{{ asset('/img/logo.png') }}" alt="">
                     </a>
                 </div>
                 <!-- /Logo -->
