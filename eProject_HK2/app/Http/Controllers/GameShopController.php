@@ -12,11 +12,15 @@ use ReflectionClass as GlobalReflectionClass;
 class GameShopController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('client.index');
     }
 
     public function login(){
-        return view('login');
+        return view('client.login');
+    }
+
+    public function products(){
+        return view('client.products');
     }
 
     public function checkLog(Request $request){

@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/index','GameShopController@index');
 Route::get('/login','GameShopController@login');
 Route::post('/checkLog','GameShopController@checkLog');
+Route::get('/products', 'GameShopController@products');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
         //admin
