@@ -36,8 +36,8 @@
                 <table id ="producers" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Producer ID</th>
-                            <th>Producer Name</th>
+                            <th>#</th>
+                            <th>Producer</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@
                         <tr>
                             <td>{{ $pdc->ID }}</td>
                             <td>{{ $pdc->NAME }}</td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/producer/update/'.$pdc->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
@@ -58,13 +58,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Producer ID</th>
-                            <th>Producer Name</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->

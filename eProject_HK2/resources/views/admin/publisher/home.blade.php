@@ -37,8 +37,8 @@
                 <table id ="publishers" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Publisher ID</th>
-                            <th>Publisher Name</th>
+                            <th>#</th>
+                            <th>Publisher</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                         <tr>
                             <td>{{ $pls->ID }}</td>
                             <td>{{ $pls->NAME }}</td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/publisher/update/'.$pls->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
@@ -74,6 +74,7 @@
 <script>
     $(function() {
         $('#publishers').DataTable({
+            "pageLength" : 5,
             "paging": true,
             "lengthChange": false,
             "searching": true,
