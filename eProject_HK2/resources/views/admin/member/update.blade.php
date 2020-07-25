@@ -21,8 +21,8 @@
                                 <input type="text" class="form-control" id="txt-id" name="ID" placeholder="1" value="{{ $member->ID }}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="txt-name">Frist Name</label>
-                                <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="Frist Name" value="{{ $member->FNAME }}">
+                                <label for="txt-name">First Name</label>
+                                <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="First Name" value="{{ $member->FNAME }}">
                             </div>
                             <div class="form-group">
                                 <label for="txt-price">Last Name</label>

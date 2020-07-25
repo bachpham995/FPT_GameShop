@@ -1,18 +1,18 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('admin.layout')
-@section('title', 'OS')
+@section('title', 'Operating Systems')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>DataTables</h1>
+                <h1>OPERATING SYSTEMS</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
+                    <li class="breadcrumb-item active">Operating Systems</li>
                 </ol>
             </div>
         </div>
@@ -25,16 +25,20 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                <h3 class="card-title">
+                    <a class="btn btn-success btn-btn" href="{{ url('admin/os/create') }}">
+                        <i class="fas fa-plus"></i> Add
+                    </a>
+                </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table class="table table-bordered table-hover">
+                <table id="oss" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>OS ID</th>
                             <th>OS Name</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +79,8 @@
 @section('script-section')
 <script>
     $(function() {
-        $('#product').DataTable({
+        $('#oss').DataTable({
+            "pageLength" : 5,
             "paging": true,
             "lengthChange": false,
             "searching": false,

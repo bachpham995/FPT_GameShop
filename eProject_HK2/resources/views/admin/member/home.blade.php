@@ -1,18 +1,18 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('admin.layout')
-@section('title', 'Member')
+@section('title', 'Members')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>DataTables</h1>
+                <h1>MEMBERS</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
+                    <li class="breadcrumb-item active">Members</li>
                 </ol>
             </div>
         </div>
@@ -25,11 +25,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                    <h3 class="card-title">
+                        <a class="btn btn-success btn-btn" href="{{ url('admin/member/create') }}">
+                            <i class="fas fa-plus"></i> Add
+                        </a>
+                    </h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="product" class="table table-bordered table-hover">
+                    <table id="members" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>User ID</th>
@@ -39,7 +43,7 @@
                                 <th>Address</th>
                                 <th>Phone</th>
                                 <th>Type</th>
-                                <th></th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +55,7 @@
                                 <td>{{ $u->EMAIL }}</td>
                                 <td>{{ $u->ADDRESS }}</td>
                                 <td>{{ $u->PHONE }}</td>
-                                <td>{{ $u->TYPE==1?"Admin":"User" }}</td>
+                                <td>{{ $u->UserType() }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/member/update/'.$u->ID) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
@@ -89,7 +93,7 @@
 @section('script-section')
 <script>
     $(function() {
-        $('#product').DataTable({
+        $('#members').DataTable({
             "paging": true,
             "lengthChange": false,
             "searching": false,
