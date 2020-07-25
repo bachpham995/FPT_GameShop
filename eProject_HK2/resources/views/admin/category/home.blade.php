@@ -38,7 +38,7 @@
                         <tr>
                             <th>Category ID</th>
                             <th>Category Name</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +83,7 @@
             "pageLength" : 5,
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,
