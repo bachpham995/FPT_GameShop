@@ -36,7 +36,7 @@
                 <table id="games" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Categories</th>
                             <th>Publishers</th>
@@ -53,7 +53,7 @@
                             <td><font size ="-2">{{$prd->getCategories()}}</font></td>
                             <td><font size ="-2">{{$prd->getPublishers()}}</font></td>
                             <td><font size ="-2">{{$prd->getProducers()}}</font></td>
-                            <td><font size ="-2">{{ $prd->PRICE }}</font></td>
+                            <td><font size ="-2">{{ $prd->PRICE." VNĐ"}}</font></td>
                             <td class="text-right">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/products/update/'.$prd->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
@@ -66,13 +66,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Publisher ID</th>
-                            <th>Publisher Name</th>
-                            <th></th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
             <!-- /.card-body -->
@@ -88,6 +81,7 @@
 <script>
     $(function() {
         $('#games').DataTable({
+            "pageLength" : 5,
             "paging": true,
             "lengthChange": false,
             "searching": true,

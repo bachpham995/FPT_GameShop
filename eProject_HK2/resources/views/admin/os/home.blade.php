@@ -36,8 +36,8 @@
                 <table id="oss" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>OS ID</th>
-                            <th>OS Name</th>
+                            <th>#</th>
+                            <th>Operating System</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@
                         <tr>
                             <td>{{ $os->ID }}</td>
                             <td>{{ $os->NAME }}</td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/os/update/'.$os->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>

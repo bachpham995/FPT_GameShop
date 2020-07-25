@@ -36,8 +36,8 @@
                 <table id="categories" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Category ID</th>
-                            <th>Category Name</th>
+                            <th>#</th>
+                            <th>Category</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@
                         <tr>
                             <td><font size ="-1">{{ $ctgr->ID }}</font></td>
                             <td><font size ="-1">{{ $ctgr->NAME }}</font></td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/category/update/'.$ctgr->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
