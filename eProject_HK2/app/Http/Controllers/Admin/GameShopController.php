@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ReflectionClass;
+use App\Http\Controllers\Controller;
 use ReflectionClass as GlobalReflectionClass;
 
 class GameShopController extends Controller

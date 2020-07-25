@@ -16,55 +16,55 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index','GameShopController@index');
-Route::get('/login','GameShopController@login');
-Route::post('/checkLog','GameShopController@checkLog');
+Route::get('/index','Admin\GameShopController@index');
+Route::get('/login','Admin\GameShopController@login');
+Route::post('/checkLog','Admin\GameShopController@checkLog');
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
         //admin
-        Route::get('resetPassword/{accountid}','GameShopController@resetPassword');
+        Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
         //member
-        Route::get('member/home','MemberController@home');
-        Route::get('member/delete/{id}','MemberController@delete');
-        Route::get('member/create','MemberController@create');
-        Route::post('member/postCreateMember','MemberController@postCreate');
-        Route::get('member/update/{id}','MemberController@update');
-        Route::post('member/postUpdate/{id}','MemberController@postUpdate');
+        Route::get('member/home','Admin\MemberController@home');
+        Route::get('member/delete/{id}','Admin\MemberController@delete');
+        Route::get('member/create','Admin\MemberController@create');
+        Route::post('member/postCreateMember','Admin\MemberController@postCreate');
+        Route::get('member/update/{id}','Admin\MemberController@update');
+        Route::post('member/postUpdate/{id}','Admin\MemberController@postUpdate');
         //publisher
-        Route::get('publisher/home','PublisherController@home');
-        Route::get('publisher/create','PublisherController@create');
-        Route::post('postCreatePulisher','PublisherController@postCreate');
-        Route::get('publisher/delete/{id}','PublisherController@delete');
-        Route::get('publisher/update/{id}','PublisherController@update');
-        Route::post('publisher/postUpdate/{id}','PublisherController@postUpdate');
+        Route::get('publisher/home','Admin\PublisherController@home');
+        Route::get('publisher/create','Admin\PublisherController@create');
+        Route::post('postCreatePulisher','Admin\PublisherController@postCreate');
+        Route::get('publisher/delete/{id}','Admin\PublisherController@delete');
+        Route::get('publisher/update/{id}','Admin\PublisherController@update');
+        Route::post('publisher/postUpdate/{id}','Admin\PublisherController@postUpdate');
         //product
-        Route::get('products/home','ProductController@home');
-        Route::get('products/create','ProductController@create');
-        Route::post('postCeate','ProductController@postCreate');
-        Route::get('products/delete/{id}','ProductController@delete');
-        Route::get('products/update/{id}','ProductController@update');
-        Route::post('products/postUpdate/{id}','ProductController@postUpdate');
+        Route::get('products/home','Admin\ProductController@home');
+        Route::get('products/create','Admin\ProductController@create');
+        Route::post('postCeate','Admin\ProductController@postCreate');
+        Route::get('products/delete/{id}','Admin\ProductController@delete');
+        Route::get('products/update/{id}','Admin\ProductController@update');
+        Route::post('products/postUpdate/{id}','Admin\ProductController@postUpdate');
         //producer
-        Route::get('producer/home','ProducerController@home');
-        Route::get('producer/create','ProducerController@create');
-        Route::post('postCreateProducer','ProducerController@postCreate');
-        Route::get('producer/update/{id}','ProducerController@update');
-        Route::post('producer/postUpdate/{id}','ProducerController@postUpdate');
-        Route::get('producer/delete/{id}','ProducerController@delete');
+        Route::get('producer/home','Admin\ProducerController@home');
+        Route::get('producer/create','Admin\ProducerController@create');
+        Route::post('postCreateProducer','Admin\ProducerController@postCreate');
+        Route::get('producer/update/{id}','Admin\ProducerController@update');
+        Route::post('producer/postUpdate/{id}','Admin\ProducerController@postUpdate');
+        Route::get('producer/delete/{id}','Admin\ProducerController@delete');
         //caletory
-        Route::get('category/home','CategoryController@home');
-        Route::get('category/create','CategoryController@create');
-        Route::post('postCeateCategory','CategoryController@postCreate');
-        Route::get('category/update/{id}','CategoryController@update');
-        Route::post('category/postUpdate/{id}','CategoryController@postUpdate');
-        Route::get('category/delete/{id}','CategoryController@delete');
+        Route::get('category/home','Admin\CategoryController@home');
+        Route::get('category/create','Admin\CategoryController@create');
+        Route::post('postCeateCategory','Admin\CategoryController@postCreate');
+        Route::get('category/update/{id}','Admin\CategoryController@update');
+        Route::post('category/postUpdate/{id}','Admin\CategoryController@postUpdate');
+        Route::get('category/delete/{id}','Admin\CategoryController@delete');
         //OS
-        Route::get('os/home','OsController@home');
-        Route::get('os/create','OsController@create');
-        Route::post('postCreateOS','OsController@postCreate');
-        Route::get('os/update/{id}','OsController@update');
-        Route::post('os/postUpdateOs/{id}','OsController@postUpdate');
-        Route::get('os/delete/{id}','OsController@delete');
+        Route::get('os/home','Admin\OsController@home');
+        Route::get('os/create','Admin\OsController@create');
+        Route::post('postCreateOS','Admin\OsController@postCreate');
+        Route::get('os/update/{id}','Admin\OsController@update');
+        Route::post('os/postUpdateOs/{id}','Admin\OsController@postUpdate');
+        Route::get('os/delete/{id}','Admin\OsController@delete');
 
     });
 Route::prefix('user')->name('user')->middleware('CheckLogin')
