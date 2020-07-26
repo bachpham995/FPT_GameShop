@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');
 Route::post('/checkLog','Admin\GameShopController@checkLog');
+//------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')
     ->group(function(){
         //admin
@@ -67,6 +68,21 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::get('os/delete/{id}','Admin\OsController@delete');
 
     });
+//------------SUPERVISOR-------------------------------------------------------------------------
+Route::prefix('supervisor')->name('supervisor')->middleware('CheckLogin')
+    ->group(function(){
+        //admin
+        Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
+        //member
+        Route::get('member/home','Supervisor\MemberController@home');
+        Route::get('member/delete/{id}','Supervisor\MemberController@delete');
+        Route::get('member/create','Supervisor\MemberController@create');
+        Route::post('member/postCreateMember','Supervisor\MemberController@postCreate');
+        Route::get('member/update/{id}','Supervisor\MemberController@update');
+        Route::post('member/postUpdate/{id}','Supervisor\MemberController@postUpdate');
+    });
+
+//------------------USER---------------------------------------------------------------------------
 Route::prefix('user')->name('user')->middleware('CheckLogin')
     ->group(function(){
         // Route::get('details/{accountid}','GameShopController@details');
