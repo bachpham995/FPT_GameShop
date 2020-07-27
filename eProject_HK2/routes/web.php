@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');
 Route::post('/checkLog','Admin\GameShopController@checkLog');
