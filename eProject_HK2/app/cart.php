@@ -22,6 +22,7 @@ class cart extends Model
         $newGame = ['quanty' => 0 , 'price'=>$game->PRICE,'gameInfor'=>$game];
         if($this->game){
             if(array_key_exists($id,$this->game)){
+                $newGame = $this->game[$id];
             }
         }
         $newGame['quanty']++;
