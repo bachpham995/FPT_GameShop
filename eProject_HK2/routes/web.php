@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/AddCart/{id}','User\CartController@AddCart');
+//Cart
+Route::get('/AddCart/{id}','User\CartController@addCart');
+Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
+Route::get('/ListCart','User\CartController@viewListCart');
+//Cart
 Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');

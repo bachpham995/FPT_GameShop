@@ -82,7 +82,7 @@
 	<script src="{{ asset('js/client/nouislider.min.js') }}"></script>
 	<script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
-    
+
     <!-- page script -->
     @yield('script-section')
 </body>

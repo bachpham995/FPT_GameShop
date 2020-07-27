@@ -8,7 +8,7 @@ class cart extends Model
 {
     protected $table = "cart";
     protected $fillable = ['ORDER_DATE','PAID','created_at','updated_at'];
-    public $game = null; 
+    public $game = null;
     public $totalPrice = 0;
     public $totalQuanty = 0;
     public function __construct($cart){
@@ -30,5 +30,10 @@ class cart extends Model
         $this->game[$id] = $newGame;
         $this->totalPrice += $game->PRICE;
         $this->totalQuanty++;
+    }
+    public function DeleteItemCart($id){
+        $this->totalQuanty -= $this->game[$id]['quanty'];
+        $this->totalPrice -= $this->game[$id]['price'];
+        unset($this->game[$id]);
     }
 }

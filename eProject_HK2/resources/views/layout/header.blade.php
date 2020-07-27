@@ -1,5 +1,4 @@
-<header>
-    <!-- header -->
+<!-- header -->
     <div id="header">
         <div class="container">
             <div class="pull-left">
@@ -58,22 +57,51 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                             <div class="header-btns-icon">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="qty">3</span>
+                                @if(Session::has('Cart') != null)
+                                <span class="qty" id="total-quanty-show">{{Session::get('Cart')->totalQuanty}}</span>
+                                @else
+                                <span class="qty" id="total-quanty-show">0</span>
+                                @endif
                             </div>
                             <strong class="text-uppercase">My Cart:</strong>
                             <br>
-                            <span>35.20$</span>
+                            @if(Session::has('Cart') != null)
+                            <span id="total-price-show">{{Session::get('Cart')->totalPrice}}$</span>
+                            @else
+                            <span id="total-price-show">0.0$</span>
+                            @endif
                         </a>
                         <div class="custom-menu">
                             <div id="shopping-cart">
                                 <div class="shopping-cart-list">
                                     <div id="change-item-cart">
-                                        <h3>No Item</h3>
+                                        @if(Session::has('Cart') != null)
+                                            @foreach(Session::get('Cart')
+                                                ->game as $game)
+                                                <div class="product product-widget">
+                                                    <div class="product-thumb">
+                                                        <img src="./img/thumb-product01.jpg" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-price">{{ $game['price'] }}<span
+                                                                class="qty">{{ $game['quanty'] }}</span></h3>
+                                                        <h2 class="product-name"><a
+                                                                href="#">{{ $game['gameInfor']->NAME }}</a></h2>
+                                                    </div>
+
+                                                    <button class="cancel-btn">
+                                                        <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="shopping-cart-btns">
-                                    <button class="main-btn">View Cart</button>
-                                    <button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+                                    <button class="main-btn" ><a href="{{url('/ListCart')}}">View Cart</a></button>
+                                    <button class="primary-btn">Checkout <i
+                                            class="fa fa-arrow-circle-right"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -87,8 +115,8 @@
                     <!-- / Mobile nav toggle -->
                 </ul>
             </div>
-        </div>
-        <!-- header -->
-    </div>
-    <!-- container -->
+</div>
+<!-- header -->
+</div>
+<!-- container -->
 </header>

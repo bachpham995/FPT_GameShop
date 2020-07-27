@@ -16,7 +16,6 @@
                 </div>
             </div>
             <!-- /section-title -->
-
             <!-- banner -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="banner banner-2">
@@ -28,7 +27,6 @@
                 </div>
             </div>
             <!-- /banner -->
-
             <!-- Product Slick -->
             <div class="col-md-9 col-sm-6 col-xs-6">
                 <div class="row">
@@ -67,7 +65,7 @@
                             </div>
                         </div>
                         @endforeach
-                        
+
                         <!-- /Product Single -->
                     </div>
                 </div>
@@ -78,12 +76,6 @@
     </div>
     <!-- /container -->
 </div>
-{{-- <script src="{{ asset('js/client/jquery.min.js') }}"></script>
-<script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/client/slick.min.js') }}"></script>
-<script src="{{ asset('js/client/nouislider.min.js') }}"></script>
-<script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
-<script src="{{ asset('js/client/main.js') }}"></script> --}}
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <!-- CSS -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
@@ -93,21 +85,36 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
     function AddCart(id){
         $.ajax({
             url:'AddCart/'+id,
             type: 'GET',
         }).done(function(response){
-           $("#change-item-cart").empty();
-           $("#change-item-cart").html(response);
-           $("#change-item-cart").on("click",".cancel-btn i",function(){
-        dd($(this).data("id"));
-        // console.log($(this).data("id"));
-    });
+            RenderCart(response)
            alertify.success('Success Add');
         });
     }
- 
+    $("#change-item-cart").on('click', '.cancel-btn i', function (){
+       $.ajax({
+            url:'DeleteItemCart/'+$(this).data("id"),
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Delete');
+        });
+    });
+    function RenderCart(response){
+        $("#change-item-cart").empty();
+        $("#change-item-cart").html(response);
+        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+            $("#total-quanty-show").text( $("#total-quanty-cart").val());
+            $("#total-price-show").text( $("#total-price-cart").val());
+        }else{
+            $("#total-quanty-show").text("0");
+            $("#total-price-show").text("0.0$");
+        }
+    }
 </script>
 @endsection
