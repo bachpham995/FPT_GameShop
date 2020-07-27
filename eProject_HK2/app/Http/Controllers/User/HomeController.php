@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index(){
         $game = game::all();
-        return view('index')->with(["game"=>$game]);
+        return view('client/demoIndex')->with(["game"=>$game]);
     }
 }

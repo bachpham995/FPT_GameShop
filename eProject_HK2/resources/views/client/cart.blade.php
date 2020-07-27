@@ -14,12 +14,6 @@
     <button class="cancel-btn">
         <i class="fa fa-trash" data-id="{{$game['gameInfor']->ID}}"></i>
     </button>
-    <div>
-        <span>{{number_format($newCart->totalPrice)}}$</span>
-    </div>
-    <div>
-        <span>{{$newCart->totalQuanty}}</span>
-    </div>
 </div>
 @endforeach
 @endif

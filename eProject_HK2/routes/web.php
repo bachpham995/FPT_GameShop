@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/AddCart/{id}','User\CartController@AddCart');
+Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');
 Route::post('/checkLog','Admin\GameShopController@checkLog');
