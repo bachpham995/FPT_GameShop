@@ -1,112 +1,89 @@
-@extends('layout.layout')
-@section('title', 'Homepage')
-@section('content')
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            <!-- section-title -->
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2 class="title">Deals Of The Day</h2>
-                    <div class="pull-right">
-                        <div class="product-slick-dots-1 custom-dots"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- /section-title -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title')</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/client/bootstrap.min.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick-theme.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/nouislider.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> --}}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/client/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/client/login.css') }}" />
+</head>
+<body>
+    <!-- HEADER -->
+    @include('layout.header')
+    <!-- /HEADER-->
 
-            <!-- banner -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="banner banner-2">
-                    <img src="./img/banner14.jpg" alt="">
-                    <div class="banner-caption">
-                        <h2 class="white-color">NEW<br>COLLECTION</h2>
-                        <button class="primary-btn">Shop Now</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /banner -->
+    <!-- NAVIGATION -->
+    @include('layout.navigation')
+    <!-- /NAVIGATION-->
 
-            <!-- Product Slick -->
-            <div class="col-md-9 col-sm-6 col-xs-6">
-                <div class="row">
-                    <div id="product-slick-1" class="product-slick">
-                        <!-- Product Single -->
-                        @foreach ($game as $game)
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>New</span>
-                                    <span class="sale">-20%</span>
-                                </div>
-                                <ul class="product-countdown">
-                                    <li><span>00 H</span></li>
-                                    <li><span>00 M</span></li>
-                                    <li><span>00 S</span></li>
-                                </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                                <img src="./img/product0{{ $loop->index }}.jpg" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-price">{{$game->PRICE}}$</h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="#">{{$game->NAME}}</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                    <a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        
-                        <!-- /Product Single -->
-                    </div>
-                </div>
-            </div>
-            <!-- /Product Slick -->
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
-<script src="js/main.js"></script>
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+	<!-- HOME -->
+	<div id="home">
+		<!-- container -->
+		<div class="container">
+			<!-- home wrap -->
+			<div class="home-wrap">
+				<!-- home slick -->
+				<div id="home-slick">
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/banner01.jpg" alt="">
+						<div class="banner-caption text-center">
+							<h1>Bags sale</h1>
+							<h3 class="white-color font-weak">Up to 50% Discount</h3>
+							<button class="primary-btn">Shop Now</button>
+						</div>
+					</div>
+					<!-- /banner -->
 
-<!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-<!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-<!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-<!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
-<script>
-    function AddCart(id){
-        $.ajax({
-            url:'AddCart/'+id,
-            type: 'GET',
-        }).done(function(response){
-           $("#change-item-cart").empty();
-           $("#change-item-cart").html(response);
-           alertify.success('Success Add');
-        });
-    }
-    $("#change-item-cart").on("click",".cancel-btn i",function(){
-        console.log(this).data("id");
-    });
-</script>
-@endsection
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/banner02.jpg" alt="">
+						<div class="banner-caption">
+							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
+							<button class="primary-btn">Shop Now</button>
+						</div>
+					</div>
+					<!-- /banner -->
+
+					<!-- banner -->
+					<div class="banner banner-1">
+						<img src="./img/banner03.jpg" alt="">
+						<div class="banner-caption">
+							<h1 class="white-color">New Product <span>Collection</span></h1>
+							<button class="primary-btn">Shop Now</button>
+						</div>
+					</div>
+					<!-- /banner -->
+				</div>
+				<!-- /home slick -->
+			</div>
+			<!-- /home wrap -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /HOME -->
+
+    <!-- FOOTER -->
+    @include('layout.footer')
+    <!-- /FOOTER-->
+    <!-- -->
+
+    <script src="{{ asset('js/client/jquery.min.js') }}"></script>
+	<script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/client/slick.min.js') }}"></script>
+	<script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+	<script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('js/client/main.js') }}"></script>
+    
+    <!-- page script -->
+    @yield('script-section')
+</body>
+</html>
