@@ -11,11 +11,11 @@ use ReflectionClass as GlobalReflectionClass;
 class GameShopController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('client.index');
     }
 
     public function login(){
-        return view('login');
+        return view('client.login');
     }
 
     public function checkLog(Request $request){
@@ -28,12 +28,12 @@ class GameShopController extends Controller
             if($user->TYPE == 1){
                 return redirect("admin/products/home");
             }else if($user->TYPE== 2){
-                return redirect("index");
+                return redirect("client.index");
             }else{
                 return redirect("supervisor/member/home");
             }
         }else{
-            return redirect('login');
+            return redirect('client.login');
         }
     }
 }
