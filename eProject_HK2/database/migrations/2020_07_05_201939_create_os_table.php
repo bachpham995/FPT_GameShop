@@ -14,12 +14,9 @@ class CreateOsTable extends Migration
     public function up()
     {
         Schema::create('os', function (Blueprint $table) {
-            $table->bigIncrements('ID');
+            $table->unsignedBigInteger('ID')->autoIncrement();
             $table->string('NAME',100)->nullable();
             $table->timestamps();
-        });
-        Schema::table('os', function(Blueprint $table) {
-            $table->foreign('ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
         });
     }
 //CREATE TABLE `gameshop`.`os` ( `ID` INT NOT NULL AUTO_INCREMENT , `NAME` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;

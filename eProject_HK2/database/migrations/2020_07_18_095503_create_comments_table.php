@@ -26,6 +26,10 @@ class CreateCommentsTable extends Migration
             $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('RESTRICT')->onUpdate('RESTRICT');
         });
 
+        Schema::table('game', function(Blueprint $table) {
+            $table->foreign('OS')->references('ID')->on('os')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+        });
+
     }
 
     /**

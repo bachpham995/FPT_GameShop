@@ -1,0 +1,82 @@
+INSERT INTO `os` (`ID`, `NAME`) VALUES ('1', 'Windows 10');
+
+INSERT INTO `user` (`TYPE`, `FNAME`, `LNAME`, `EMAIL`, `PASSWORD`, `ADDRESS`, `PHONE`) VALUES ('1', 'Phát', 'Lưu', 'phatltuit@gmail.com', '123456', 'HCM', '0582563328'),
+( '2', 'Bách', 'Phạm', 'bach@gmail.com', '123456', 'HCM', '090909090'),( '0', 'Hóa', 'Nguyễn', 'hoa@gmail.com', '123456', 'HCM', '0824728690');
+
+INSERT INTO `producer` (`ID`, `NAME`) VALUES ('1','07th Expansion'),
+('2','11 bit studios'),
+('3','1C Company'),
+('4','2k Games'),
+('5','3D Realms'),
+('6','The 3DO Company'),
+('7','505 Games'),
+('8','5pb'),
+('9','7th Level'),
+('10','A&F Software'),
+('11','Aackosoft'),
+('12','Aardvark Soflware'),
+('13','Accolate'),
+('14','Acornsofl'),
+('15','Acquire'),
+('16','Active Gaming Media'),
+('17','AGM'),
+('18','Activision'),
+('19','Activision Blizzard'),
+('20','Addictive Games'),
+('21','The Adventure Company'),
+('22','Adventure International'),
+('23','Adventure Soft');
+
+INSERT INTO `publisher` (`ID`, `NAME`) VALUES ('1','Square Enix'),
+('2','Ubisoft'),
+('3','Konami'),
+('4','Electronic Arts(EA)'),
+('5','Namco Bandai'),
+('6','Activision Blizzard'),
+('7','Sega'),
+('8','Nintendo'),
+('9','Microsoft Studios'),
+('10','Sony'),
+('11','Garena'),
+('12','VNG'),
+('13','VTC');
+
+
+INSERT INTO `category` (`ID`, `NAME`) VALUES ('1','Action'),
+('2','Adventure'),
+('3','Combat'),
+('4','Defense'),
+('5','Fighting'),
+('6','FPS + TPS (First – Third person shooter)'),
+('7','MMO (Massively Multiplayer Online)'),
+('8','Platformer'),
+('9','Rhythm'),
+('10','Roguelike'),
+('11','RTS (Real Time Strategy)'),
+('12','Sim'),
+('13','Sports'),
+('14','Stealth'),
+('15','Strategy'),
+('16','Horror'),
+('17','Survival'),
+('18','Shooting'),
+('19','Point & Click'),
+('20','Puzzle'),
+('21','RPG (Role-Playing Game)');
+
+INSERT INTO `game` (`NAME`, `DESCRIPTION`,`STATUS`, `PRICE`,`LINKDOWLOAD`, `SALE`,`AGE_REQ`, `CPU`,`GPU`, `STORAGE`,`OS`, `RAM`) VALUES ('Subnautica: Below Zero', 'Subnautica: Below Zero là một trò chơi video phiêu lưu hành động sinh tồn thế giới mở được phát triển và phát hành bởi Unknown Worlds Entertainment. Đây là phần tiếp theo của Subnautica, được phát hành vào tháng 1 năm 2018','Available', '200000','1LK23KSK234Zasdaádasdasdsda', '15','13','i5 8400','GTX 1050', '86','1', '16GB');
+
+INSERT INTO `game_image` (`ID`,`GAME_ID`, `URL`) values ('1_intro', '1' ,'./img/abc.jpg');
+
+INSERT INTO `game` (`NAME`, `DESCRIPTION`,`STATUS`, `PRICE`,`LINKDOWLOAD`, `SALE`,`AGE_REQ`, `CPU`,`GPU`, `STORAGE`,`OS`, `RAM`) VALUES ('FIFA 20', 'is a football simulation video game published by Electronic Arts as part of the FIFA series.[2] It is the 27th installment in the FIFA series, and was released on 27 September 2019 for Microsoft Windows, PlayStation 4, Xbox One, and Nintendo Switch.','Available', '890000','aisdgkabsdfjsflhalwnfladnf', '50','13','i5 8400','GTX 1050 Ti', '86','1', '16GB');
+
+INSERT INTO `game_image` (`ID`,`GAME_ID`, `URL`) values ('2_intro', '2' ,'./img/xyz.jpg');
+
+INSERT INTO `game` (`NAME`, `DESCRIPTION`,`STATUS`, `PRICE`,`LINKDOWLOAD`, `SALE`,`AGE_REQ`, `CPU`,`GPU`, `STORAGE`,`OS`, `RAM`) VALUES ('BIO SHOCK', 'BioShock is a retrofuturistic video game series published by 2K Games and developed by several studios, including Irrational Games and 2K Marin. The BioShock games combine first-person shooter and role-playing elements, giving the player freedom for how to approach combat and other situations, and are considered part of the immersive sim genre. Additionally, the series is notable for exploring philosophical and moral concepts with a strong in-game narrative influenced by concepts such as objectivism, total utilitarianism, and American exceptionalism.','Available', '286000','asdasdasdqweqweqzxcjhgf', '56','17','i3 5XXX','GTX 1060 Ti', '50','1', '16GB');
+
+INSERT INTO `game_image` (`ID`,`GAME_ID`, `URL`) values ('3_intro', '3' ,'./img/qwe.jpg');
+
+INSERT INTO `game` (`NAME`, `DESCRIPTION`,`STATUS`, `PRICE`,`LINKDOWLOAD`, `SALE`,`AGE_REQ`, `CPU`,`GPU`, `STORAGE`,`OS`, `RAM`) VALUES ('DIABLO 3', 'Diablo III is a hack-and-slash action role-playing game developed and published by Blizzard Entertainment as the third installment in the Diablo franchise. It was released for Microsoft Windows and OS X in May 2012, the PlayStation 3 and Xbox 360 in September 2013, the PlayStation 4 and Xbox One in August 2014, and the Nintendo Switch in November 2018. Players choose to play as one of seven character classes – Barbarian, Crusader, Demon Hunter, Monk, Necromancer, Witch Doctor, or Wizard – and are tasked with defeating the Lord of Terror, Diablo, as in previous games in the series.','Available', '526000','asdasdasdqweqweqzxcaaa123231jhgf', '23','18','i3 5234','GTX 750 Ti', '90','1', '8GB');
+
+INSERT INTO `game_image` (`ID`,`GAME_ID`, `URL`) values ('4_intro', '4' ,'./img/uio.jpg');
+

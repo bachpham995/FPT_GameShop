@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');
+Route::get('/products','Admin\GameShopController@products');
 Route::post('/checkLog','Admin\GameShopController@checkLog');
 //------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckLogin')

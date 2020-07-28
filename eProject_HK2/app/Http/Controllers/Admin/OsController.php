@@ -19,7 +19,7 @@ class OsController extends Controller
         $os = $request->all();
         $o = new os($os);
         $o->save();
-        return redirect()->action('OsController@home');
+        return redirect()->action('Admin\OsController@home');
     }
     public function update($id){
         $os = os::find($id);
@@ -29,11 +29,11 @@ class OsController extends Controller
             $os = $request->all();
             $o = os::where('ID',$id);
             $o->update(['NAME'=>$os['NAME']]);
-            return redirect()->action('OsController@home');
+            return redirect()->action('Admin\OsController@home');
     }
     public function delete($id)
     {
         os::where("ID", $id)->delete();
-        return redirect()->action('OsController@home');
+        return redirect()->action('Admin\OsController@home');
     }
 }
