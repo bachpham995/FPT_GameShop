@@ -30,4 +30,24 @@ class game extends Model
         $publisher = publisher::whereIn("ID", $game_publisher)->pluck("NAME")->all();
         return join(", ", $publisher);
     }
+
+    public function getShortPrice(){
+        return $this->PRICE. " VNĐ ";
+    }
+
+    public function getShortSalePrice(){
+        if($this->SALE > 0){
+            return (intval($this->PRICE*(100 - $this->SALE)/100000)*1000)." VNĐ ";
+        }
+        return $this->PRICE. " VNĐ ";
+
+    }
+
+    public function getSale(){
+        return $this->SALE > 0?'-'.$this->SALE."%":'';
+    }
+
+    public function getIntroduceImageDirectory(){
+        return game_image::where([["GAME_ID",'=', $this->ID],['ID', '=',$this->ID."_intro"]])->first()->URL;
+    }
 }
