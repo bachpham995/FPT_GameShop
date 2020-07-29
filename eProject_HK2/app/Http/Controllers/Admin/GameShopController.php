@@ -43,4 +43,7 @@ class GameShopController extends Controller
             return redirect('login');
         }
     }
+    public function viewAbout(){
+        return view('client/About');
+    }
 }

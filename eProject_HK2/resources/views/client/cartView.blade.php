@@ -108,21 +108,15 @@
 									</tr>
 									<tr>
 										<th class="empty" colspan="3"></th>
-										<th>SHIPING</th>
-										<td colspan="2">Free Shipping</td>
-									</tr>
-									<tr>
-										<th class="empty" colspan="3"></th>
 										<th>TOTAL</th>
 										<th colspan="2" class="total">$97.50</th>
 									</tr>
 								</tfoot>
 							</table>
 							<div class="pull-right">
-								<button class="primary-btn">Place Order</button>
+								<a class="primary-btn" href="{{url('/Payment')}}">Payment<i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
-
 					</div>
 				</form>
 			</div>

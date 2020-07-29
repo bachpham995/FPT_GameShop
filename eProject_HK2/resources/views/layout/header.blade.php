@@ -66,7 +66,7 @@
                             <strong class="text-uppercase">My Cart:</strong>
                             <br>
                             @if(Session::has('Cart') != null)
-                            <span id="total-price-show">{{Session::get('Cart')->totalPrice}}$</span>
+                            <span id="total-price-show">{{(Session::get('Cart')->totalPrice)}}$</span>
                             @else
                             <span id="total-price-show">0.0$</span>
                             @endif
@@ -100,8 +100,7 @@
                                 </div>
                                 <div class="shopping-cart-btns">
                                     <button class="main-btn" ><a href="{{url('/ListCart')}}">View Cart</a></button>
-                                    <button class="primary-btn">Checkout <i
-                                            class="fa fa-arrow-circle-right"></i></button>
+                                    <a class="primary-btn" href="{{url('/Checkout')}}">Checkout<i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>

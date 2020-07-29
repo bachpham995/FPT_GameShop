@@ -115,7 +115,7 @@
                             <li><a href="#">Downloads</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="{{url('/About')}}">About</a></li>
                     <li><a href="#">Contact</a></li>
 
                 </ul>

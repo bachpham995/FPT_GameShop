@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-
+    
     public function addCart(Request $request, $id){
 
         $game = game::find($id);
@@ -39,5 +39,8 @@ class CartController extends Controller
          }
     public function viewListCart(){
         return view('client/cartView');
+    }
+    public function viewCheckout(){
+        return view('client/checkout');
     }
 }

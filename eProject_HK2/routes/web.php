@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/AddCart/{id}','User\CartController@addCart');
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
 Route::get('/ListCart','User\CartController@viewListCart');
+Route::get('/Payment','User\CheckoutController@checkLoginWithCheckout');
+Route::get('/Goback','User\CheckoutController@goBack');
+Route::get('/Checkout','User\CheckoutController@checkoutWithBill');
+Route::get('/About','Admin\GameShopController@viewAbout');
 //Cart
 Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');
