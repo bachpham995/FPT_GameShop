@@ -15,7 +15,42 @@
 
 <div id="main" class="col-md-9">
     @foreach ($products as $product)
-        <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="product product-single product-single-cust" style="min-height: 252px">
+            <div>
+                <div class="product-thumb product-thumb-cust">
+                    <div class="product-label">
+                        <span>New</span>
+                        <span class="sale">{{$product->getSale()}}</span>
+                    </div>
+                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</button>
+                    <img height="320px" width="150px" src={{$product->getIntroduceImageDirectory()}} alt="">
+                </div>
+
+                <div class="product-body product-body-cust">
+                    <div class="product-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o empty"></i>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h2 class="product-name"><a href="#">{{$product->NAME}}</a></h2>
+                    @if ($product->SALE > 0)
+                        <p  class="product-price product-price-cust">{{$product->getShortSalePrice()}}<del class="product-old-price"> {{$product->getShortPrice()}}</del></p>
+                    @else
+                        <p  class="product-price product-price-cust">{{$product->getShortSalePrice()}}</p>
+                    @endif
+                    <a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        {{-- <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="product product-single">
                 <div class="product-thumb">
                     <div class="product-label">
@@ -47,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     @endforeach
 
      {{-- <div class="col-md-4 col-sm-6 col-xs-6">
