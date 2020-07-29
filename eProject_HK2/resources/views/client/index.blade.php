@@ -149,7 +149,7 @@
 				<!-- Product Slick -->
 				<div class="col-md-9 col-sm-6 col-xs-6">
 					<div class="row">
-						<div id="product-slick-1" class="product-slick">		
+						<div id="product-slick-1" class="product-slick">
 								<!-- Product Single -->
 								<div class="product product-single product-single-cust" style="min-height: 252px">
 									<div>
@@ -445,7 +445,7 @@
 	<script src="{{ asset('js/client/nouislider.min.js') }}"></script>
 	<script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
-    
+
     <!-- page script -->
     @yield('script-section')
 </body>
