@@ -50,6 +50,8 @@ Table OF Contents
 ------ Arrows
 ------ Dots
 12 > RESPONSIVE
+
+13 > CUSTOM
 ------------------------------------*/
 
 /*=========================================================
@@ -84,6 +86,38 @@ a:hover, a:focus {
   outline: none;
 }
 
+.ml-1{
+  margin-left: 10px;
+}
+.ml-2{
+  margin-left: 20px;
+}
+.ml-3{
+  margin-left: 30px;
+}
+.ml-4{
+  margin-left: 40px;
+}
+.ml-5{
+  margin-left: 50px;
+}
+
+.mr-1{
+  margin-right: 10px;
+}
+.mr-2{
+  margin-right: 20px;
+}
+.mr-3{
+  margin-right: 30px;
+}
+.mr-4{
+  margin-right: 40px;
+}
+.mr-5{
+  margin-right: 50px;
+}
+
 .primary-color {
   color: #F8694A;
 }
@@ -94,6 +128,14 @@ a:hover, a:focus {
 
 .font-weak {
   font-weight: 400;
+}
+
+.float-right{
+  float: right;
+}
+
+.float-left{
+  float: left;
 }
 
 strong {
@@ -249,7 +291,7 @@ textarea.input {
 
 .section {
   padding-top: 30px;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 .section-grey {
@@ -814,12 +856,9 @@ textarea.input {
 	05 -> HOME SLIDER
 ===========================================================*/
 
-#home .home-wrap {
-  margin-left: 270px;
-}
-
 #home-slick .banner {
   margin: 0px;
+  max-height: 60vh;
 }
 
 /*=========================================================
@@ -887,7 +926,6 @@ textarea.input {
 
 .product.product-single {
   margin-top: 15px;
-  margin-bottom: 15px;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
@@ -1731,5 +1769,28 @@ textarea.input {
 }
 
 /*=========================================================
-	13 -> Login
+	13 -> CUSTOM
 ===========================================================*/
+.img-banner-cust {
+  opacity: 0.7;
+}
+.banner-cust{
+  top:45% !important;
+  left: 25% !important;
+}
+.product-single-cust {
+  border: 1px solid #e0e0e0;
+}
+.product-price-cust{
+  font-weight: bold;
+  font-size: large;
+}
+.product-body-cust {
+  padding: 10px !important;
+}
+.product-thumb-cust {
+  margin-bottom: 0 !important;
+}
+#product-slick-2 {
+  margin-top: -30px;
+}
