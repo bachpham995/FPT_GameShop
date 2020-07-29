@@ -39,7 +39,7 @@
   $('#home-slick').slick({
     autoplay: true,
     infinite: true,
-    speed: 300,
+    speed: 1000,
     arrows: true,
   });
 
@@ -77,10 +77,11 @@
 
   $('#product-slick-2').slick({
     slidesToShow: 3,
-    slidesToScroll: 2,
-    autoplay: true,
+    rows:2,
+    slidesToScroll: 3,
+    autoplay: false,
     infinite: true,
-    speed: 300,
+    speed: 2000,
     dots: true,
     arrows: false,
     appendDots: '.product-slick-dots-2',

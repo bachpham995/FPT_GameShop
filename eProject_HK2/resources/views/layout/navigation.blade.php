@@ -19,7 +19,6 @@
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
                     <li><a href="{{ url('/index') }}">Home</a></li>
-                    <li><a href="{{ url('/products') }}">Products</a></li>
                     <li class="dropdown mega-dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Shop <i class="fa fa-caret-down"></i></a>
                         <div class="custom-menu">
                             <div class="row">
@@ -104,6 +103,10 @@
                                         <li><a href="#">Shooter</a></li> --}}
                                     </ul>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <h3 class="white-color text-uppercase"><a href="{{ url('/products') }}">VIEW ALL</a></h3>
                             </div>
                         </div>
                     </li>

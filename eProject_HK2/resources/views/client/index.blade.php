@@ -149,7 +149,7 @@
 				<!-- Product Slick -->
 				<div class="col-md-9 col-sm-6 col-xs-6">
 					<div class="row">
-						<div id="product-slick-1" class="product-slick">		
+						<div id="product-slick-1" class="product-slick">
 								<!-- Product Single -->
 								<div class="product product-single product-single-cust" style="min-height: 252px">
 									<div>
@@ -384,6 +384,250 @@
 				<!-- /Product Slick -->
 			</div>
 			<!-- /row -->
+			<!-- row -->
+			<div class="row">
+				<!-- section-title -->
+				<div class="col-md-12">
+					<div class="section-title">
+						<h2 class="title"><span class="primary-color">SALE</span> Games</h2>
+						<div class="pull-right">
+							<div class="product-slick-dots-2 custom-dots"></div>
+						</div>
+					</div>
+				</div>
+				<!-- /section-title -->
+
+				<!-- banner -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="banner banner-2">
+						<img src="{{ asset('img/banner-saleproduct.png') }}" class="img-banner-cust" width="auto" alt="">
+						<div class="banner-caption">
+							<h2 class="white-color">SALE<br>GAMES</h2>
+							<button class="primary-btn">Show all</button>
+						</div>
+					</div>
+				</div>
+				<!-- /banner -->
+
+				<!-- Product Slick -->
+				<div class="col-md-9 col-sm-6 col-xs-6">
+					<div class="row">
+						<div id="product-slick-2" class="product-slick">
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+							<!-- Product Single -->
+							<div class="product product-single product-single-cust" style="min-height: 252px">
+								<div>
+									<div class="product-thumb product-thumb-cust">
+										<div class="product-label">
+											<span>New</span>
+										</div>
+										<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+										<img src="{{asset('img/product-1.jpg')}}" alt="">
+									</div>
+									<div class="product-body product-body-cust">
+										<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+										<p  class="product-price product-price-cust">$32.50 <del class="product-old-price">$45.00</del></p>
+										<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<!-- /Product Single -->
+						</div>
+					</div>
+				</div>
+				<!-- /Product Slick -->
+			</div>
+			<!-- /row -->
 		</div>
 		<!-- /container -->
 	</div>
@@ -397,7 +641,7 @@
 				<!-- banner -->
 				<div class="col-md-8">
 					<div class="banner banner-1">
-						<img src="./img/banner13.jpg" alt="">
+						<img src="./img/banner-under1.png" alt="">
 						<div class="banner-caption text-center">
 							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
 							<button class="primary-btn">Shop Now</button>
@@ -409,7 +653,7 @@
 				<!-- banner -->
 				<div class="col-md-4 col-sm-6">
 					<a class="banner banner-1" href="#">
-						<img src="./img/banner11.jpg" alt="">
+						<img src="./img/banner-under2.png" alt="">
 						<div class="banner-caption text-center">
 							<h2 class="white-color">NEW COLLECTION</h2>
 						</div>
@@ -420,7 +664,7 @@
 				<!-- banner -->
 				<div class="col-md-4 col-sm-6">
 					<a class="banner banner-1" href="#">
-						<img src="./img/banner12.jpg" alt="">
+						<img src="./img/banner-under3.png" alt="">
 						<div class="banner-caption text-center">
 							<h2 class="white-color">NEW COLLECTION</h2>
 						</div>
@@ -433,6 +677,265 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<!-- section-title -->
+				<div class="col-md-12">
+					<div class="section-title">
+						<h2 class="title">TOP Games</h2>
+					</div>
+				</div>
+				<!-- /section-title -->
+				<!-- banner -->
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="banner banner-2">
+						<img src="./img/banner-hotproduct.png" alt="">
+						<div class="banner-caption">
+							<h2 class="white-color">NEW<br>COLLECTION</h2>
+							<button class="primary-btn">Shop Now</button>
+						</div>
+					</div>
+				</div>
+				<!-- /banner -->
+				<!-- Product Single -->
+				<div class="col-md-8 col-sm-6 col-xs-12">	
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					<div>
+						<!-- Product Single -->
+						<div class="product product-single product-single-cust">
+							<div>
+								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
+								<div class="product-thumb product-thumb-cust float-left">
+									<div class="product-label">
+									</div>
+									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
+									<img src="{{asset('img/product-1.jpg')}}" style="max-width: 100px" alt="">
+								</div>
+								<h2 class="product-name float-left ml-2 mt-3"><a href="#">Product Name Goes Here</a></h2>
+								<div class="product-body product-body-cust float-right" style="width: 200px">
+									<p  class="product-price product-price-cust mt-2">$32.50 <del class="product-old-price">$45.00</del></p>
+									<a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> Buy</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!-- /Product Single -->
+						<div class="clearfix"></div>
+					</div>
+					
+				</div>
+				<!-- /Product Single -->
+			</div>
+		</div>
+	</div>
 
     <!-- FOOTER -->
     @include('layout.footer')

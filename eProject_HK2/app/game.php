@@ -32,14 +32,14 @@ class game extends Model
     }
 
     public function getShortPrice(){
-        return $this->PRICE. " VNĐ ";
+        return round($this->PRICE, 2). " $";
     }
 
     public function getShortSalePrice(){
         if($this->SALE > 0){
-            return (intval($this->PRICE*(100 - $this->SALE)/100000)*1000)." VNĐ ";
+            return round(($this->PRICE*(100 - $this->SALE)/100), 2)."$";
         }
-        return $this->PRICE. " VNĐ ";
+        return round($this->PRICE, 2). " $";
 
     }
 

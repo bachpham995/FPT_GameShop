@@ -18,7 +18,7 @@ class CreateGamesTable extends Migration
             $table->string('NAME',100)->nullable();
             $table->longText('DESCRIPTION')->nullable();
             $table->string('STATUS',30)->nullable();
-            $table->integer('PRICE')->nullable();
+            $table->float('PRICE')->nullable();
             $table->string('LINKDOWLOAD',255)->nullable();
             $table->integer('SALE')->nullable();
             $table->integer('AGE_REQ');
