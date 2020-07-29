@@ -46,10 +46,11 @@
   // PRODUCTS SLICK
   $('#product-slick-1').slick({
     slidesToShow: 3,
-    slidesToScroll: 2,
-    autoplay: true,
+    rows:2,
+    slidesToScroll: 3,
+    autoplay: false,
     infinite: true,
-    speed: 300,
+    speed: 2000,
     dots: true,
     arrows: false,
     appendDots: '.product-slick-dots-1',
@@ -58,6 +59,7 @@
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          rows:2,
         }
       },
       {
@@ -67,6 +69,7 @@
           arrows: true,
           slidesToShow: 1,
           slidesToScroll: 1,
+          rows:2,
         }
       },
     ]
