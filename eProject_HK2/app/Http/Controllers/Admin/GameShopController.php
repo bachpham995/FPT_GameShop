@@ -6,6 +6,7 @@ use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\game;
 use ReflectionClass as GlobalReflectionClass;
 
 class GameShopController extends Controller
@@ -16,6 +17,11 @@ class GameShopController extends Controller
 
     public function login(){
         return view('client.login');
+    }
+
+    public function products(){
+        $products = game::all();
+        return view('client.products', ['products'=>$products]);
     }
 
     public function checkLog(Request $request){

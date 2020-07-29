@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $cetegory = $request->all();
         $c = new category($cetegory);
         $c->save();
-        return redirect()->action('CategoryController@home');
+        return redirect()->action('Admin\CategoryController@home');
     }
     public function update($id){
         $category = category::find($id);
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $category = $request->all();
         $c = category::where('ID',$id);
         $c->update(['NAME'=>$category['NAME']]);
-        return redirect()->action('CategoryController@home');
+        return redirect()->action('Admin\CategoryController@home');
     }
     public function delete($id)
     {

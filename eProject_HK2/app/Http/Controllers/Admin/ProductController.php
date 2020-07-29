@@ -20,11 +20,11 @@ class ProductController extends Controller
             $product = $request->all();
             $pds = new game($product);
             $pds->save();
-        return redirect()->action('ProductController@home');
+        return redirect()->action('Admin\ProductController@home');
     }
     public function delete($id){
             game::where("ID",$id)->delete();
-            return redirect()->action('ProductController@home');
+            return redirect()->action('Admin\ProductController@home');
     }
     public function update($id){
         $product = game::find($id);
@@ -34,7 +34,7 @@ class ProductController extends Controller
             $product = $request->all();
             $pds = game::where('ID',$id);
             $pds->update(['NAME'=>$product['NAME']]);
-            return redirect()->action('ProductController@home');
+            return redirect()->action('Admin\ProductController@home');
     }
 
 }

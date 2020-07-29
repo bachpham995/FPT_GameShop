@@ -25,11 +25,15 @@ class CreateGamesTable extends Migration
             $table->string('CPU',150);
             $table->string('GPU',150);
             $table->integer('STORAGE');
-            $table->string('OS',50);
+            $table->bigInteger('OS')->unsigned()->nullable();
             $table->integer('RAM');
             $table->unique('LINKDOWLOAD');
             $table->timestamps();
         });
+
+        // Schema::table('game', function(Blueprint $table) {
+        //     $table->foreign('OS')->references('ID')->on('os')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+        // });
     }
 //CREATE TABLE `gameshop`.`game` ( `ID` INT NOT NULL AUTO_INCREMENT , `NAME` VARCHAR(100) NOT NULL , `DESCRIPTION` LONGTEXT NOT NULL , `RATING` INT(1) NOT NULL , `STATUS` VARCHAR(30) NOT NULL , `PRICE` INT NOT NULL , PRIMARY KEY (`ID`), `KEY` VARCHAR(12) NOT NULL, `SALE` INT NOT NULL, UNIQUE(`KEY`)) ENGINE = InnoDB;
 

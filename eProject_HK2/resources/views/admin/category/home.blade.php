@@ -58,13 +58,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Category ID</th>
-                            <th>Category Name</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->
