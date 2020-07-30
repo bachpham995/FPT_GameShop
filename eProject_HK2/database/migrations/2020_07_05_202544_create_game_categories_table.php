@@ -20,8 +20,8 @@ class CreateGameCategoriesTable extends Migration
             $table->timestamps();
         });
         Schema::table('game_category', function(Blueprint $table) {
-            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-            $table->foreign('CATEGORY_ID')->references('ID')->on('category')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');
+            $table->foreign('CATEGORY_ID')->references('ID')->on('category')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
     }
 //CREATE TABLE `gameshop`.`game_category` ( `GAME_ID` INT NOT NULL , `CATEGORY_ID` INT NOT NULL, PRIMARY KEY (`CATEGORY_ID` , `GAME_ID`)) ENGINE = InnoDB;

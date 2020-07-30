@@ -22,8 +22,8 @@ class CreateCartItemsTable extends Migration
             $table->timestamps();
         });
         Schema::table('cart_item', function(Blueprint $table) {
-            $table->foreign('CART_ID')->references('ID')->on('cart')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('CART_ID')->references('ID')->on('cart')->onDelete('CASCADE')->onUpdate('RESTRICT');
+            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
     }
 //CREATE TABLE `gameshop`.`cart_item` ( `CART_ID` INT NOT NULL , `GAME_ID` INT NOT NULL , `GAME_QUANTITY` INT NOT NULL ,

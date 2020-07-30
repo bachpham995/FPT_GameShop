@@ -20,8 +20,8 @@ class CreateGamePublishersTable extends Migration
             $table->timestamps();
         });
         Schema::table('game_publisher', function(Blueprint $table) {
-            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-            $table->foreign('PUBLISHER_ID')->references('ID')->on('publisher')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');
+            $table->foreign('PUBLISHER_ID')->references('ID')->on('publisher')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
     }
 //CREATE TABLE `gameshop`.`game_publisher` ( `GAME_ID` INT NOT NULL , `PUBLISHER_ID` INT NOT NULL, PRIMARY KEY (`PUBLISHER_ID` , `GAME_ID`)) ENGINE = InnoDB;

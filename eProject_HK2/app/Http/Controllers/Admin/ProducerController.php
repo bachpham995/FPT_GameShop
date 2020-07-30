@@ -21,7 +21,7 @@ class ProducerController extends Controller
         $producer = $request->all();
         $p = new producer($producer);
         $p->save();
-        return redirect()->action('ProducerController@home');
+        return redirect()->action('Admin\ProducerController@home');
     }
     public function update($id)
     {
@@ -33,11 +33,11 @@ class ProducerController extends Controller
        $producer = $request->all();
        $p = producer::where('ID',$id);
        $p->update(['NAME'=>$producer['NAME']]);
-       return redirect()->action('ProducerController@home');
+       return redirect()->action('Admin\ProducerController@home');
     }
     public function delete($id)
     {
         producer::where("ID", $id)->delete();
-        return redirect()->action('ProducerController@home');
+        return redirect()->action('Admin\ProducerController@home');
     }
 }

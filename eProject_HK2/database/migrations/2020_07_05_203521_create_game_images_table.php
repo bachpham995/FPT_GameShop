@@ -20,7 +20,7 @@ class CreateGameImagesTable extends Migration
             $table->timestamps();
         });
         Schema::table('game_image', function(Blueprint $table) {
-            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
     }
 //CREATE TABLE `gameshop`.`game_image` ( `ID` INT NOT NULL , `GAME_ID` INT NOT NULL , `DIRECTORY` VARCHAR(200) NOT NULL, PRIMARY KEY (`ID`)) ENGINE = InnoDB;

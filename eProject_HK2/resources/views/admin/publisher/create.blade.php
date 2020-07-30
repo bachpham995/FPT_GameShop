@@ -13,7 +13,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="{{ url('admin/postCreatePulisher') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ url('admin/postCreatePublisher') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">

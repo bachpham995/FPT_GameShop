@@ -48,12 +48,12 @@
                     <tbody>
                         @foreach($products as $prd)
                         <tr>
-                            <td><font size ="-2">{{ $prd->ID }}</font></td>
-                            <td><font size ="-2">{{ $prd->NAME }}</font></td>
+                            <td><font size ="-1">{{ $prd->ID }}</font></td>
+                            <td><font size ="-1">{{ $prd->NAME }}</font></td>
                             <td><font size ="-2">{{$prd->getCategories()}}</font></td>
                             <td><font size ="-2">{{$prd->getPublishers()}}</font></td>
                             <td><font size ="-2">{{$prd->getProducers()}}</font></td>
-                            <td><font size ="-2">{{ $prd->PRICE." VNĐ"}}</font></td>
+                            <td><font size ="-1">{{ $prd->PRICE." $"}}</font></td>
                             <td class="text-right">
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/products/update/'.$prd->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit

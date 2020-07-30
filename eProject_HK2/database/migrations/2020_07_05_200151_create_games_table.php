@@ -17,23 +17,22 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('ID');
             $table->string('NAME',100)->nullable();
             $table->longText('DESCRIPTION')->nullable();
-            $table->string('STATUS',30)->nullable();
+            $table->integer('STATUS')->nullable();
             $table->float('PRICE')->nullable();
-            $table->string('LINKDOWLOAD',255)->nullable();
+            $table->mediumText('LINKDOWNLOAD')->nullable();
+            $table->mediumText('LINKDEMO')->nullable();
             $table->integer('SALE')->nullable();
-            $table->integer('AGE_REQ');
-            $table->string('CPU',150);
-            $table->string('GPU',150);
-            $table->integer('STORAGE');
+            $table->integer('AGE_REQ')->nullable();
+            $table->string('CPU',150)->nullable();
+            $table->string('GPU',150)->nullable();
+            $table->integer('STORAGE')->nullable();
             $table->bigInteger('OS')->unsigned()->nullable();
-            $table->integer('RAM');
-            $table->unique('LINKDOWLOAD');
+            $table->integer('RAM')->nullable();
+            $table->string('FEATURE')->nullable();
             $table->timestamps();
         });
 
-        // Schema::table('game', function(Blueprint $table) {
-        //     $table->foreign('OS')->references('ID')->on('os')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-        // });
+
     }
 //CREATE TABLE `gameshop`.`game` ( `ID` INT NOT NULL AUTO_INCREMENT , `NAME` VARCHAR(100) NOT NULL , `DESCRIPTION` LONGTEXT NOT NULL , `RATING` INT(1) NOT NULL , `STATUS` VARCHAR(30) NOT NULL , `PRICE` INT NOT NULL , PRIMARY KEY (`ID`), `KEY` VARCHAR(12) NOT NULL, `SALE` INT NOT NULL, UNIQUE(`KEY`)) ENGINE = InnoDB;
 
