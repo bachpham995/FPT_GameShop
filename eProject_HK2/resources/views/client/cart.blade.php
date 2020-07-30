@@ -2,9 +2,9 @@
 
 @if (Session::has('Cart') != null)
 @foreach (Session::get('Cart')->game as $game)
-<div class="product product-widget">
+ <div class="product product-widget">
     <div class="product-thumb">
-        <img src="./img/thumb-product01.jpg" alt="">
+        <img src="{{$game['img']}}" alt="">
     </div>
     <div class="product-body">
         <h3 class="product-price">{{$game['price']}}<span class="qty">{{$game['quanty']}}</span></h3>
@@ -16,5 +16,6 @@
         <i class="fa fa-trash" data-id="{{$game['gameInfor']->ID}}"></i>
     </button>
 </div>
+
 @endforeach
 @endif
