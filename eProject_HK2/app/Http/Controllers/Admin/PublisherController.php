@@ -21,11 +21,11 @@ class PublisherController extends Controller
             $publisher = $request->all();
             $pls = new publisher($publisher);
             $pls->save();
-        return redirect()->action('PublisherController@home');
+        return redirect()->action('Admin\PublisherController@home');
     }
     public function delete($id){
             publisher::where("ID",$id)->delete();
-            return redirect()->action('PublisherController@home');
+            return redirect()->action('Admin\PublisherController@home');
     }
     public function update($id){
         $publisher = publisher::find($id);
@@ -35,6 +35,6 @@ class PublisherController extends Controller
             $publisher = $request->all();
             $pls = publisher::where('ID',$id);
             $pls->update(['NAME'=>$publisher['NAME']]);
-            return redirect()->action('PublisherController@home');
+            return redirect()->action('Admin\PublisherController@home');
     }
 }

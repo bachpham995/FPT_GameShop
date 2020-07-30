@@ -21,8 +21,7 @@ class CreateCartsTable extends Migration
             $table->timestamps();
         });
         Schema::table('cart', function(Blueprint $table) {
-            $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-
+            $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
     }
 

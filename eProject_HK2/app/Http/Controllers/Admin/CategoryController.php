@@ -34,6 +34,6 @@ class CategoryController extends Controller
     public function delete($id)
     {
         category::where("ID", $id)->delete();
-        return redirect()->action('CategoryController@home');
+        return redirect()->action('Admin\CategoryController@home');
     }
 }
