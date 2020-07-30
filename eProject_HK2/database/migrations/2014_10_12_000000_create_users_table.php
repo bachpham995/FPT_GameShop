@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('FNAME',150)->nullable();
             $table->string('LNAME',150)->nullable();
             $table->string('EMAIL',100)->nullable();;
-            $table->string('PASSWORD',30)->nullable();
+            $table->string('PASSWORD',255)->nullable();
             $table->string('ADDRESS',150)->nullable();
             $table->string('PHONE',15)->nullable();
             $table->timestamps();

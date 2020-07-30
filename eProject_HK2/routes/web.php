@@ -32,14 +32,14 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         //publisher
         Route::get('publisher/home','Admin\PublisherController@home');
         Route::get('publisher/create','Admin\PublisherController@create');
-        Route::post('postCreatePulisher','Admin\PublisherController@postCreate');
+        Route::post('postCreatePublisher','Admin\PublisherController@postCreate');
         Route::get('publisher/delete/{id}','Admin\PublisherController@delete');
         Route::get('publisher/update/{id}','Admin\PublisherController@update');
         Route::post('publisher/postUpdate/{id}','Admin\PublisherController@postUpdate');
         //product
         Route::get('products/home','Admin\ProductController@home');
         Route::get('products/create','Admin\ProductController@create');
-        Route::post('postCeate','Admin\ProductController@postCreate');
+        Route::post('postCreateProduct','Admin\ProductController@postCreate');
         Route::get('products/delete/{id}','Admin\ProductController@delete');
         Route::get('products/update/{id}','Admin\ProductController@update');
         Route::post('products/postUpdate/{id}','Admin\ProductController@postUpdate');
@@ -50,7 +50,7 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::get('producer/update/{id}','Admin\ProducerController@update');
         Route::post('producer/postUpdate/{id}','Admin\ProducerController@postUpdate');
         Route::get('producer/delete/{id}','Admin\ProducerController@delete');
-        //caletory
+        //category
         Route::get('category/home','Admin\CategoryController@home');
         Route::get('category/create','Admin\CategoryController@create');
         Route::post('postCeateCategory','Admin\CategoryController@postCreate');
@@ -64,6 +64,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
         Route::get('os/update/{id}','Admin\OsController@update');
         Route::post('os/postUpdateOs/{id}','Admin\OsController@postUpdate');
         Route::get('os/delete/{id}','Admin\OsController@delete');
+
+
 
     });
 //------------SUPERVISOR-------------------------------------------------------------------------

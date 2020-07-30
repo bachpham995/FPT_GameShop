@@ -22,8 +22,8 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
         });
         Schema::table('comment', function(Blueprint $table) {
-            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('RESTRICT')->onUpdate('RESTRICT');
-            $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');
+            $table->foreign('USER_ID')->references('ID')->on('user')->onDelete('CASCADE')->onUpdate('RESTRICT');
         });
 
         Schema::table('game', function(Blueprint $table) {
