@@ -34,12 +34,16 @@ class GameShopController extends Controller
             if($user->TYPE == 1){
                 return redirect("admin/products/home");
             }else if($user->TYPE== 2){
-                return redirect("index");
+                return redirect("demoIndex");
             }else{
                 return redirect("supervisor/member/home");
             }
         }else{
+            return redirect('client/login');
             return redirect('login');
         }
+    }
+    public function viewAbout(){
+        return view('client/About');
     }
 }

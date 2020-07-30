@@ -42,7 +42,9 @@
                     @else
                         <p  class="product-price product-price-cust">{{$product->getShortSalePrice()}}</p>
                     @endif
-                    <a href="#" class="btn btn-sm primary-btn add-to-cart float-right"><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+                   {{-- <a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a> --}}
+                    <a onclick="AddCart({{$product->ID}})" href="javascript:" class="btn btn-sm primary-btn add-to-cart float-right">
+                        <i class="fa fa-shopping-cart"></i> ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -177,5 +179,45 @@
     </div> --}}
 </div>
 <!-- /MAIN -->
-
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    function AddCart(id){
+        $.ajax({
+            url:'AddCart/'+id,
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Add');
+        });
+    }
+    $("#change-item-cart").on('click', '.cancel-btn i', function (){
+       $.ajax({
+            url:'DeleteItemCart/'+$(this).data("id"),
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Delete');
+        });
+    });
+    function RenderCart(response){
+        $("#change-item-cart").empty();
+        $("#change-item-cart").html(response);
+        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+            $("#total-price-show").text($("#total-price-cart").val());
+        }else{
+            $("#total-quanty-show").text("0");
+            $("#total-price-show").text("0.0$");
+        }
+    }
+</script>
 @endsection
