@@ -30,8 +30,11 @@ Route::get('/index','Admin\GameShopController@index');
 Route::get('/login','Admin\GameShopController@login');
 Route::get('/products','Admin\GameShopController@products');
 Route::post('/checkLog','Admin\GameShopController@checkLog');
+Route::get('/contact','Admin\GameShopController@contact');
+Route::get('/support','Admin\GameShopController@support');
+Route::get('/register','Admin\GameShopController@register');
 //------------ADMIN-----------------------------------------------------------------------------
-Route::prefix('admin')->name('admin')->middleware('CheckLogin')
+Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
     ->group(function(){
         //admin
         Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
@@ -82,7 +85,7 @@ Route::prefix('admin')->name('admin')->middleware('CheckLogin')
 
     });
 //------------SUPERVISOR-------------------------------------------------------------------------
-Route::prefix('supervisor')->name('supervisor')->middleware('CheckLogin')
+Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')
     ->group(function(){
         //admin
         Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');

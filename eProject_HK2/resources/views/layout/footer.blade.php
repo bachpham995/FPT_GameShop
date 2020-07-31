@@ -36,7 +36,6 @@
                     <ul class="list-links">
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">My cart</a></li>
-                        <li><a href="#">Compare</a></li>
                         <li><a href="#">Register</a></li>
                         <li><a href="#">Login</a></li>
                     </ul>

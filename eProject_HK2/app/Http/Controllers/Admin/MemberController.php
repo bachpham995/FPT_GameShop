@@ -52,4 +52,5 @@ class MemberController extends Controller
         ]);
         return redirect()->action('MemberController@home');
     }
+    
 }
