@@ -24,7 +24,7 @@
                         <span class="sale">{{$product->getSale()}}</span>
                     </div>
                     <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</button>
-                    <img height="320px" width="150px" src={{$product->getIntroduceImageDirectory()}} alt="">
+                    <img height="320px" width="150px" src="{{$product->getIntroduceImageDirectory()}}" alt="">
                 </div>
 
                 <div class="product-body product-body-cust">

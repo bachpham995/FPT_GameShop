@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\comment;
 use App\Http\Controllers\Controller;
 
 use App\game;
@@ -73,10 +75,31 @@ class ProductController extends Controller
             game::where("ID",$id)->delete();
             return redirect()->action('Admin\ProductController@home');
     }
+
+    public function deleteComment($id){
+        comment::where("ID",$id)->delete();
+        return redirect()->back();
+    }
+
+
     public function update($id){
         $product = game::find($id);
         return view('admin.products.update')->with(["product"=>$product]);
     }
+
+    public function view($id){
+        $product = game::find($id);
+        return view('admin.products.view')->with(["product"=>$product]);
+    }
+
+    public function comment($id){
+        $comments = comment::where('GAME_ID','=',$id)->get();
+
+        return view('admin.products.comments')->with(["comments"=>$comments]);
+    }
+
+
+
     public function postUpdate(Request $request,$id){
         $product = $request->all();
         DB::table('game')

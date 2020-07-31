@@ -80,3 +80,9 @@ INSERT INTO `game` (`NAME`, `DESCRIPTION`,`STATUS`, `PRICE`,`LINKDOWNLOAD`, `SAL
 
 INSERT INTO `game_image` (`ID`,`GAME_ID`, `URL`) values ('4_intro', '4' ,'./img/uio.jpg');
 
+INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','1','Game chơi tạm được', '3');
+
+INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','2','Gameplay hay, đồ họa đẹp', '5');
+
+INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','1','Game xàm vãi', '1');
+
