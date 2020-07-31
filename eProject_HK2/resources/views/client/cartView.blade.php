@@ -146,7 +146,8 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
         <!-- Bootstrap theme -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
-        {{-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> --}}
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
         <script>
             function DeleteItemListCart(id) {
                 $.ajax({
@@ -154,6 +155,7 @@
                     type: 'GET',
                 }).done(function(response) {
                     $("#checkout-form").load(" #checkout-form");
+                    alertify.success('Success Remove Item');
                 });
             }
 
@@ -167,6 +169,7 @@
                     type: 'GET',
                 }).done(function(response){
                     $("#checkout-form").load(" #checkout-form");
+                    alertify.success('Success Add Quantity');
                 });
             }
 
@@ -176,7 +179,7 @@
                     type: 'GET',
                 }).done(function(response){
                     $("#checkout-form").load(" #checkout-form");
-                    // $("#order").load(" #order");
+                    alertify.success('Success Remove Quantity');
                 });
             }
 
