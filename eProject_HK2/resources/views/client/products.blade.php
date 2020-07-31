@@ -74,15 +74,6 @@
            alertify.success('Success Add');
         });
     }
-    $("#change-item-cart").on('click', '.cancel-btn i', function (){
-       $.ajax({
-            url:'DeleteItemCart/'+$(this).data("id"),
-            type: 'GET',
-        }).done(function(response){
-            RenderCart(response)
-           alertify.success('Success Delete');
-        });
-    });
     function RenderCart(response){
         $("#change-item-cart").empty();
         $("#change-item-cart").html(response);

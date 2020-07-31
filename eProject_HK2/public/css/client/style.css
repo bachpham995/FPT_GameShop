@@ -484,7 +484,7 @@ textarea.input {
 }
 
 .header-cart.dropdown .custom-menu {
-  width: 600px;
+  width: 450px;
 }
 
 #shopping-cart .shopping-cart-list {
@@ -654,7 +654,7 @@ textarea.input {
   transform: translateX(-50%) translateY(15px);
 }
 .dropdown.default-dropdown>.cust-dropdown {
-  left: -40% !important;
+  left: -60% !important;
 }
 
 .dropdown.default-dropdown.open>.custom-menu {
