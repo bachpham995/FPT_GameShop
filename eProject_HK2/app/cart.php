@@ -46,13 +46,14 @@ class cart extends Model
                 $newGame = $this->game[$id];
             }
         }
-        $newGame['quanty']--;
-        $newGame['price'] = round($newGame['quanty']*$game->PRICE*((100-$game->SALE)/100), 2);
+        if($newGame['quanty'] > 0){
+            $newGame['quanty']--;
+            $newGame['price'] = round($newGame['quanty']*$game->PRICE*((100-$game->SALE)/100), 2);
 
-        $this->game[$id] = $newGame;
-        $this->totalPrice -= round($game->PRICE*((100-$game->SALE)/100), 2);
-        $this->totalQuanty--;
-
+            $this->game[$id] = $newGame;
+            $this->totalPrice -= round($game->PRICE*((100-$game->SALE)/100), 2);
+            $this->totalQuanty--;
+        }
     }
 
     public function UpdateQuantity($id,$quanty){

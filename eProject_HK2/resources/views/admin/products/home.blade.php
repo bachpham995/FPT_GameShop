@@ -59,7 +59,7 @@
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
 
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/products/delete/'.$prd->ID) }}">
+                                <a class="btn btn-danger btn-sm" onclick="removeNotify()" href="{{url("admin/products/delete/".$prd->ID)}}" >
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
@@ -76,6 +76,20 @@
 </div>
 <!-- /.row -->
 </section>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    function removeNotify(){
+        alertify.success('Success Remove');
+    }
+</script>
 @endsection
 @section('script-section')
 <script>
