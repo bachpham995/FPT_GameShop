@@ -154,21 +154,23 @@
                     url: 'Delete-Item-List-Cart/' + id,
                     type: 'GET',
                 }).done(function(response) {
-                    $("#checkout-form").load(" #checkout-form");
+                    RenderListCart(response);
                     alertify.success('Success Remove Item');
                 });
             }
 
             function RenderListCart(response) {
-                $("#checkout-form").empty();
-                $("#checkout-form").html(response);
+                $("#checkout-form").load(" #checkout-form");
+                $("#total-quanty").load(" #total-quanty");
+                $("#total-price-show").load(" #total-price-show");
+                $("#change-item-cart").load(" #change-item-cart");
             }
             function add(id){
                 $.ajax({
                     url:'AddCart/'+id,
                     type: 'GET',
                 }).done(function(response){
-                    $("#checkout-form").load(" #checkout-form");
+                    RenderListCart(response);
                     alertify.success('Success Add Quantity');
                 });
             }
@@ -178,7 +180,7 @@
                     url:'DecreaseCart/'+id,
                     type: 'GET',
                 }).done(function(response){
-                    $("#checkout-form").load(" #checkout-form");
+                    RenderListCart(response);
                     alertify.success('Success Remove Quantity');
                 });
             }

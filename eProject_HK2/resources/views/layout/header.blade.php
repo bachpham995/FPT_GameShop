@@ -55,21 +55,15 @@
                 <!-- Cart -->
                 <li class="header-cart dropdown default-dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <div hidden>{{$ss = Session::get('Cart')}}</div>
                         <div class="header-btns-icon">
                             <i class="fa fa-shopping-cart"></i>
-                            @if(Session::has('Cart') != null)
-                                <span class="qty" id="total-quanty-show">{{ Session::get('Cart')->totalQuanty }}</span>
-                            @else
-                                <span class="qty" id="total-quanty-show">0</span>
-                            @endif
+                            <div class="clearfix" id="total-quanty"><span class="qty" id="total-quanty-show">{{ $ss? $ss->totalQuanty:'0' }}</span></div>
                         </div>
                         <strong class="text-uppercase">My Cart:</strong>
                         <br>
-                        @if(Session::has('Cart') != null)
-                            <span id="total-price-show">{{ Session::get('Cart')->totalPrice }}$</span>
-                        @else
-                            <span id="total-price-show">0.0$</span>
-                        @endif
+                            <span id="total-price-show">{{ $ss?$ss->totalPrice:'0.0$' }}$</span>
+
                     </a>
                     <div class="custom-menu">
                         <div id="shopping-cart">
@@ -83,18 +77,34 @@
                                                     <img src="{{ $game['img'] }}" alt="">
                                                 </div>
                                                 <div class="product-body">
-                                                    <h3 class="product-price">{{ $game['price'] }}<span
-                                                            class="qty">{{ $game['quanty'] }}</span></h3>
-                                                    <h2 class="product-name"><a href="#">{{ $game['gameInfor']->NAME }}</a>
-                                                    </h2>
+                                                    <div class="product-price">
+                                                        <div class="text-right">
+                                                            {{ $game['gameInfor']->PRICE }}
+                                                        <span
+                                                            class="qty"> x {{ $game['quanty'] }}
+                                                        </span>
+
+                                                        </div>
+
+                                                        <h4 class="text-left">
+                                                            <a href="#">
+                                                                {{ $game['gameInfor']->NAME }}
+                                                            </a>
+                                                        </h4>
+
+                                                    </div>
+                                                    <button class="cancel-btn">
+                                                        <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
+                                                    </button>
+
+
+
                                                 </div>
                                                 <input hidden id="total-quanty-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalQuanty }}">
                                                 <input hidden id="total-price-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalPrice }}">
-                                                <button class="cancel-btn">
-                                                    <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
-                                                </button>
+
                                             </div>
                                         @endforeach
                                     @endif

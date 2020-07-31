@@ -58,7 +58,12 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::post('postCreateProduct','Admin\ProductController@postCreate');
         Route::get('products/delete/{id}','Admin\ProductController@delete');
         Route::get('products/update/{id}','Admin\ProductController@update');
+        Route::get('products/view/{id}','Admin\ProductController@view');
         Route::post('products/postUpdate/{id}','Admin\ProductController@postUpdate');
+        //Comments
+        Route::get('products/comment/{id}','Admin\ProductController@comment');
+        Route::get('products/deleteComment/{id}','Admin\ProductController@deleteComment');
+
         //producer
         Route::get('producer/home','Admin\ProducerController@home');
         Route::get('producer/create','Admin\ProducerController@create');
