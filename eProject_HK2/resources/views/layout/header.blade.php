@@ -55,21 +55,15 @@
                 <!-- Cart -->
                 <li class="header-cart dropdown default-dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <div hidden>{{$ss = Session::get('Cart')}}</div>
                         <div class="header-btns-icon">
                             <i class="fa fa-shopping-cart"></i>
-                            @if(Session::has('Cart') != null)
-                                <span class="qty" id="total-quanty-show">{{ Session::get('Cart')->totalQuanty }}</span>
-                            @else
-                                <span class="qty" id="total-quanty-show">0</span>
-                            @endif
+                            <div class="clearfix" id="total-quanty"><span class="qty" id="total-quanty-show">{{ $ss? $ss->totalQuanty:'0' }}</span></div>
                         </div>
                         <strong class="text-uppercase">My Cart:</strong>
                         <br>
-                        @if(Session::has('Cart') != null)
-                            <span id="total-price-show">{{ Session::get('Cart')->totalPrice }}$</span>
-                        @else
-                            <span id="total-price-show">0.0$</span>
-                        @endif
+                            <span id="total-price-show">{{ $ss?$ss->totalPrice:'0.0$' }}$</span>
+
                     </a>
                     <div class="custom-menu">
                         <div id="shopping-cart">
