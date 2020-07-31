@@ -49,17 +49,16 @@ class GameShopController extends Controller
 
         $user = user::where('EMAIL',$email)->first();
         if(!empty($user) && $user->PASSWORD == $pass){
-            $request->session()->push('user',$user);
-            if($user->TYPE == 1){
-                return redirect("admin/products/home");
-            }else if($user->TYPE== 2){
-                return redirect("demoIndex");
+            $request->session()->put('user',$user);
+            if($user->TYPE == 0){
+                return redirect("supervisor/member/home")->with('success','Login success');    
+            }else if($user->TYPE == 1){
+                return redirect("admin/products/home")->with('success','Login success');
             }else{
                 return redirect("index")->with('success','Login success');
             }
         }else{
-            return redirect('client/login');
-            return redirect('login');
+            return redirect('login')->with('message','Wrong email or password');
         }
     }
     public function viewAbout(){
