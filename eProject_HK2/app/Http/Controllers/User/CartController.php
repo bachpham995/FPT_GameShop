@@ -6,25 +6,37 @@ use App\game;
 use App\Http\Controllers\Controller;
 use App\cart;
 use Illuminate\Http\Request;
-
+use SebastianBergmann\Environment\Console;
 
 class CartController extends Controller
 {
 
     public function addCart(Request $request, $id)
     {
-
         $game = game::find($id);
         // $request->session()->forget('Cart');
         // $value = $request->session()->get('Cart');
         if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
             $newCart = new cart($oldCart);
-            $newCart->AddCart($game, $id);
+            $newCart->AddCartItem($game, $id);
             $request->session()->put('Cart', $newCart);
         }
+
         return view('client/cart', compact('newCart'));
     }
+
+    public function decreaseQuantity(Request $request, $id){
+        $game = game::find($id);
+        if($game != null) {
+            $oldCart = session('Cart') ? session('Cart') : null;
+            $newCart = new cart($oldCart);
+            //dd($oldCart->game[$id]);
+            $oldCart->decreaseItemQuantity($game, $id);
+        }
+        return view('client/cartView');
+    }
+
     public function deleteItemCart(Request $request, $id)
     {
 

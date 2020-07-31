@@ -22,7 +22,7 @@
                         <tr>
                             <td class="thumb"><img src="{{$game['img']}}" alt=""></td>
                             <td class="text-center">{{$game['gameInfor']->NAME}}</td>
-                            <td class="price text-center"><strong>{{$game['gameInfor']->PRICE}}</strong><br><del class="font-weak"><small>$40.00</small></del></td>
+                            <td class="price text-center"><strong>${{$game['gameInfor']->getShortSalePrice()}}</strong><br><del class="font-weak"><small>${{$game['gameInfor']->getShortPrice()}}</small></del></td>
 
                             <td class="qty text-center">
                                 <button><a class="cart_quantity_up" href=''> + </a>
