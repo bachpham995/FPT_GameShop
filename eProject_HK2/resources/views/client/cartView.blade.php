@@ -39,7 +39,7 @@
         </div>
         <!-- /BREADCRUMB -->
         <!-- section -->
-        <div class="section">
+        <div class="section"  id="order">
             <!-- container -->
             <div class="container">
                 <!-- row -->
@@ -71,18 +71,23 @@
                                                             <td class="thumb"><img src="{{ $game['img'] }}" alt=""></td>
                                                             <td class="text-center">{{ $game['gameInfor']->NAME }}</td>
                                                             <td class="price text-center">
-                                                                <strong>{{ $game['gameInfor']->PRICE }}</strong><br><del
-                                                                    class="font-weak"><small>$40.00</small></del></td>
+                                                                <strong>{{$game['gameInfor']->getShortSalePrice() }}</strong><br><del
+                                                                    class="font-weak"><small>{{$game['gameInfor']->getShortPrice()}}</small></del></td>
+
                                                             <td class="qty text-center">
-                                                                <input class="input" type="number"
-                                                                    {{-- name="csrf-token" --}}
-                                                                    {{-- content="{{ csrf_token() }}" --}}
-                                                                    oninput="someThing({{ $game['gameInfor']->ID }})"
+                                                                <input class="input" type="button"
+                                                                    onclick ="remove({{ $game['gameInfor']->ID }})"
+                                                                    value="-">
+                                                                <input class="input" type="button"
                                                                     id="{{ $game['gameInfor']->ID }}" value="{{ $game['quanty'] }}">
+                                                                <input class="input" type="button"
+                                                                    onclick ="add({{ $game['gameInfor']->ID }})"
+                                                                    value="+">
                                                             </td>
+
                                                             <td class="total text-center">
                                                                 <strong id="gamePrice"
-                                                                    class="primary-color">{{ $game['price'] }}
+                                                                    class="primary-color">{{ $game['price']}}$
                                                                 </strong>
                                                             </td>
                                                             <td class="text-right">
@@ -98,7 +103,7 @@
                                                 <th class="empty" colspan="3"></th>
                                                 <th>TOTAL</th>
                                                 @if(Session::has('Cart') != null)
-                                                    <th colspan="2" class="sub-total">{{ Session::get('Cart')->totalPrice }}
+                                                    <th colspan="2" class="sub-total">{{ Session::get('Cart')->totalPrice }}$
                                                     </th>
                                                 @else
                                                     <th colspan="2" class="sub-total">0.0</th>
@@ -148,8 +153,7 @@
                     url: 'Delete-Item-List-Cart/' + id,
                     type: 'GET',
                 }).done(function(response) {
-                    RenderListCart(response)
-                    alertify.success('Success Delede');
+                    $("#order").load(" #order");
                 });
             }
 
@@ -157,8 +161,26 @@
                 $("#checkout-form").empty();
                 $("#checkout-form").html(response);
             }
+            function add(id){
+                $.ajax({
+                    url:'AddCart/'+id,
+                    type: 'GET',
+                }).done(function(response){
+                    $("#order").load(" #order");
+                });
+            }
 
-            function someThing(id) {
+            function remove(id){
+                $.ajax({
+                    url:'DecreaseCart/'+id,
+                    type: 'GET',
+                }).done(function(response){
+                    $("#order").load(" #order");
+                });
+            }
+
+
+            function something(id) {
                 $.ajax({
                     url: '/Update-Quantity', // gửi ajax đến file result.php
                     type: "GET", // chọn phương thức gửi là post

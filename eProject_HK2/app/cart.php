@@ -19,19 +19,18 @@ class cart extends Model
             $this->totalQuanty = $cart->totalQuanty;
       }
     }
-    public function AddCart($game,$id){
-        $newGame = ['quanty' => 0 , 'price'=>$game->PRICE,'gameInfor'=>$game ,'img'=>''];
+    public function AddCartItem($game,$id){
+        $newGame = ['quanty' => 0 , 'price'=>$game->PRICE*((100-$game->SALE)/100),'gameInfor'=>$game ,'img'=>$game->getIntroduceImageDirectory()];
         if($this->game){
             if(array_key_exists($id,$this->game)){
                 $newGame = $this->game[$id];
             }
         }
-        $newGame['img'] = game_image::where([["GAME_ID",'=', $id],['ID', '=',$id."_intro"]])->first()->URL;
         $newGame['quanty']++;
-        $newGame['price'] = $newGame['quanty']*$game->PRICE;
+        $newGame['price'] = round($newGame['quanty']*$game->PRICE*((100-$game->SALE)/100), 2);
 
         $this->game[$id] = $newGame;
-        $this->totalPrice += $game->PRICE;
+        $this->totalPrice += round($game->PRICE*((100-$game->SALE)/100), 2);
         $this->totalQuanty++;
     }
     public function DeleteItemCart($id){
@@ -39,6 +38,23 @@ class cart extends Model
         $this->totalPrice -= $this->game[$id]['price'];
         unset($this->game[$id]);
     }
+
+    public function decreaseItemQuantity($game, $id){
+        $newGame = ['quanty' => 0 , 'price'=>$game->PRICE*((100-$game->SALE)/100),'gameInfor'=>$game ,'img'=>$game->getIntroduceImageDirectory()];
+        if($this->game){
+            if(array_key_exists($id,$this->game)){
+                $newGame = $this->game[$id];
+            }
+        }
+        $newGame['quanty']--;
+        $newGame['price'] = round($newGame['quanty']*$game->PRICE*((100-$game->SALE)/100), 2);
+
+        $this->game[$id] = $newGame;
+        $this->totalPrice -= round($game->PRICE*((100-$game->SALE)/100), 2);
+        $this->totalQuanty--;
+
+    }
+
     public function UpdateQuantity($id,$quanty){
         $this->totalQuanty -= $this->game[$id]['quanty'];
         $this->totalPrice -= $this->game[$id]['price'];
@@ -49,6 +65,8 @@ class cart extends Model
         $this->totalQuanty += $this->game[$id]['quanty'];
         $this->totalPrice += $this->game[$id]['price'];
     }
+
+
 
 }
 
