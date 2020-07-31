@@ -65,7 +65,7 @@
                             <span id="total-price-show">{{ $ss?$ss->totalPrice:'0.0$' }}$</span>
 
                     </a>
-                    <div class="custom-menu">
+                    <div class="custom-menu cust-dropdown">
                         <div id="shopping-cart">
                             <div class="shopping-cart-list">
                                 <div id="change-item-cart">
