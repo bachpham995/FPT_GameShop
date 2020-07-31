@@ -699,7 +699,7 @@
 				</div>
 				<!-- /banner -->
 				<!-- Product Single -->
-				<div class="col-md-8 col-sm-6 col-xs-12">	
+				<div class="col-md-8 col-sm-6 col-xs-12">
 					<div>
 						<!-- Product Single -->
 						<div class="product product-single product-single-cust">
@@ -930,7 +930,7 @@
 						<!-- /Product Single -->
 						<div class="clearfix"></div>
 					</div>
-					
+
 				</div>
 				<!-- /Product Single -->
 			</div>
