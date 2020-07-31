@@ -168,8 +168,40 @@
 
             function RenderListCart(response) {
                 $("#list-cart").empty();
+                $("#id-number-cart").empty();
+                $("#change-item-cart").empty();
+                $("#id-number-totalprice").empty();
                 $("#list-cart").html(response);
+                $("#change-item-cart").load(" #change-item-cart");
+                $("#id-number-totalprice").load(" #id-number-totalprice");
+                $("#id-number-cart").load(" #id-number-cart");
+
             }
+              //Delete cart
+    $("#change-item-cart").on('click', '.cancel-btn i', function (){
+       $.ajax({
+            url:'DeleteItemCart/'+$(this).data("id"),
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Delete');
+        });
+    });
+    function RenderCart(response){
+        $("#change-item-cart").empty();
+        $("#list-cart").empty();
+        $("#change-item-cart").html(response);
+        
+        $("#list-cart").load(" #list-cart");
+
+        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+            $("#total-price-show").text($("#total-price-cart").val());
+        }else{
+            $("#total-quanty-show").text("0");
+            $("#total-price-show").text("0.0$");
+        }
+    }
         </script>
         @yield('script-section')
     </body>

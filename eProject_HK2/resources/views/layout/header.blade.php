@@ -53,23 +53,27 @@
                 <!-- /Account -->
 
                 <!-- Cart -->
-                <li class="header-cart dropdown default-dropdown">
+                <li class="header-cart dropdown default-dropdown" >
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                         <div class="header-btns-icon">
                             <i class="fa fa-shopping-cart"></i>
-                            @if(Session::has('Cart') != null)
+                            <div id="id-number-cart">
+                                @if(Session::has('Cart') != null)
                                 <span class="qty" id="total-quanty-show">{{ Session::get('Cart')->totalQuanty }}</span>
                             @else
                                 <span class="qty" id="total-quanty-show">0</span>
                             @endif
+                            </div>
                         </div>
                         <strong class="text-uppercase">My Cart:</strong>
                         <br>
-                        @if(Session::has('Cart') != null)
+                        <div id="id-number-totalprice">
+                            @if(Session::has('Cart') != null)
                             <span id="total-price-show">{{ Session::get('Cart')->totalPrice }}$</span>
                         @else
                             <span id="total-price-show">0.0$</span>
                         @endif
+                        </div>
                     </a>
                     <div class="custom-menu">
                         <div id="shopping-cart">
@@ -119,6 +123,7 @@
         </div>
     </div>
     <!-- header -->
+    
 </div>
 <!-- container -->
 </header>

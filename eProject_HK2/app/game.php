@@ -63,7 +63,10 @@ class game extends Model
     }
 
     public function getIntroduceImageDirectory(){
-        return game_image::where([["GAME_ID",'=', $this->ID],['ID', '=',$this->ID."_intro"]])->first()->URL;
+        $image = game_image::where([["GAME_ID",'=', $this->ID],['ID', '=',$this->ID."_intro"]])->first();
+        if($image != null){
+            return $image->URL;
+        }
     }
 
     public function getStatus(){
