@@ -75,12 +75,12 @@
                                                                     class="font-weak"><small>{{$game['gameInfor']->getShortPrice()}}</small></del></td>
 
                                                             <td class="qty text-center">
-                                                                <input class="input" type="button"
+                                                                <input class="btn btn-success btn-btn" type="button"
                                                                     onclick ="remove({{ $game['gameInfor']->ID }})"
                                                                     value="-">
                                                                 <input class="input" type="button"
                                                                     id="{{ $game['gameInfor']->ID }}" value="{{ $game['quanty'] }}">
-                                                                <input class="input" type="button"
+                                                                <input class="btn btn-success btn-btn" type="button"
                                                                     onclick ="add({{ $game['gameInfor']->ID }})"
                                                                     value="+">
                                                             </td>
@@ -153,7 +153,7 @@
                     url: 'Delete-Item-List-Cart/' + id,
                     type: 'GET',
                 }).done(function(response) {
-                    $("#order").load(" #order");
+                    $("#checkout-form").load(" #checkout-form");
                 });
             }
 
@@ -166,7 +166,7 @@
                     url:'AddCart/'+id,
                     type: 'GET',
                 }).done(function(response){
-                    $("#order").load(" #order");
+                    $("#checkout-form").load(" #checkout-form");
                 });
             }
 
@@ -175,7 +175,8 @@
                     url:'DecreaseCart/'+id,
                     type: 'GET',
                 }).done(function(response){
-                    $("#order").load(" #order");
+                    $("#checkout-form").load(" #checkout-form");
+                    // $("#order").load(" #order");
                 });
             }
 
