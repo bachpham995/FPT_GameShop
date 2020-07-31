@@ -10,13 +10,16 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    
+
     public function checkLoginWithCheckout(){
 
         $user = session('user')?session('user')[0]:null;
         // dd($user);
+
+
         if($user == null){
         return view('client/login');
+
         }
         return view('client/payment')->with(["user"=>$user]);
     }

@@ -1,6 +1,6 @@
 {{-- @extends('layout.layout') --}}
-@section('title', 'Products')
-@section('page-name', 'Products')
+{{-- @section('title', 'Products')
+@section('page-name', 'Products') --}}
 @section('content')
     <!DOCTYPE html>
     <html lang="en">
@@ -77,8 +77,9 @@
                                                                 <input class="input" type="number"
                                                                     {{-- name="csrf-token" --}}
                                                                     {{-- content="{{ csrf_token() }}" --}}
-                                                                    oninput="someThing({{ $game['gameInfor']->ID }})"
-                                                                    id="{{ $game['gameInfor']->ID }}" value="{{ $game['quanty'] }}">
+                                                                    oninput="updateQuantity({{ $game['gameInfor']->ID }})"
+                                                                    id="update-quantity-{{ $game['gameInfor']->ID }}"
+                                                                    value="{{ $game['quanty'] }}">
                                                             </td>
                                                             <td class="total text-center">
                                                                 <strong id="gamePrice"
@@ -141,7 +142,7 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
         <!-- Bootstrap theme -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
-        {{-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> --}}
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
         <script>
             function DeleteItemListCart(id) {
                 $.ajax({
@@ -153,26 +154,22 @@
                 });
             }
 
-            function RenderListCart(response) {
-                $("#checkout-form").empty();
-                $("#checkout-form").html(response);
-            }
-
-            function someThing(id) {
+            function updateQuantity(id) {
                 $.ajax({
-                    url: '/Update-Quantity', // gửi ajax đến file result.php
-                    type: "GET", // chọn phương thức gửi là post
-                    // dataType: "json", // dữ liệu trả về dạng text
-                    data:{
-                            "id": id,
-                            "quantity": $("#"+id).val()
-                        },
+                    url: '/Update-Quantity/' + id + '/' + $("#update-quantity-" + id)
+                        .val(), // gửi ajax đến file result.php
+                    type: 'GET',
                     success: function(response) {
-                        $("#"+id).html(response);
+                        RenderListCart(response)
+                        alertify.success('Success Update');
                     }
                 });
             }
 
+            function RenderListCart(response) {
+                $("#list-cart").empty();
+                $("#list-cart").html(response);
+            }
         </script>
         @yield('script-section')
     </body>

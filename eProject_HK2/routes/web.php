@@ -21,7 +21,7 @@ Route::get('/Goback','User\CheckoutController@goBack');
 Route::get('/Checkout','User\CheckoutController@checkoutWithBill');
 Route::get('/About','Admin\GameShopController@viewAbout');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
-Route::get('/Update-Quantity','User\CartController@updateQuantity');
+Route::get('/Update-Quantity/{id}/{quantity}','User\CartController@updateQuantity');
 //Cart
 Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');

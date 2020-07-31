@@ -190,6 +190,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
+    //Add a new cart
     function AddCart(id){
         $.ajax({
             url:'AddCart/'+id,
@@ -199,6 +200,7 @@
            alertify.success('Success Add');
         });
     }
+    //Delete cart
     $("#change-item-cart").on('click', '.cancel-btn i', function (){
        $.ajax({
             url:'DeleteItemCart/'+$(this).data("id"),

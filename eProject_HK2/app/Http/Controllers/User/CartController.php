@@ -15,8 +15,6 @@ class CartController extends Controller
     {
 
         $game = game::find($id);
-        // $request->session()->forget('Cart');
-        // $value = $request->session()->get('Cart');
         if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
             $newCart = new cart($oldCart);
@@ -40,12 +38,9 @@ class CartController extends Controller
     }
     public function deleteItemListCart(Request $request, $id)
     {
-        // dd($id);
         $oldCart = session('Cart') ? session('Cart') : null;
         $newCart = new cart($oldCart);
-        // dd(1);
         $newCart->DeleteItemCart($id);
-
         if (count($newCart->game) > 0) {
             $request->session()->put('Cart', $newCart);
         } else {
@@ -53,9 +48,14 @@ class CartController extends Controller
         }
         return view('client/listCart');
     }
-    public function updateQuantity(Request $request)
+    public function updateQuantity(Request $request,$id,$quantity)
     {
-        dd($request);
+        $oldCart = session('Cart') ? session('Cart') : null;
+        $newCart = new cart($oldCart);
+        $newCart->UpdateQuantity($id,$quantity);
+        $request->session()->put('Cart', $newCart);
+
+        return view('client/listCart');
     }
     public function viewListCart()
     {
@@ -63,6 +63,6 @@ class CartController extends Controller
     }
     public function viewCheckout()
     {
-        return view('client/checkout');
+        return view('client/demo');
     }
 }
