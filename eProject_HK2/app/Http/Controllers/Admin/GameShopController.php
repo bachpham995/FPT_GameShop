@@ -6,7 +6,9 @@ use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\game;
+use App\user;
 use ReflectionClass as GlobalReflectionClass;
 
 class GameShopController extends Controller
@@ -23,12 +25,29 @@ class GameShopController extends Controller
         $products = game::all();
         return view('client.products', ['products'=>$products]);
     }
+    public function contact(){
+        return view('client.contact');
+    }
+    public function support(){
+        return view('client.support');
+    }
+    public function register(){
+        return view('client.register');
+    }
 
     public function checkLog(Request $request){
+        $this->validate($request,[
+            'emailLogin'=>'required',
+            'passwordLogin'=>'required'
+        ],[
+            'emailLogin.require'=>'Email can not blank!',
+            'passwordLogin'=>'Password can not blank!'
+        ]);
         $email = $request->input('emailLogin');
         $pass = $request->input('passwordLogin');
+        $request->session()->forget('user');
 
-        $user = DB::table('user')->where('EMAIL',$email)->first();
+        $user = user::where('EMAIL',$email)->first();
         if(!empty($user) && $user->PASSWORD == $pass){
             $request->session()->push('user',$user);
             if($user->TYPE == 1){
@@ -36,7 +55,7 @@ class GameShopController extends Controller
             }else if($user->TYPE== 2){
                 return redirect("demoIndex");
             }else{
-                return redirect("supervisor/member/home");
+                return redirect("index")->with('success','Login success');
             }
         }else{
             return redirect('client/login');

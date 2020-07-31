@@ -1792,3 +1792,24 @@ textarea.input {
 .product-thumb-cust {
   margin-bottom: 0 !important;
 }
+
+
+.contact-header h1 {
+  padding: 50px;
+  /* background-image: url(''); */
+  background-color: #f8694a;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+.contact_widget h4{
+  margin-top: 20px;
+}
+.icon-contact {
+  font-size: 6rem;
+}
+.map-contact{
+  margin-bottom: 50px;
+}
+.contact-form {
+  margin: 20px;
+}
