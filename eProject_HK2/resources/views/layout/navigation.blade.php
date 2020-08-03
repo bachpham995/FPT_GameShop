@@ -96,11 +96,6 @@
                                         @foreach (App\producer::all()->take(5) as $producer)
                                             <li><a href="#">{{$producer->NAME}}</a></li>
                                         @endforeach
-
-                                        {{-- <li><a href="#">Adventure</a></li>
-                                        <li><a href="#">Indie</a></li>
-                                        <li><a href="#">RPG</a></li>
-                                        <li><a href="#">Shooter</a></li> --}}
                                     </ul>
                                 </div>
                             </div>

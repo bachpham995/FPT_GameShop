@@ -13,15 +13,14 @@
                 <img src="{{ asset('img/maleAvatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-light">Admin</a>
+                <a href="#" class="d-block text-light">Hi! {{Session::get('user')->LNAME." ".Session::get('user')->FNAME}}</a>
+                <a href="{{ url('/logout') }}" id='logout-btn' class="d-block mt-2">Sign-out <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -144,3 +143,15 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<Script>
+    $(function(){
+        $('#logout-btn').click(function(){
+            if(confirm('Do you want to log out?')){
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+    });
+</Script>

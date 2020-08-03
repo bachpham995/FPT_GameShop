@@ -35,6 +35,7 @@ Route::post('/checkLog','Admin\GameShopController@checkLog');
 Route::get('/contact','Admin\GameShopController@contact');
 Route::get('/support','Admin\GameShopController@support');
 Route::get('/register','Admin\GameShopController@register');
+Route::get('/logout','Admin\GameShopController@logout');
 //------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
     ->group(function(){

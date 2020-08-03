@@ -18,20 +18,16 @@ class CheckAdminMiddleware
     {
         if($request->session()->has('user')){
             $user = $request->session()->get('user');
-            // $a = $user->TYPE;
-            // dd($a);
             if($user->TYPE == 1){
-               
                 return $next($request);
-            }
-            elseif($user->TYPE == 0){
+            }elseif($user->TYPE == 0){
                 return redirect('supervisor/member/home');
-            }
-            else {
+            }else {
                 return redirect('index');
             }
-        }
-        else {
+        }elseif($request->session()->get('user') == null) {
+            return redirect('login');
+        }else {
             return redirect('login');
         }
     }
