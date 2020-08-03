@@ -21,9 +21,9 @@
                 <div class="product-thumb product-thumb-cust">
                     <div class="product-label">
                         <span>New</span>
-                        <span class="sale">{{$product->getSale()}}</span>
+                        <span class="sale">-20</span>
                     </div>
-                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</button>
+                    <a href="{{url('clients/productDetail/'.$product->ID)}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</a>
                     <img height="320px" width="150px" src="{{$product->getIntroduceImageDirectory()}}" alt="">
                 </div>
 
