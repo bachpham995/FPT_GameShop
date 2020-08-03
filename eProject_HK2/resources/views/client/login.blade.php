@@ -13,12 +13,16 @@
     <form role="form" action="{{ url('checkLog') }}" method="POST">
         @csrf
         <div class="form-group">
-            {{-- <span class="pull-right" style="color: red">aaaaaaa</span> --}}
+            @if ($errors->has('emailLogin'))
+                <span class="pull-right" style="color: red">{{ $errors->first('emailLogin') }}</span>
+            @endif
             <label for="inputUsernameEmail">Email</label>
             <input type="text" class="form-control" id="inputUsernameEmail" name="emailLogin">
         </div>
         <div class="form-group">
-            {{-- <span class="pull-right" style="color: red">aaaaaaa</span> --}}
+            @if ($errors->has('passwordLogin'))
+                <span class="pull-right" style="color: red">{{ $errors->first('passwordLogin') }}</span>
+            @endif
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" name="passwordLogin">
         </div>

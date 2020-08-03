@@ -17,7 +17,10 @@ class CheckLoginMiddleware
     {
         if($request->session()->has('user')){
             return $next($request);
+        }elseif($request->session()->get('user') == null) {
+            return redirect('login');
+        }else{
+            return redirect('login');
         }
-        return redirect('login');
     }
 }

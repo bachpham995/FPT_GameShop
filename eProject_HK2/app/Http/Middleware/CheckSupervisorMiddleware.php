@@ -26,8 +26,9 @@ class CheckSupervisorMiddleware
             else {
                 return redirect('index');
             }
-        }
-        else {
+        }elseif($request->session()->get('user') == null) {
+            return redirect('login');
+        }else{
             return redirect('login');
         }
     }
