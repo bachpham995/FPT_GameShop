@@ -98,6 +98,10 @@ class ProductController extends Controller
         return view('admin.products.comments')->with(["comments"=>$comments]);
     }
 
+    // public function gameSuggestions(){
+        
+    // }
+
 
 
     public function postUpdate(Request $request,$id){

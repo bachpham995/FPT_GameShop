@@ -13,7 +13,7 @@
 					<div class="col-md-6">
 						<div id="product-main-view">
 							<div class="product-view">
-								<img  src="/img/product04.jpg" alt="">
+								<img  src="{{$game->getIntroduceImageDirectory()}}" style="" alt="">
 							</div>
 						</div>
 						<div id="product-view">
@@ -28,8 +28,8 @@
 								<span>New</span>
 								<span class="sale">- {{$game->SALE}}</span>
 							</div>
-							<h2 class="product-name">Product Name Goes Here</h2>
-							<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
+							<h2 class="product-name">{{$game->NAME}}</h2>
+							<h3 class="product-price">${{$game->PRICE}}<del class="product-old-price">${{$game->SALE}}</del></h3>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -45,19 +45,19 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
 								dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							<div class="product-options">
-								<ul class="size-option">
+								{{-- <ul class="size-option">
 									<li><span class="text-uppercase">Size:</span></li>
 									<li class="active"><a href="#">S</a></li>
 									<li><a href="#">XL</a></li>
 									<li><a href="#">SL</a></li>
-								</ul>
-								<ul class="color-option">
+								</ul> --}}
+								{{-- <ul class="color-option">
 									<li><span class="text-uppercase">Color:</span></li>
 									<li class="active"><a href="#" style="background-color:#475984;"></a></li>
 									<li><a href="#" style="background-color:#8A2454;"></a></li>
 									<li><a href="#" style="background-color:#BF6989;"></a></li>
 									<li><a href="#" style="background-color:#9A54D8;"></a></li>
-								</ul>
+								</ul> --}}
 							</div>
 
 							<div class="product-btns">
@@ -65,7 +65,7 @@
 									<span class="text-uppercase">QTY: </span>
 									<input class="input" type="number">
 								</div>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+							<a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> Add to Car</a>
 								<div class="pull-right">
 									<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 									<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -178,7 +178,9 @@
 														</div>
 													</div>
 												</div>
-												<button class="primary-btn">Submit</button>
+												<button class="primary-btn">
+                                                    <a>Submit</a>
+                                                </button>
 											</form>
 										</div>
 									</div>
@@ -245,13 +247,38 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
-	<!-- jQuery Plugins -->
-	{{-- <script src="js/jquery.min.js"></script> --}}
-	{{-- <script src="js/bootstrap.min.js"></script>
-	<script src="js/slick.min.js"></script>
-	<script src="js/nouislider.min.js"></script>
-	<script src="js/jquery.zoom.min.js"></script> --}}
-	{{-- <script src="js/main.js"></script> --}}
 
 </body>
+	<!-- jQuery Plugins -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+ <script>
+         function AddCart(id){
+        $.ajax({
+            url:'AddCart/'+id,
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Add');
+        });
+    }
+    function RenderCart(response){
+        $("#change-item-cart").empty();
+        $("#change-item-cart").html(response);
+        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+            $("#total-price-show").text($("#total-price-cart").val());
+        }else{
+            $("#total-quanty-show").text("0");
+            $("#total-price-show").text("0.0$");
+        }
+    }
+    </script>
 @endsection

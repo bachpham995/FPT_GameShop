@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Cart
 Route::get('/AddCart/{id}','User\CartController@addCart');
+Route::get('/clients/productDetail/AddCart/{id}','User\CartController@addCart');
 Route::get('/DecreaseCart/{id}','User\CartController@decreaseQuantity');
 
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');

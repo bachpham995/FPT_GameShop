@@ -93,4 +93,9 @@ class game extends Model
         }
         return game::all()->pluck("ID")->max() + 1;
     }
+    // public function getGameSameCategory(){
+    //     return game_producer::where("GAME_ID" , "=" ,$this->ID)->pluck("PRODUCER_ID");
+    //     $game = game::where("");
+    //    return 
+    // }
 }
