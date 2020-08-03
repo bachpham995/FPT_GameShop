@@ -13,12 +13,15 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="{{ url('admin/postCreateProducer') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ url('admin/postCreateProducer') }}" method="post" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
                         <label for="txt-name">Producer Name</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name">
+                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" required>
+                        @if(isset($validate))
+                        <strong style="color: red" > {{ $validate ?? '' }}</strong>
+                        @endif
                     </div>
                 </div>
                 <!-- /.card-body -->

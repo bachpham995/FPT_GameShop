@@ -15,7 +15,7 @@ class game extends Model
     protected $guarded = [];
 
     public function getCategories(){
-        $game_categories = game_category::where("GAME_ID" , "=" ,$this->ID)->pluck("CATEGORY_ID")->all();
+        $game_categories = game_category::where("GAME_ID", "=", $this->ID)->pluck("CATEGORY_ID")->all();
         $categories = category::whereIn("ID", $game_categories)->pluck("NAME")->all();
         return join(", ", $categories);
     }

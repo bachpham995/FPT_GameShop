@@ -18,7 +18,10 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="txt-name">Publisher Name</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name">
+                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name of Publisher" required>
+                        @if(isset($validate))
+                        <strong style="color: red" > {{ $validate ?? '' }}</strong>
+                        @endif
                     </div>
                 </div>
                 <!-- /.card-body -->

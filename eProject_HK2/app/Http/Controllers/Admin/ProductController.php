@@ -98,12 +98,6 @@ class ProductController extends Controller
         return view('admin.products.comments')->with(["comments"=>$comments]);
     }
 
-    // public function gameSuggestions(){
-        
-    // }
-
-
-
     public function postUpdate(Request $request,$id){
         $product = $request->all();
         DB::table('game')
@@ -123,7 +117,6 @@ class ProductController extends Controller
                 'STORAGE' => $product['STORAGE'],
                 'RAM' => $product['RAM']
                 ]);
-
         game_category::where('GAME_ID','=',$id)->delete();
         game_producer::where('GAME_ID','=',$id)->delete();
         game_publisher::where('GAME_ID','=',$id)->delete();

@@ -22,13 +22,17 @@
                     </div>
                     <div class="form-group">
                         <label for="txt-name" >Name</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$producer->NAME}}">
+                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$producer->NAME}}" required>
+                        @if(isset($validate))
+                        <strong style="color: red" > {{ $validate ?? '' }}</strong>
+                        @endif
                     </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="update" class="btn btn-primary">Submit</button>
                 </div>
+             
             </form>
         </div>
         <!-- /.card -->
@@ -44,5 +48,13 @@
     $(document).ready(function() {
         bsCustomFileInput.init();
     });
+</script>
+<script>
+$('button#update').click(function(){
+    if(confirm('Are you sure to update Producer')) {
+        return true;
+    }
+    return false;
+});
 </script>
 @endsection

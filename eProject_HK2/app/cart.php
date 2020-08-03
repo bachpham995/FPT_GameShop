@@ -66,8 +66,6 @@ class cart extends Model
         $this->totalQuanty += $this->game[$id]['quanty'];
         $this->totalPrice += $this->game[$id]['price'];
     }
-
-
-
+    
 }
 

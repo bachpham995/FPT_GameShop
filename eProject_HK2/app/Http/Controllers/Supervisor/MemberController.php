@@ -23,7 +23,7 @@ class MemberController extends Controller
         $regInfo->email = "";
         $regInfo->phone = "";
         $regInfo->address = "";
-
+        
         return $regInfo;
     }
 
@@ -77,7 +77,7 @@ class MemberController extends Controller
             return view('Supervisor.member.create')->with(['regInfo' => $regInfo,'invalidEmail' => $invalidEmail]);
             
         }
-        
+    
         if($pass != $conPass){
             $invalidPass = "*Confirm password does not match!";
             return view ('Supervisor.member.create')->with(['regInfo' => $regInfo, 'invalidPass' => $invalidPass]);

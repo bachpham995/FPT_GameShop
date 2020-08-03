@@ -29,7 +29,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Payments</li>
+                <li class="active">Checkout</li>
             </ul>
         </div>
     </div>
@@ -47,6 +47,7 @@
                             <div class="section-title">
                                 <h4 class="title">Billing Details</h4>
                             </div>
+                            <div class="input-checkbox">
                                 <label>NAME:</label>
                                 <label for="name">{{ $user->LNAME }} {{ $user->FNAME }}</label><br>
                                 <label>Email:</label>
@@ -55,33 +56,69 @@
                                 <label for="address">{{ $user->ADDRESS }}</label><br>
                                 <label>Phone:</label>
                                 <label for="phone">{{ $user->PHONE }}</label><br>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="payments-methods">
 							<div class="section-title">
-								<h4 class="title">Payments Methods</h4>
+								<h4 class="title">Cart detail</h4>
 							</div>
-							<div class="input-checkbox">
-								<input type="radio" name="payments" id="payments-1" checked>
-								<label for="payments-1">Pay by bank account</label>
-								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-										<p>
-								</div>
-							</div>
-							<div class="input-checkbox">
-								<input type="radio" name="payments" id="payments-2">
-								<label for="payments-2">Pay with Visa cart/Credit card</label>
-								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-										<p>
-								</div>
-							</div>
+                            <div class="input-checkbox">
+                                <label>Orders Code:</label>
+                                <label for="ID">1</label><br>
+                                <label>Order Day:</label>
+                                <label for="ORDER_DATE">29/7/2019</label><br>
+                                <label>Status:</label>
+                                <label for="status">Processing</label><br>
+                            </div>
 						</div>
                     </div>
-                    <div class="pull-right">
-                        <a class="primary-btn" href="{{url('/Checkout')}}">GO BILL</a>
+                    <div class="col-md-12">
+                        <div>
+                            <div class="order-summary clearfix">
+                                <div class="section-title">
+                                    <h3 class="title">Bill Review</h3>
+                                </div>
+                                <table class="shopping-cart-table table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th class="text-center" >GAME ID</th>
+                                            <th class="text-center">GAME NAME</th>
+                                            <th class="text-center">QUANTITY(USD/1)</th>
+                                            <th class="text-center">TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
+                                            <td class="price text-center">1</td>
+                                            <td class="price text-center"><strong>$32.50</strong></td>
+                                            <td  class="qty text-center"><input readonly class="input" type="number" value="1">
+                                            </td>
+                                            <td class="total text-center"><strong class="primary-color">$32.50</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="empty" colspan="3"></th>
+                                            <th>SUBTOTAL</th>
+                                            <th colspan="2" class="sub-total">$97.50</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="empty" colspan="3"></th>
+                                            <th>TOTAL</th>
+                                            <th colspan="2" class="total">$97.50</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="pull-right">
+                                    <a class="primary-btn" href="{{url('/Goback')}}">Go Back</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -102,8 +139,6 @@
     <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
-
-
 </body>
 
 </html>

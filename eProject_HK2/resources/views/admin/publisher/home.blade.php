@@ -51,8 +51,7 @@
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/publisher/update/'.$pls->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
-
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/publisher/delete/'.$pls->ID) }}">
+                                <a class="btn btn-danger btn-sm" href="{{ url('admin/publisher/delete/'.$pls->ID) }} " id="delete">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
@@ -81,7 +80,13 @@
             "ordering": true,
             "info": true,
             "autoWidth": false,
-        });
+        }); 
+    });
+    $('a#delete').click(function(){
+        if(confirm('Are you sure to delete Publisher')) {
+            return true;
+        }
+        return false;
     });
 </script>
 @endsection
