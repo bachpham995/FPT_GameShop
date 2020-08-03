@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Cart
 Route::get('/AddCart/{id}','User\CartController@addCart');
+Route::get('/clients/productDetail/AddCart/{id}','User\CartController@addCart');
 Route::get('/DecreaseCart/{id}','User\CartController@decreaseQuantity');
 
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
@@ -24,6 +25,7 @@ Route::get('/Checkout','User\CheckoutController@checkoutWithBill');
 Route::get('/About','Admin\GameShopController@viewAbout');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
 Route::get('/Update-Quantity','User\CartController@updateQuantity');
+Route::get('/clients/productDetail/{id}','Admin\GameShopController@viewProductdetail');
 //Cart
 Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');

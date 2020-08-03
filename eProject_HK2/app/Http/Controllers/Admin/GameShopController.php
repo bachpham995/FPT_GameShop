@@ -64,4 +64,8 @@ class GameShopController extends Controller
     public function viewAbout(){
         return view('client/About');
     }
+    public function viewProductdetail($id){
+        $game = game::find($id);
+        return view('client/productDetail')->with(["game"=>$game]);
+    }
 }
