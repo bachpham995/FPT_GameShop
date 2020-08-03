@@ -13,7 +13,8 @@
                 <img src="{{ asset('img/avatarBusiness.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-light">Supervisor</a>
+                <a href="#" class="d-block text-light">Hi! {{Session::get('user')->LNAME." ".Session::get('user')->FNAME}}</a>
+                <a href="{{ url('/logout') }}" id="logout-btn2" class="d-block mt-2">Sign-out <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
 
@@ -51,3 +52,15 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<Script>
+    $(function(){
+        $('#logout-btn2').click(function(){
+            if(confirm('Do you want to log out?')){
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+    });
+</Script>
