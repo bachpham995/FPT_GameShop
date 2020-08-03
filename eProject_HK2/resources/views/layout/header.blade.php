@@ -1,3 +1,13 @@
+{{-- Notification  --}}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <!-- header -->
 <div id="header">
     <div class="container">
@@ -65,7 +75,7 @@
                             <span id="total-price-show">{{ $ss?$ss->totalPrice:'0.0$' }}$</span>
 
                     </a>
-                    <div class="custom-menu">
+                    <div class="custom-menu cust-dropdown">
                         <div id="shopping-cart">
                             <div class="shopping-cart-list">
                                 <div id="change-item-cart">
@@ -77,40 +87,34 @@
                                                     <img src="{{ $game['img'] }}" alt="">
                                                 </div>
                                                 <div class="product-body">
+                                                    <div>
+                                                        <b href="#">
+                                                            {{ $game['gameInfor']->NAME }}
+                                                        </b>
+                                                    </div>
                                                     <div class="product-price">
-                                                        <div class="text-right">
-                                                            {{ $game['gameInfor']->PRICE }}
+                                                        <b>{{ $game['gameInfor']->PRICE." $" }}</b>
+
                                                         <span
                                                             class="qty"> x {{ $game['quanty'] }}
                                                         </span>
-
-                                                        </div>
-
-                                                        <h4 class="text-left">
-                                                            <a href="#">
-                                                                {{ $game['gameInfor']->NAME }}
-                                                            </a>
-                                                        </h4>
-
                                                     </div>
-                                                    <button class="cancel-btn">
-                                                        <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
-                                                    </button>
-
-
-
                                                 </div>
+
                                                 <input hidden id="total-quanty-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalQuanty }}">
                                                 <input hidden id="total-price-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalPrice }}">
+                                                 <button class="cancel-btn"> {{--onclick="deleteCartItem({{ $game['gameInfor']->ID }})"> --}}
+                                                    <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
+                                                </button>
 
                                             </div>
                                         @endforeach
                                     @endif
                                 </div>
                             </div>
-                            <div class="shopping-cart-btns">
+                            <div class="shopping-cart-btns text-center">
                                 <button class="main-btn"><a href="{{ url('/ListCart') }}">View Cart</a></button>
                                 <a class="primary-btn" href="{{ url('/Checkout') }}">Checkout<i
                                         class="fa fa-arrow-circle-right"></i></a>
@@ -131,4 +135,28 @@
     <!-- header -->
 </div>
 <!-- container -->
+<script>
+    $("#change-item-cart").on('click', '.cancel-btn i', function (){
+       $.ajax({
+            url:'DeleteItemCart/'+$(this).data("id"),
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response)
+           alertify.success('Success Delete');
+        });
+        });
+
+    function RenderCart(response){
+        $("#change-item-cart").empty();
+        $("#change-item-cart").html(response);
+        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+            $("#total-quanty-show").text($("#total-quanty-cart").val());
+            $("#total-price-show").text($("#total-price-cart").val());
+        }else{
+            $("#total-quanty-show").text("0");
+            $("#total-price-show").text("0.0$");
+        }
+    }
+</script>
 </header>
+
