@@ -22,7 +22,10 @@
                     </div>
                     <div class="form-group">
                         <label for="txt-name" >Name</label>
-                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$publisher->NAME}}">
+                        <input type="text" class="form-control" id="txt-name" name="NAME" placeholder="Input Name" value="{{$publisher->NAME}}" required >
+                        @if(isset($validate))
+                        <strong style="color: red" > {{ $validate ?? '' }}</strong>
+                        @endif
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -45,5 +48,13 @@
     $(document).ready(function() {
         bsCustomFileInput.init();
     });
+</script>
+<script>
+$('button#update').click(function(){
+    if(confirm('Are you sure to update Publisher')) {
+        return true;
+    }
+    return false;
+});
 </script>
 @endsection

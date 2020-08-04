@@ -28,7 +28,7 @@ class CartController extends Controller
         $game = game::find($id);
         if($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
-            $newCart = new cart($oldCart);
+            // $newCart = new cart($oldCart);
             //dd($oldCart->game[$id]);
             $oldCart->decreaseItemQuantity($game, $id);
         }

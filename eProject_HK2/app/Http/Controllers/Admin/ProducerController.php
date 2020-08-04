@@ -18,6 +18,11 @@ class ProducerController extends Controller
     }
     public function postCreate(Request $request)
     {
+        $check = producer::where("NAME",$request["NAME"])->count();
+        if ($check != 0) {
+            $validate = 'The publisher must not duplicate';
+            return view('admin.producer.create')->with(["validate" => $validate]);
+        }
         $producer = $request->all();
         $p = new producer($producer);
         $p->save();
@@ -30,6 +35,11 @@ class ProducerController extends Controller
     }
     public function postUpdate(Request $request,$id)
     {
+        $check = producer::where("NAME",$request["NAME"])->count();
+        if($check != 0){
+            $validate = 'The producer already exists on the database';
+            return view('admin.producer.create')->with(["validate" => $validate]);
+        }
        $producer = $request->all();
        $p = producer::where('ID',$id);
        $p->update(['NAME'=>$producer['NAME']]);

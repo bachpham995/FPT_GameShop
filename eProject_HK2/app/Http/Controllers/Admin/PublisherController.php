@@ -1,40 +1,57 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\publisher;
-use App\user;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $publisher = publisher::all();
-        return view('admin.publisher.home')->with(["publisher"=>$publisher]);
+        return view('admin.publisher.home')->with(["publisher" => $publisher]);
     }
-    public function create(){
+    public function create()
+    {
         return view('admin.publisher.create');
     }
-    public function postCreate(Request $request){
-
-            $publisher = $request->all();
-            $pls = new publisher($publisher);
-            $pls->save();
+    public function postCreate(Request $request)
+    { 
+        $check = publisher::where("NAME",$request["NAME"])->count();
+        if ($check != 0) {
+            $validate = 'The publisher must not duplicate';
+            return view('admin.publisher.create')->with(["validate" => $validate]);
+        }
+        $publisher = $request->all();
+        $pls = new publisher($publisher);
+        $pls->save();
         return redirect()->action('Admin\PublisherController@home');
     }
-    public function delete($id){
-            publisher::where("ID",$id)->delete();
-            return redirect()->action('Admin\PublisherController@home');
+    public function delete($id)
+    {
+        publisher::where("ID", $id)->delete();
+        return redirect()->action('Admin\PublisherController@home');
     }
-    public function update($id){
+    public function update($id)
+    {
         $publisher = publisher::find($id);
-        return view('admin.publisher.update')->with(["publisher"=>$publisher]);
+        return view('admin.publisher.update')->with(["publisher" => $publisher]);
     }
-    public function postUpdate(Request $request,$id){
-            $publisher = $request->all();
-            $pls = publisher::where('ID',$id);
-            $pls->update(['NAME'=>$publisher['NAME']]);
-            return redirect()->action('Admin\PublisherController@home');
+    public function postUpdate(Request $request, $id)
+    {   
+        $check = publisher::where("NAME",$request["NAME"])->count();
+        if($check != 0){
+            
+            $validate = 'The publisher already exists on the database';
+            return view('admin.publisher.create')->with(["validate" => $validate]);
+        }
+        $publisher = $request->all();
+        $pls = publisher::where('ID', $id);
+        $pls->update(['NAME' => $publisher['NAME']]);
+        return redirect()->action('Admin\PublisherController@home');
+
     }
+
 }

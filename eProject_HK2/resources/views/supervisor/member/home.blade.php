@@ -104,8 +104,8 @@
         });
 
         // if($('u.UserType') == 0){
-        //     document.getElementById("btnEdit").disabled = true; 
-        //     document.getElementById("btnDelete").disabled = true; 
+        //     document.getElementById("btnEdit").disabled = true;
+        //     document.getElementById("btnDelete").disabled = true;
         // }
     });
 

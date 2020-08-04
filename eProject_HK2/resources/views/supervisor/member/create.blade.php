@@ -39,7 +39,6 @@
                                 @if(isset($invalidEmail))
                                     <strong> {{ $invalidEmail ?? '' }}</strong>
                                 @endif
-                                
                             </div>
                             <div class="form-group">
                                 <label for="txt-address">ADDRESS</label>

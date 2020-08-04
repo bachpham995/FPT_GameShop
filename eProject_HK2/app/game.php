@@ -16,7 +16,7 @@ class game extends Model
     protected $guarded = [];
 
     public function getCategories(){
-        $game_categories = game_category::where("GAME_ID" , "=" ,$this->ID)->pluck("CATEGORY_ID")->all();
+        $game_categories = game_category::where("GAME_ID", "=", $this->ID)->pluck("CATEGORY_ID")->all();
         $categories = category::whereIn("ID", $game_categories)->pluck("NAME")->all();
         return join(", ", $categories);
     }
@@ -46,10 +46,11 @@ class game extends Model
     }
 
 
-
     public function getShortPrice(){
         return round($this->PRICE, 2). " $";
     }
+
+
 
     public function getShortSalePrice(){
         if($this->SALE > 0){
@@ -94,11 +95,25 @@ class game extends Model
         }
         return game::all()->pluck("ID")->max() + 1;
     }
-    // public function getGameSameCategory(){
-    //     return game_producer::where("GAME_ID" , "=" ,$this->ID)->pluck("PRODUCER_ID");
-    //     $game = game::where("");
-    //    return
-    // }
+    public function getGameQuantity($id){
+        $gameId = 0;
+        $arrayGameId = cart_item::where("CART_ID",'=',$id)->pluck("GAME_ID");
+        for($i=0; $i < count($arrayGameId) ; $i++ ){
+              if($arrayGameId[$i] == $this->ID)
+              {
+                    $gameId = $arrayGameId[$i];
+              }
+        }
+        $gameQuantity = cart_item::where([["CART_ID",'=',$id],["GAME_ID",'=',$gameId]])->pluck("GAME_QUANTITY");
+        return  $gameQuantity[0] ? $gameQuantity[0] : null;
+    }
+    public function  getTotal($quantity){
+        $total = 0;
+        $priceOfGame = $this->PRICE;
+        $saleOfGame = $this->SALE;
+        $total= $quantity * ( $priceOfGame - (($priceOfGame*$saleOfGame)/100) );
+        return round($total,2)." $";
+     }
 
     public function Rating(){
         $ratings = comment::where('GAME_ID',$this->ID)->pluck('RATING');

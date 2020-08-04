@@ -51,7 +51,7 @@
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
 
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/producer/delete/'.$pdc->ID) }}">
+                                <a id="delete" class="btn btn-danger btn-sm" href="{{ url('admin/producer/delete/'.$pdc->ID) }}">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
@@ -81,6 +81,12 @@
             "info": true,
             "autoWidth": false,
         });
+    });
+    $('a#delete').click(function(){
+        if(confirm('Are you sure to delete Producer')) {
+            return true;
+        }
+        return false;
     });
 </script>
 @endsection
