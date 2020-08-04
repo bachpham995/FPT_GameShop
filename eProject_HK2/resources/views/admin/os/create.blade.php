@@ -1,6 +1,6 @@
 <!-- lưu tại /resources/views/product/create.blade.php -->
 @extends('admin.layout')
-@section('title', 'Create new os')
+@section('title', 'New Operating System')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -24,6 +24,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>
         </div>

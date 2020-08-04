@@ -13,7 +13,12 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
+
+
             <div class="card-body">
+                <a class="btn btn-success btn-btn" onclick="history.back()">
+                    <font color="white"><i class="fas fa-arrow-left"></i> Back</font>
+                </a>
                 <table id="games" class="table table-bordered table-hover">
                     <thead>
                         <tr>

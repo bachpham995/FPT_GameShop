@@ -8,7 +8,7 @@ use App\user;
 class comment extends Model
 {
     protected $table = "comment";
-    protected $fillable = ['ID','GAME_ID','USER_ID','DESCRIPTION','created_at','updated_at'];
+    protected $fillable = ['ID','GAME_ID','USER_ID','DESCRIPTION','created_at'];
 
     function User(){
         $user = user::find($this->USER_ID);

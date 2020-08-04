@@ -13,7 +13,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="admin/products/home" method="get" enctype="multipart/form-data">
+            <form role="form" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{-- <a href="">{{dd(App\game::getNextGenID())}}</a> --}}
                 <div class="card-body">
@@ -106,7 +106,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Back</button>
+                    <a class="btn btn-danger btn-btn" onclick="history.back()">
+                        <font color="white"><i class="fas fa-arrow-left"></i> Back</font>
+                    </a>
                 </div>
             </form>
         </div>

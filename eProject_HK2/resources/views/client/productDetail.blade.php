@@ -1,8 +1,9 @@
 
 @extends('layout.layout')
 @section('content')
+
 <body>
-	<!-- section -->
+    <!-- section -->
 	<div class="section">
 		<!-- container -->
 		<div class="container">
@@ -26,24 +27,33 @@
 						<div class="product-body">
 							<div class="product-label">
 								<span>New</span>
-								<span class="sale">- {{$game->SALE}}</span>
+								<span class="sale">- {{$game->SALE}}%</span>
 							</div>
-							<h2 class="product-name">{{$game->NAME}}</h2>
-							<h3 class="product-price">${{$game->PRICE}}<del class="product-old-price">${{$game->SALE}}</del></h3>
-							<div>
+                            <h1 class="product-name">{{$game->NAME}}</h1>
+                            <h2 class="product-price">{{$game->getShortSalePrice()}}<del class="product-old-price"> {{$game->getShortPrice()}}</del></h2>
+                            <div>
+                                <strong>Rating:</strong>
 								<div class="product-rating">
+                                    @for($i = 1;$i <= $game->Rating();$i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                    @for($i = 1;$i <= 5-$game->Rating();$i++)
+                                        <i class="fa fa-star-o empty"></i>
+                                    @endfor
+
+									{{-- <i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o empty"></i>
+									<i class="fa fa-star-o empty"></i> --}}
 								</div>
 								<a href="#">3 Review(s) / Add Review</a>
 							</div>
-							<p><strong>Availability:</strong> In Stock</p>
-							<p><strong>Brand:</strong> E-SHOP</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-								dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p><strong>Status:</strong> {{$game->getStatus()}}</p>
+                            <p><strong>Categories(s):</strong> {{$game->getCategories()}}</p>
+                            <p><strong>Publisher(s):</strong> {{$game->getPublishers()}}</p>
+                            <p><strong>Producer(s):</strong> {{$game->getProducers()}}</p>
+                        <p><strong>Features:</strong>{{$game->FEATURE}}</p>
 							<div class="product-options">
 								{{-- <ul class="size-option">
 									<li><span class="text-uppercase">Size:</span></li>
@@ -65,7 +75,7 @@
 									<span class="text-uppercase">QTY: </span>
 									<input class="input" type="number">
 								</div>
-							<a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> Add to Car</a>
+							<a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
 								<div class="pull-right">
 									<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 									<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -74,97 +84,66 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-12" id="informations">
 						<div class="product-tab">
 							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+								<li class="active"><a data-toggle="tab" href="#tab0">Description</a></li>
 								<li><a data-toggle="tab" href="#tab1">Details</a></li>
-								<li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
+                                <li><a data-toggle="tab" href="#tab2">Comments ({{$game->Comments()->count()}})</a></li>
+                                <li><a data-toggle="tab" href="#tab3">Requirement</a></li>
 							</ul>
 							<div class="tab-content">
-								<div id="tab1" class="tab-pane fade in active">
+                                <div id="tab0" class="tab-pane fade in active">
+                                    <p>{{$game->DESCRIPTION}}</p>
+								</div>
+								<div id="tab1" class="tab-pane fade in">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 										irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</div>
 								<div id="tab2" class="tab-pane fade in">
-
 									<div class="row">
 										<div class="col-md-6">
 											<div class="product-reviews">
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
+                                                @foreach ($game->gridComments()[0] as $cmt)
+                                                    <div class="single-review">
+                                                        <div class="review-heading">
+                                                            <b><a ><i class="fa fa-user-o"></i> {{$cmt->User()}}</a></b>
+                                                            <div><a ><i class="fa fa-clock-o"></i> {{$cmt->created_at}}</a></div>
+                                                            <div class="review-rating pull-right">
+                                                                @for($i = 1;$i <= $cmt->RATING;$i++)
+                                                                    <i class="fa fa-star"></i>
+                                                                @endfor
+                                                                @for($i = 1;$i <= 5-$cmt->RATING;$i++)
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                @endfor
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-body">
+                                                            <p>{{$cmt->DESCRIPTION}}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
 
 												<ul class="reviews-pages">
-													<li class="active">1</li>
+                                                    @for ($i = 1; $i <= $game->commentsPageNum();$i++)
+                                                        @if ($i == 1)
+                                                            <li class="active"><u>{{$i}}</u></li>
+                                                        @else
+                                                            <li><u><a href="javascript:" onclick="goToPage({{$game->ID}},{{$i}})">{{$i}}</a></u></li>
+                                                        @endif
+                                                    @endfor
+													{{-- <li class="active">1</li>
 													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
+													<li><a href="#">3</a></li> --}}
 													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
 												</ul>
 											</div>
 										</div>
 										<div class="col-md-6">
-											<h4 class="text-uppercase">Write Your Review</h4>
-											<p>Your email address will not be published.</p>
-											<form class="review-form">
+											<h4 class="text-uppercase">Write Your Comment</h4>
+											<div class="review-form">
 												<div class="form-group">
-													<input class="input" type="text" placeholder="Your Name" />
-												</div>
-												<div class="form-group">
-													<input class="input" type="email" placeholder="Email Address" />
-												</div>
-												<div class="form-group">
-													<textarea class="input" placeholder="Your review"></textarea>
+													<textarea rows="10" class="input" id="comment" placeholder="Your comment"></textarea>
 												</div>
 												<div class="form-group">
 													<div class="input-rating">
@@ -178,20 +157,14 @@
 														</div>
 													</div>
 												</div>
-												<button class="primary-btn">
-                                                    <a>Submit</a>
-                                                </button>
-											</form>
+												<button class="primary-btn"  onclick="sendComment({{$game->ID}}, {{Session::get('user')?Session::get('user')->ID:'null'}})"><font color="white">Submit</font></button>
+											</div>
 										</div>
 									</div>
-
-
-
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 				<!-- /Product Details -->
 			</div>
@@ -249,24 +222,30 @@
 	<!-- /section -->
 
 </body>
-	<!-- jQuery Plugins -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
- <script>
-         function AddCart(id){
+
+<script>
+    function goToPage(id,pageID){
+        $data = {page : pageID};
         $.ajax({
-            url:'AddCart/'+id,
+            url:'/ToCommentPage/'+id,
             type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            data: $data
+        }).done(function(response){
+            $("#informations").empty();
+            $("#informations").html(response);
+            $('.tab-nav a[href="#tab2"]').tab('show');
+            alertify.success('Success Add');
+        });
+    }
+
+    function AddCart(id){
+        $.ajax({
+            url:'/AddCart/'+id,
+            type: 'GET'
         }).done(function(response){
             RenderCart(response)
-           alertify.success('Success Add');
+            alertify.success('Success Add');
         });
     }
     function RenderCart(response){
@@ -280,5 +259,35 @@
             $("#total-price-show").text("0.0$");
         }
     }
-    </script>
+
+
+    function sendComment(gameId, userID){
+        if(userID == null){
+            alertify.error ('Please sign in to make a comment!');
+        }else{
+            $commentData = {
+                 user_id : userID,
+                 rating : $("input[name='rating']:checked").val(),
+                 description : $("#comment").val()
+            }
+
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+            $.ajax({
+                url:'/Comment/'+gameId,
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                data : $commentData
+            }).done(function(response){
+                $("#informations").empty();
+                $("#informations").html(response);
+                $('.tab-nav a[href="#tab2"]').tab('show');
+                alertify.success('Your comment has been published successfully');
+            });
+        }
+    }
+</script>
 @endsection

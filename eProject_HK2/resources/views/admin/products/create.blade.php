@@ -118,6 +118,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>
         </div>
