@@ -48,6 +48,7 @@
                                 <h4 class="title">Billing Details</h4>
                             </div>
                             <div class="input-checkbox">
+                                @if($user != null)
                                 <label>NAME:</label>
                                 <label for="name">{{ $user->LNAME }} {{ $user->FNAME }}</label><br>
                                 <label>Email:</label>
@@ -56,6 +57,8 @@
                                 <label for="address">{{ $user->ADDRESS }}</label><br>
                                 <label>Phone:</label>
                                 <label for="phone">{{ $user->PHONE }}</label><br>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -66,15 +69,25 @@
 							</div>
                             <div class="input-checkbox">
                                 <label>Orders Code:</label>
-                                <label for="ID">{{$cart->id}}</label><br>
+                                <label for="ID">
+                                    @if($cart != null)
+                                    {{$cart->id}}
+                                    @endif
+                                </label><br>
                                 <label>Order Day:</label>
-                                <label for="ORDER_DATE">{{$cart->ORDER_DATE}}</label><br>
+                                <label for="ORDER_DATE">
+                                    @if($cart != null)
+                                    {{$cart->ORDER_DATE}}
+                                    @endif
+                                </label><br>
                                 <label>Status:</label>
                                 <label for="status">
+                                    @if($cart != null)
                                     @if($cart->PAID != 0)
                                          Paid
                                     @else
                                         Waiting
+                                    @endif
                                     @endif
                                 </label><br>
                             </div>
@@ -109,12 +122,12 @@
                                                                 class="font-weak"><small>{{$game->getShortPrice()}}</small></del></td>
 
                                                         <td class="qty text-center">
-                                                            <label id="{{ $game->ID }}">{{ $game->getGameQuantity() }}</label><br>
+                                                            <label id="{{ $game->ID }}">{{ $game->getGameQuantity($cart->id) }}</label><br>
                                                         </td>
                                                         <td class="total text-center">
                                                             <strong id="gamePrice"
                                                                 class="primary-color">
-                                                                    {{$game->getTotal($cart->id)}}
+                                                                    {{$game->getTotal($game->getGameQuantity($cart->id))}}
                                                             </strong>
                                                         </td>
                                                     </tr>
@@ -127,7 +140,7 @@
                                             <th>TOTAL</th>
                                             @if($cart != null)
                                                 <th colspan="2" class="sub-total">
-                                                   {{$cart->getTotalPrice($cart->id)}}$
+                                                   {{$cart->getTotalPrice($cart->id)}}
                                                 </th>
                                             @else
                                                 <th colspan="2" class="sub-total">0.0</th>

@@ -88,7 +88,8 @@ class cart extends Model
             $total= $gameQuantity[$i] * ( $priceOfGame[$i] - (($priceOfGame[$i]*$saleOfGame[$i])/100) ) ;
             $totalPrice = $totalPrice + $total;
         }
-        return $totalPrice;
+        return round($totalPrice,2)." $";
+
     }
 
     public function getItemCart($id){
