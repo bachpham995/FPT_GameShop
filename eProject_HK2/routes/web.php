@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 //Cart
 Route::get('/AddCart/{id}','User\CartController@addCart');
-Route::get('/clients/productDetail/AddCart/{id}','User\CartController@addCart');
 Route::get('/DecreaseCart/{id}','User\CartController@decreaseQuantity');
 
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
@@ -25,7 +24,9 @@ Route::get('/GotoBill','User\CheckoutController@goBill');
 Route::get('/About','Admin\GameShopController@viewAbout');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
 Route::get('/Update-Quantity','User\CartController@updateQuantity');
-Route::get('/clients/productDetail/{id}','Admin\GameShopController@viewProductdetail');
+Route::get('/productDetail/{id}','Admin\GameShopController@viewProductdetail');
+Route::get('/Comment/{id}','Admin\CommentController@comment');
+Route::get('/ToCommentPage/{id}','Admin\CommentController@goToPage');
 //Cart
 Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','Admin\GameShopController@index');
@@ -35,7 +36,6 @@ Route::post('/checkLog','Admin\GameShopController@checkLog');
 Route::get('/contact','Admin\GameShopController@contact');
 Route::get('/support','Admin\GameShopController@support');
 Route::get('/register','Admin\GameShopController@register');
-Route::get('/logout','Admin\GameShopController@logout');
 //------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
     ->group(function(){

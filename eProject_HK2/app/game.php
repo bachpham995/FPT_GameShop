@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\category;
 use App\game_category;
 use App\Http\Controllers\GameShopController;
+use Illuminate\Support\Collection;
 use ReflectionClass;
 
 class game extends Model
@@ -105,5 +106,47 @@ class game extends Model
         $saleOfGame = $this->SALE;
         $total= $gameQuantity * ( $priceOfGame - (($priceOfGame*$saleOfGame)/100) ) ;
         return $total;
+    // public function getGameSameCategory(){
+    //     return game_producer::where("GAME_ID" , "=" ,$this->ID)->pluck("PRODUCER_ID");
+    //     $game = game::where("");
+    //    return
+     }
+
+    public function Rating(){
+        $ratings = comment::where('GAME_ID',$this->ID)->pluck('RATING');
+        if($ratings->count() > 0)
+            return round(collect($ratings)->avg());
+        return 0;
+    }
+
+    public function Comments(){
+        return comment::where('GAME_ID','=',$this->ID)->get();
+    }
+
+    public function gridComments(){
+        $pageLenght = 5;
+        $count = 0;
+        $comments = new Collection();
+        $newPage = new Collection();
+        foreach ($this->Comments() as $cmt) {
+            $count++;
+            $newPage->add($cmt);
+            if($count == $pageLenght or $cmt == $this->Comments()->last()){
+                $comments->add($newPage);
+                $newPage = new Collection();
+                $count = 0;
+            }
+        }
+        return $comments;
+    }
+
+    public function commentsPageNum(){
+        $pageLenght = 5;
+        $amount = $this->Comments()->count();
+        if ($amount % $pageLenght == 0){
+            return intval($amount/$pageLenght);
+        }
+
+        return intval(ceil($amount/$pageLenght));
     }
 }

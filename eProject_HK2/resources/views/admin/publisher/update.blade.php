@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'product - create new')
+@section('title', 'Edit Publisher')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -30,7 +30,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" id="update" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>
         </div>
