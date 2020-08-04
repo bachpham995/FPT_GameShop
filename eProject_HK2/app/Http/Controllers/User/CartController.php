@@ -14,8 +14,6 @@ class CartController extends Controller
     public function addCart(Request $request, $id)
     {
         $game = game::find($id);
-        // $request->session()->forget('Cart');
-        // $value = $request->session()->get('Cart');
         if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
             $newCart = new cart($oldCart);

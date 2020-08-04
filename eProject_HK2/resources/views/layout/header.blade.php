@@ -138,7 +138,7 @@
 <script>
     $("#change-item-cart").on('click', '.cancel-btn i', function (){
        $.ajax({
-            url:'DeleteItemCart/'+$(this).data("id"),
+            url:'/DeleteItemCart/'+$(this).data("id"),
             type: 'GET',
         }).done(function(response){
             RenderCart(response)
