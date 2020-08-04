@@ -45,10 +45,11 @@ class game extends Model
     }
 
 
-
     public function getShortPrice(){
         return round($this->PRICE, 2). " $";
     }
+
+
 
     public function getShortSalePrice(){
         if($this->SALE > 0){
@@ -93,9 +94,16 @@ class game extends Model
         }
         return game::all()->pluck("ID")->max() + 1;
     }
-    // public function getGameSameCategory(){
-    //     return game_producer::where("GAME_ID" , "=" ,$this->ID)->pluck("PRODUCER_ID");
-    //     $game = game::where("");
-    //    return 
-    // }
+    public function getGameQuantity(){
+        $gameQuantity = cart_item::where("GAME_ID",'=', $this->ID)->pluck("GAME_QUANTITY")->first();
+        dd( $gameQuantity);
+    }
+    public function  getTotal($id){
+        $total = 0;
+        $gameQuantity = cart_item::where("GAME_ID", "=", $id)->pluck("GAME_QUANTITY")->first();
+        $priceOfGame = $this->PRICE;
+        $saleOfGame = $this->SALE;
+        $total= $gameQuantity * ( $priceOfGame - (($priceOfGame*$saleOfGame)/100) ) ;
+        return $total;
+    }
 }

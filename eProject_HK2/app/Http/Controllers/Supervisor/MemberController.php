@@ -23,7 +23,7 @@ class MemberController extends Controller
         $regInfo->email = "";
         $regInfo->phone = "";
         $regInfo->address = "";
-        
+
         return $regInfo;
     }
 
@@ -36,7 +36,7 @@ class MemberController extends Controller
 
     public static function validateEmail ($email) {
 
-    
+
         $checkEmail = User::where('EMAIL', $email)->count();
 
         if($checkEmail == 0){
@@ -48,7 +48,7 @@ class MemberController extends Controller
 
 
     public function postCreate(Request $request)
-    {   
+    {
 
         $mb = new user();
         $regInfo = self::initRegister();
@@ -75,14 +75,14 @@ class MemberController extends Controller
         if(self::validateEmail($email)){
             $invalidEmail = "This email has been already used!";
             return view('Supervisor.member.create')->with(['regInfo' => $regInfo,'invalidEmail' => $invalidEmail]);
-            
+
         }
-    
+
         if($pass != $conPass){
             $invalidPass = "*Confirm password does not match!";
             return view ('Supervisor.member.create')->with(['regInfo' => $regInfo, 'invalidPass' => $invalidPass]);
         }
-        
+
         $mb->save();
         return redirect()->action('Supervisor\MemberController@home');
     }
@@ -111,7 +111,7 @@ class MemberController extends Controller
         return redirect()->action('Supervisor\MemberController@home');
     }
 
-    
+
 
 
 }

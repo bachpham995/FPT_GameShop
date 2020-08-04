@@ -81,7 +81,7 @@
 						</div>
                     </div>
                     <div class="pull-right">
-                        <a class="primary-btn" href="{{url('/Gotobill')}}">GO BILL</a>
+                        <a class="primary-btn" href="{{url('/GotoBill')}}">GO BILL</a>
                     </div>
                 </form>
             </div>

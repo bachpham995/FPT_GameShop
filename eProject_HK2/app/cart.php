@@ -3,22 +3,29 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\cart_item;
 class cart extends Model
 {
     protected $table = "cart";
-    protected $fillable = ['ORDER_DATE','PAID','created_at','updated_at'];
+    protected $fillable = ['ID','USER_ID','ORDER_DATE','PAID','created_at','updated_at'];
     public $game = null;
     public $totalPrice = 0;
     public $totalQuanty = 0;
 
+
+
     public function __construct($cart){
-      if($cart){
+        if($cart){
+            //dd($cart);
             $this->game = $cart->game;
             $this->totalPrice = $cart->totalPrice;
             $this->totalQuanty = $cart->totalQuanty;
-      }
+        }
     }
+
+
+
+
     public function AddCartItem($game,$id){
         $newGame = ['quanty' => 0 , 'price'=>$game->PRICE*((100-$game->SALE)/100),'gameInfor'=>$game ,'img'=>$game->getIntroduceImageDirectory()];
         if($this->game){
@@ -66,6 +73,27 @@ class cart extends Model
         $this->totalQuanty += $this->game[$id]['quanty'];
         $this->totalPrice += $this->game[$id]['price'];
     }
-    
+    public function getGame($id){
+        $gameIdValue = cart_item::where("CART_ID", "=", $id)->pluck("GAME_ID")->all();
+        $game = game::whereIn("ID", $gameIdValue)->get();
+        return $game;
+    }
+    public function  getTotalPrice($id){
+        $gameQuantity = cart_item::where("CART_ID", "=", $id)->pluck("GAME_QUANTITY")->all();
+        $gameIdValue = cart_item::where("CART_ID", "=", $id)->pluck("GAME_ID")->all();
+        $priceOfGame = game::whereIn("ID", $gameIdValue)->pluck("PRICE")->all();
+        $saleOfGame = game::whereIn("ID", $gameIdValue)->pluck("SALE")->all();
+        $totalPrice = 0;
+        for ($i=0; $i < count($gameQuantity); $i++) {
+            $total= $gameQuantity[$i] * ( $priceOfGame[$i] - (($priceOfGame[$i]*$saleOfGame[$i])/100) ) ;
+            $totalPrice = $totalPrice + $total;
+        }
+        return $totalPrice;
+    }
+
+    public function getItemCart($id){
+        $getItemCart = cart_item::where("CART_ID", "=", $id)->get();
+        dd( $getItemCart);
+    }
 }
 

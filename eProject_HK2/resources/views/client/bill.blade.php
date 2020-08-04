@@ -66,11 +66,17 @@
 							</div>
                             <div class="input-checkbox">
                                 <label>Orders Code:</label>
-                                <label for="ID">1</label><br>
+                                <label for="ID">{{$cart->id}}</label><br>
                                 <label>Order Day:</label>
-                                <label for="ORDER_DATE">29/7/2019</label><br>
+                                <label for="ORDER_DATE">{{$cart->ORDER_DATE}}</label><br>
                                 <label>Status:</label>
-                                <label for="status">Processing</label><br>
+                                <label for="status">
+                                    @if($cart->PAID != 0)
+                                         Paid
+                                    @else
+                                        Waiting
+                                    @endif
+                                </label><br>
                             </div>
 						</div>
                     </div>
@@ -83,39 +89,54 @@
                                 <table class="shopping-cart-table table">
                                     <thead>
                                         <tr>
-                                            <th>STT</th>
-                                            <th class="text-center" >GAME ID</th>
+                                            <th>IMG</th>
                                             <th class="text-center">GAME NAME</th>
-                                            <th class="text-center">QUANTITY(USD/1)</th>
-                                            <th class="text-center">TOTAL</th>
+                                            <th class="text-center">Price</th>
+                                            <th class="text-center">Quantity</th>
+                                            <th class="text-center">Total</th>
+                                            <th class="text-right"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-                                            <td class="price text-center">1</td>
-                                            <td class="price text-center"><strong>$32.50</strong></td>
-                                            <td  class="qty text-center"><input readonly class="input" type="number" value="1">
-                                            </td>
-                                            <td class="total text-center"><strong class="primary-color">$32.50</strong>
-                                            </td>
-                                        </tr>
+                                        <div>
+                                            @if($cart != null)
+                                                @foreach($cart->getGame($cart->id) as $game)
+                                                    <tr>
+                                                        <td class="thumb"><img src="{{ $game->getIntroduceImageDirectory() }}" alt=""></td>
+                                                        <td class="text-center">{{ $game->NAME }}</td>
+                                                        <td class="price text-center">
+                                                            <strong>{{$game->getShortSalePrice() }}</strong><br><del
+                                                                class="font-weak"><small>{{$game->getShortPrice()}}</small></del></td>
+
+                                                        <td class="qty text-center">
+                                                            <label id="{{ $game->ID }}">{{ $game->getGameQuantity() }}</label><br>
+                                                        </td>
+                                                        <td class="total text-center">
+                                                            <strong id="gamePrice"
+                                                                class="primary-color">
+                                                                    {{$game->getTotal($cart->id)}}
+                                                            </strong>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                           @endif
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th class="empty" colspan="3"></th>
-                                            <th>SUBTOTAL</th>
-                                            <th colspan="2" class="sub-total">$97.50</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="empty" colspan="3"></th>
                                             <th>TOTAL</th>
-                                            <th colspan="2" class="total">$97.50</th>
+                                            @if($cart != null)
+                                                <th colspan="2" class="sub-total">
+                                                   {{$cart->getTotalPrice($cart->id)}}$
+                                                </th>
+                                            @else
+                                                <th colspan="2" class="sub-total">0.0</th>
+                                            @endif
                                         </tr>
                                     </tfoot>
                                 </table>
                                 <div class="pull-right">
-                                    <a class="primary-btn" href="{{url('/Goback')}}">Go Back</a>
+                                    <a class="primary-btn" href="{{url('/GoBack')}}">Go Back</a>
                                 </div>
                             </div>
                         </div>
@@ -139,6 +160,13 @@
     <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
+    <script>
+  $('#gamePrice').(function(){
+    $game->getShortSalePrice())*($game->getGameQuantity($cart->id)
+    });
+    </script>
+
+
 </body>
 
 </html>

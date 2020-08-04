@@ -46,7 +46,7 @@ class GameShopController extends Controller
         if(!empty($user) && $user->PASSWORD == $pass){
             $request->session()->put('user',$user);
             if($user->TYPE == 0){
-                return redirect("supervisor/member/home")->with('success','Login success');    
+                return redirect("supervisor/member/home")->with('success','Login success');
             }else if($user->TYPE == 1){
                 return redirect("admin/products/home")->with('success','Login success');
             }else{
