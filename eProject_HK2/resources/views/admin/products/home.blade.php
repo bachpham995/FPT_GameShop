@@ -66,7 +66,7 @@
                                     </a>
                                 </div>
                                 <div class="row">
-                                    <a class="btn btn-primary btn-sm" title="Img" onclick="" href="" >
+                                    <a class="btn btn-primary btn-sm" title="Img" onclick="" href="{{url("admin/products/image/".$prd->ID)}}" >
                                         <i class="fa fa-image" aria-hidden="true"></i>
                                     </a>
                                     <a class="btn btn-dark btn-sm" title="Cmt" onclick="" href="{{url("admin/products/comment/".$prd->ID)}}" >

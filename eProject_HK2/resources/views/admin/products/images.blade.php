@@ -1,6 +1,6 @@
 <!-- lưu tại /resources/views/product/create.blade.php -->
 @extends('admin.layout')
-@section('title', 'Comments')
+@section('title', 'Images')
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -9,7 +9,7 @@
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Comments</h3>
+                <h3 class="card-title">Images</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -23,25 +23,23 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th class="text-center">User</th>
-                            <th class="text-center">DESCRIPTION</th>
-                            <th class="text-center">RATING</th>
+                            <th class="text-center">IMAGE</th>
+                            <th class="text-center">USE AS COVER</th>
                             <th class="text-center">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($comments as $cmt)
+                        @foreach($images as $img)
                         <tr>
-                            <td>{{ $cmt->ID }}</td>
-                            <td>{{$cmt->User()}}</td>
-                            <td>{{$cmt->DESCRIPTION}}</td>
-                            <td>{{$cmt->RATING}}</td>
+                            <td class="text-center">{{ $img->ID }}</td>
                             <td class="text-center">
-
-                                <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="{{url("admin/products/deleteComment/".$cmt->ID)}}" >
+                                <img height="150px" width="120px" src="{{$img->URL}}" alt="">
+                            </td>
+                        <td class="text-center">{{$img->COVER==1?'Yes':'No'}}</td>
+                            <td class="text-center">
+                                <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="{{url("admin/products/deleteImage/".$img->ID)}}" >
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
-
                             </td>
 
                         </tr>
@@ -72,13 +70,13 @@
 <script>
     $(document).ready(function() {
         $('#games').DataTable({
-            "pageLength" : 10,
+            "pageLength" :5,
             "paging": true,
             "lengthChange": false,
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false
+            "autoWidth": true
         });
     });
 </script>
