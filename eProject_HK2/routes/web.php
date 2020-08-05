@@ -91,9 +91,9 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('os/update/{id}','Admin\OsController@update');
         Route::post('os/postUpdateOs/{id}','Admin\OsController@postUpdate');
         Route::get('os/delete/{id}','Admin\OsController@delete');
-
-
-
+        // Order
+        Route::get('order/home','Admin\OrderController@home');
+        Route::get('order/detail/{id}','Admin\OrderController@viewDetail');
     });
 //------------SUPERVISOR-------------------------------------------------------------------------
 Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')

@@ -83,10 +83,17 @@ class cart extends Model
         return round($totalPrice,2)." $";
 
     }
-
-    public function getItemCart($id){
+    public static function getItemCart($id){
         $getItemCart = cart_item::where("CART_ID", "=", $id)->get();
         return  $getItemCart;
+    }
+    public function getNameOfUser(){
+        $getUser = user::where("ID", "=", $this->USER_ID)->first();
+        return  $getUser->FNAME." ".$getUser->LNAME;
+    }
+    public function getEmailOfUser(){
+        $getUser = user::where("ID", "=", $this->USER_ID)->first();
+        return  $getUser->EMAIL;
     }
 }
 
