@@ -16,7 +16,8 @@ class CheckoutController extends Controller
 
     public function checkLoginWhenCheckout(){
 
-        $user = session('user')->get()->first();
+        $user = session('user');
+        // dd($user);
         if($user == null){
         return view('client/login');
         }
@@ -32,7 +33,7 @@ class CheckoutController extends Controller
         $t=time();
         $user = session('user')->get()->first();
         $cartNow = session('Cart') ? session('Cart') : null;
-        $cart = new cart($cartNow);
+        $cart = cart::newItem( $cartNow);
         $cart->USER_ID = $user->ID;
         $cart->ORDER_DATE = date("Y-m-d",$t);
         $cart->PAID = 1;

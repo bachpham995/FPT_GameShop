@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
+use App\cart;
 use App\game;
 use App\Http\Controllers\Controller;
-use App\cart;
 use Illuminate\Http\Request;
-use SebastianBergmann\Environment\Console;
 
 class CartController extends Controller
 {
@@ -16,17 +15,17 @@ class CartController extends Controller
         $game = game::find($id);
         if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
-            $newCart = new cart($oldCart);
+            $newCart = cart::newItem($oldCart);
             $newCart->AddCartItem($game, $id);
             $request->session()->put('Cart', $newCart);
         }
-
         return view('client/cart', compact('newCart'));
     }
 
-    public function decreaseQuantity(Request $request, $id){
+    public function decreaseQuantity(Request $request, $id)
+    {
         $game = game::find($id);
-        if($game != null) {
+        if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
             // $newCart = new cart($oldCart);
             //dd($oldCart->game[$id]);
@@ -39,7 +38,7 @@ class CartController extends Controller
     {
 
         $oldCart = session('Cart') ? session('Cart') : null;
-        $newCart = new cart($oldCart);
+        $newCart = cart::newItem($oldCart);
         $newCart->DeleteItemCart($id);
         if (count($newCart->game) > 0) {
             $request->session()->put('Cart', $newCart);
@@ -52,7 +51,7 @@ class CartController extends Controller
     {
         // dd($id);
         $oldCart = session('Cart') ? session('Cart') : null;
-        $newCart = new cart($oldCart);
+        $newCart = cart::newItem($oldCart);
         // dd(1);
         $newCart->DeleteItemCart($id);
 
