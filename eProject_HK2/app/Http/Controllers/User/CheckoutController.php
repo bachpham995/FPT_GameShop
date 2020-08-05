@@ -46,7 +46,6 @@ class CheckoutController extends Controller
                 $cart_item->GAME_QUANTITY= $g['quanty'];
                 $cart_item->DISCOUNT= $g['gameInfor']->SALE;
                 $userCartArr->add($cart_item);
-
             }
             $cart->save();
             foreach ($userCartArr as $cartItem) {

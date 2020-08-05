@@ -1,6 +1,6 @@
 <!-- Lưu tại resources/views/product/index.blade.php -->
 @extends('admin.layout')
-@section('title', 'Operating Systems')
+@section('title', 'Order')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -41,12 +41,12 @@
                         @foreach($cart as $cart)
                         <tr>
                             <td>{{ $cart->ID }}</td>
-                            <td>{{ $cart->getNameOfUser()}}</td>
-                            <td>{{ $cart->getEmailOfUser()}}</td>
+                            <td>{{$cart->getNameOfUser()}}</td>
+                            <td>{{$cart->getEmailOfUser()}}</td>
                             <td>{{ $cart->ORDER_DATE }}</td>
                             <td>{{ $cart->ORDER_DATE }}</td>
                             <td class="text-left">
-                                <a class="btn btn-info btn-sm" href="">
+                                <a class="btn btn-info btn-sm" href="{{url('admin/order/detail/'.$cart->ID)}}">
                                     <i class="fas fa-pencil-alt"></i> View Detail
                                 </a>
                             </td>
