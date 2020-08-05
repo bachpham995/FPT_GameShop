@@ -1,6 +1,6 @@
 <!-- lưu tại /resources/views/product/create.blade.php -->
 @extends('admin.layout')
-@section('title', 'product - create new')
+@section('title', 'Update product')
 @section('content')
 <section class="content">
     <div class="container-fluid">

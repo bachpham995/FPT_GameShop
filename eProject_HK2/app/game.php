@@ -65,7 +65,7 @@ class game extends Model
     }
 
     public function getIntroduceImageDirectory(){
-        $image = game_image::where([["GAME_ID",'=', $this->ID],['ID', '=',$this->ID."_intro"]])->first();
+        $image = game_image::where([["GAME_ID",'=', $this->ID],['COVER','=','1']])->first();
         return $image ? $image->URL : "";
     }
 
