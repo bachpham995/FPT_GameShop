@@ -68,6 +68,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('products/deleteComment/{id}','Admin\ProductController@deleteComment');
         //Images
         Route::get('products/image/{id}','Admin\ProductController@image');
+        Route::get('products/createImage/{id}','Admin\ProductController@createImage');
+        Route::post('products/postCreateImage/{id}','Admin\ProductController@postCreateImage');
         Route::get('products/deleteImage/{id}','Admin\ProductController@deleteImage');
 
         //producer
