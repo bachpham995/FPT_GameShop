@@ -84,7 +84,35 @@ class ProductController extends Controller
 
     public function image($id){
         $images = game_image::where('GAME_ID','=',$id)->get();
-        return view('admin.products.images')->with(["images"=>$images]);
+        return view('admin.products.images',["id"=>$id,"images"=>$images]);
+    }
+
+    public function createImage($id){
+        return view('admin.products.createImage')->with('id', $id);
+    }
+
+    public function postCreateImage(Request $request, $id){
+        if ($request->hasFile('IMAGE')) {
+            $file = $request['IMAGE'];
+            $cover = $request['COVER'];
+
+            $game = game::find($id);
+            $newImage = new game_image();
+            $newImageID = $newImage->nextID();
+
+            $newName = $game->ID."_".$newImageID."_".$file->getClientOriginalName();
+            $file->move('img',$newName);
+            $newImage->URL = '/img/'.$newName;
+            $newImage->COVER = $cover;
+            $newImage->GAME_ID = $id;
+            $newImage->created_at = time();
+            $newImage->ID = $newImageID;
+            $newImage->save();
+
+
+            $images = game_image::where('GAME_ID','=',$id)->get();
+            return redirect()->action('Admin\ProductController@image', ["id"=>$id,"images"=>$images]);
+        }
     }
 
     public function deleteImage($id){
