@@ -51,7 +51,7 @@
                             </div>
                             <div>
                                 <div>
-                                    <table class="shopping-cart-table table">
+                                    <table class="shopping-cart-table table" id="cart-view">
                                         <thead>
                                             <tr>
                                                 <th>IMG</th>

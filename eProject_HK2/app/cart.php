@@ -13,18 +13,10 @@ class cart extends Model
     public $totalQuanty = 0;
 
 
+    public static function newItem($oldCart){
+        return $oldCart != null?$oldCart:new cart();
 
-    public function __construct($cart){
-        if($cart){
-            //dd($cart);
-            $this->game = $cart->game;
-            $this->totalPrice = $cart->totalPrice;
-            $this->totalQuanty = $cart->totalQuanty;
-        }
     }
-
-
-
 
     public function AddCartItem($game,$id){
         $newGame = ['quanty' => 0 , 'price'=>$game->PRICE*((100-$game->SALE)/100),'gameInfor'=>$game ,'img'=>$game->getIntroduceImageDirectory()];
@@ -94,7 +86,7 @@ class cart extends Model
 
     public function getItemCart($id){
         $getItemCart = cart_item::where("CART_ID", "=", $id)->get();
-        dd( $getItemCart);
+        return  $getItemCart;
     }
 }
 

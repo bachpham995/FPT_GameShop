@@ -1,11 +1,11 @@
 {{-- Notification  --}}
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 <!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
 <!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
 <!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <!-- header -->
@@ -65,14 +65,15 @@
                 <!-- Cart -->
                 <li class="header-cart dropdown default-dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <div hidden>{{$ss = Session::get('Cart')}}</div>
+                        <div hidden>{{ $ss = Session::get('Cart') }}</div>
                         <div class="header-btns-icon">
                             <i class="fa fa-shopping-cart"></i>
-                            <div class="clearfix" id="total-quanty"><span class="qty" id="total-quanty-show">{{ $ss? $ss->totalQuanty:'0' }}</span></div>
+                            <div class="clearfix" id="total-quanty"><span class="qty"
+                                    id="total-quanty-show">{{ $ss ? $ss->totalQuanty : '0' }}</span></div>
                         </div>
                         <strong class="text-uppercase">My Cart:</strong>
                         <br>
-                            <span id="total-price-show">{{ $ss?$ss->totalPrice:'0.0$' }}$</span>
+                        <span id="total-price-show">{{ $ss ? $ss->totalPrice : '0.0$' }}$</span>
 
                     </a>
                     <div class="custom-menu cust-dropdown">
@@ -86,26 +87,27 @@
                                                 <div class="product-thumb">
                                                     <img src="{{ $game['img'] }}" alt="">
                                                 </div>
-                                                <div class="product-body">
-                                                    <div>
-                                                        <b href="#">
-                                                            {{ $game['gameInfor']->NAME }}
-                                                        </b>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <b>{{ $game['gameInfor']->PRICE." $" }}</b>
+                                                <a href=""  >
+                                                    <div class="product-body cust-hover">
+                                                        <div>
+                                                            <b class="product-name">
+                                                                {{ $game['gameInfor']->NAME }}
+                                                            </b>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <b>{{ $game['gameInfor']->PRICE . ' $' }}</b>
 
-                                                        <span
-                                                            class="qty"> x {{ $game['quanty'] }}
-                                                        </span>
+                                                            <span class="qty"> x {{ $game['quanty'] }}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-
+                                                </a>
                                                 <input hidden id="total-quanty-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalQuanty }}">
                                                 <input hidden id="total-price-cart" type="number"
                                                     value="{{ Session::get('Cart')->totalPrice }}">
-                                                 <button class="cancel-btn"> {{--onclick="deleteCartItem({{ $game['gameInfor']->ID }})"> --}}
+                                                <button class="cancel-btn">
+                                                    {{--onclick="deleteCartItem({{ $game['gameInfor']->ID }})"> --}}
                                                     <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
                                                 </button>
 
@@ -136,27 +138,28 @@
 </div>
 <!-- container -->
 <script>
-    $("#change-item-cart").on('click', '.cancel-btn i', function (){
-       $.ajax({
-            url:'/DeleteItemCart/'+$(this).data("id"),
+    $("#change-item-cart").on('click', '.cancel-btn i', function() {
+        $.ajax({
+            url: '/DeleteItemCart/' + $(this).data("id"),
             type: 'GET',
-        }).done(function(response){
+        }).done(function(response) {
             RenderCart(response)
-           alertify.success('Success Delete');
+            alertify.success('Success Delete');
         });
-        });
+    });
 
-    function RenderCart(response){
+    function RenderCart(response) {
         $("#change-item-cart").empty();
         $("#change-item-cart").html(response);
-        if((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null){
+        $("#cart-view").load(" #cart-view");
+        if ((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null) {
             $("#total-quanty-show").text($("#total-quanty-cart").val());
             $("#total-price-show").text($("#total-price-cart").val());
-        }else{
+        } else {
             $("#total-quanty-show").text("0");
             $("#total-price-show").text("0.0$");
         }
     }
+
 </script>
 </header>
-

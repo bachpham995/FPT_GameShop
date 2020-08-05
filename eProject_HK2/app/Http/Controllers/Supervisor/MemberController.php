@@ -23,7 +23,7 @@ class MemberController extends Controller
         $regInfo->email = "";
         $regInfo->phone = "";
         $regInfo->address = "";
-
+        
         return $regInfo;
     }
 
