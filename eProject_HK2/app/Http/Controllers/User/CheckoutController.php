@@ -14,20 +14,18 @@ use Illuminate\Support\Facades\DB;
 class CheckoutController extends Controller
 {
 
-    public function checkLoginWhenCheckout(){
-
+    public function checkLoginWhenCheckout(Request $request ){
+        // $request->session('user')->forget;
         $user = session('user');
-        // dd($user);
         if($user == null){
-        return view('client/login');
+        dd($request);
+        // return view('client/login')->with("lastPage",$request['url']);
         }
-        return view('client/checkout')->with(["user"=>$user]);
+        // return view('client/checkout')->with(["user"=>$user]);
     }
     public function checkout(){
         return view('client/checkout');
     }
-
-
 
     public function goBill(Request $request){
         $t=time();

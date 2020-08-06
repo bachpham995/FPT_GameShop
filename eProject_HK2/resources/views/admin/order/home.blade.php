@@ -44,7 +44,13 @@
                             <td>{{$cart->getNameOfUser()}}</td>
                             <td>{{$cart->getEmailOfUser()}}</td>
                             <td>{{ $cart->ORDER_DATE }}</td>
-                            <td>{{ $cart->ORDER_DATE }}</td>
+                            <td>
+                                @if($cart->PAID)
+                                Paid
+                                @else
+                                Waiting
+                                @endif
+                            </td>
                             <td class="text-left">
                                 <a class="btn btn-info btn-sm" href="{{url('admin/order/detail/'.$cart->ID)}}">
                                     <i class="fas fa-pencil-alt"></i> View Detail

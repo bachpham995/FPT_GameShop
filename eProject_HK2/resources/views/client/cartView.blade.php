@@ -113,10 +113,9 @@
                                     </table>
                                 </div>
                             </div>
-
                             <div class="pull-right">
-                                <a class="primary-btn" href="{{ url('/Checkout') }}">Checkout<i
-                                        class="fa fa-arrow-circle-right"></i></a>
+                                <button class="primary-btn" onclick="beforeCheckout()" href="javascript:">Checkout<i
+                                        class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
                     </form>
@@ -158,7 +157,15 @@
                     alertify.success('Success Remove Item');
                 });
             }
-
+            function beforeCheckout(){
+                $.ajax({
+                    url: 'Checkout',
+                    type:'GET',
+                    data:{
+                        url:'/ListCart'
+                    }
+                })
+            }
             function RenderListCart(response) {
                 $("#checkout-form").load(" #checkout-form");
                 $("#total-quanty").load(" #total-quanty");
