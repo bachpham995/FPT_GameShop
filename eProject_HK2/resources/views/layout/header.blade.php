@@ -59,7 +59,7 @@
                                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i></a></li>
                                 <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-check"></i> Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                             </ul>
                         @else
                             <ul class="custom-menu">
