@@ -81,7 +81,7 @@ class SecurityController extends Controller
             user::where('EMAIL', $request->emailForget)->update(['RESET_TOKEN'=> Str::random(60)]);
             $user = user::where('EMAIL', $request->emailForget)->first();
             //Send email reset password.
-            EmailController::sendChangePasswordEmail($user, url('resetPassword')."/".$user->RESET_TOKEN);
+            EmailController ::sendChangePasswordEmail($user, url('resetPassword')."/".$user->RESET_TOKEN);
 
             return redirect('/index');
     	} else {

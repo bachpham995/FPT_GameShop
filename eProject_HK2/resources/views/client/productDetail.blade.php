@@ -11,16 +11,24 @@
 			<div class="row">
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
+				    <div hidden>{{$images = App\game_image::where('GAME_ID', $game->ID)->get()}}</div>
 					<div class="col-md-6">
-						<div id="product-main-view">
-							<div class="product-view">
-								<img  src="{{$game->getIntroduceImageDirectory()}}" style="" alt="">
-							</div>
+						<div  id="product-main-view">
+                            @foreach ($images as $img)
+                                <div class="product-view">
+                                    <img src="{{$img->URL}}" alt="" style="vertical-align: middle">
+                                </div>
+                            @endforeach
+							{{-- <div class="product-view">
+								<img id="product_cover" src="{{$game->getIntroduceImageDirectory()}}" style="" alt="">
+							</div> --}}
 						</div>
 						<div id="product-view">
-							<div class="product-view">
-								<img  src="{{$game->getIntroduceImageDirectory()}}" alt="">
-							</div>
+                            @foreach ($images as $img)
+                                <div class="product-view">
+                                    <img height="160px" width="80px" src="{{$img->URL}}" style="vertical-align: middle" alt="">
+                                </div>
+                            @endforeach
 						</div>
 					</div>
 					<div class="col-md-6">

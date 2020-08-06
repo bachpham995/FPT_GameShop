@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class game_image extends Model
 {
     protected $table = "game_image";
-    protected $fillable = ['URL','created_at','updated_at'];
+    protected $fillable = ['COVER','URL','created_at','updated_at'];
 
     public function nextID(){
         $all = game_image::all();
@@ -15,5 +15,9 @@ class game_image extends Model
             return 1;
         }
         return game_image::all()->pluck("ID")->max() + 1;
+    }
+
+    public function ImageName(){
+        return basename($this->URL);
     }
 }
