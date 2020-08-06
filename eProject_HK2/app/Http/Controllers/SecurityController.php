@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailForgetRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\RegisterRequests;
+use App\Mail\EmailService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\user;
+use Illuminate\Contracts\Session\Session;
+use Symfony\Component\Mime\Email;
 
 class SecurityController extends Controller
 {
@@ -18,13 +23,13 @@ class SecurityController extends Controller
         $request->session()->forget('user');
 
         $user = user::where('EMAIL',$email)->first();
-        
+
         if(!empty($user)){
             $check = Hash::check($pass, $user->PASSWORD);
             if($check){
                 $request->session()->put('user',$user);
                 if($user->TYPE == 0){
-                    return redirect("supervisor/member/home");    
+                    return redirect("supervisor/member/home");
                 }else if($user->TYPE == 1){
                     return redirect("admin/products/home");
                 }else{
@@ -60,20 +65,34 @@ class SecurityController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('user');
-        return redirect('login');
+        return redirect('index');
     }
-    public function getForgotPassword(Request $request)
+    public function getForgotPassword(EmailForgetRequest $request)
     {
         $result = user::where('EMAIL', $request->emailForget)->first();
     	if($result){
             $result2 = user::where('EMAIL', $request->emailForget)->update(['RESET_TOKEN'=> Str::random(60)]);
-            $a = user::where('EMAIL', $request->emailForget)->first();
-            return url('resetPassword')."/".$a->RESET_TOKEN;
+            $user = user::where('EMAIL', $request->emailForget)->first();
+            //Send email reset password.
+            EmailController::sendChangePasswordEmail($user, url('resetPassword')."/".$user->RESET_TOKEN);
+
+            return redirect('/index');
     	} else {
     		return redirect()->back()->with('message','Email does not exist!');
     	}
     }
+
     public function resetPassword($token){
-        $result = user::where('RESET_TOKEN', $token)->first();
+        $result = user::where('RESET_TOKEN',$token)->first();
+        if($result){
+    		return view('security.newPass',['results'=>$result]);
+    	} else {
+    		return "Wrong!!!";
+    	}
+    }
+
+    public function newPass(PasswordResetRequest $request){
+        $result = user::where('ID',$request->userId)->update(['PASSWORD'=>Hash::make($request->password),'RESET_TOKEN'=>null]);
+        return redirect('/index');
     }
 }
