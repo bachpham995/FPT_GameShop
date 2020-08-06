@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class user extends Model
 {
     protected $table = "user";
-    protected $fillable = ['TYPE','FNAME','EMAIL','PASSWORD','ADDRESS','PHONE','updated_at','created_at'];
+    protected $fillable = ['TYPE','FNAME','LNAME','EMAIL','PASSWORD','ADDRESS','PHONE','RESET_TOKEN','updated_at','created_at'];
 
     function UserType(){
         switch ($this->TYPE) {

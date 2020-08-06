@@ -5,8 +5,6 @@ use App\Http\Controllers\Controller;
 
 use App\user;
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\DB;
 class MemberController extends Controller
 {
     public function home()
