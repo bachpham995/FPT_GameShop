@@ -84,5 +84,5 @@ INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1
 
 INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','2','Gameplay hay, đồ họa đẹp', '5');
 
-INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','1','Game xàm vãi', '1');
+INSERT INTO `comment` (`GAME_ID`, `USER_ID`, `DESCRIPTION`, `RATING`) values ('1','1','Game không hay', '1');
 
