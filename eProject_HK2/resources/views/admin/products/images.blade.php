@@ -13,11 +13,13 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-
-
             <div class="card-body">
-                <a class="btn btn-success btn-btn" onclick="history.back()">
+                <a class="btn btn-danger btn-btn" href="{{url('admin/products/home')}}">
                     <font color="white"><i class="fas fa-arrow-left"></i> Back</font>
+                </a>
+                <br><br>
+                <a class="btn btn-success btn-btn" href="{{ url('admin/products/createImage/'.$id)}}">
+                    <i class="fas fa-plus"></i> Add
                 </a>
                 <table id="games" class="table table-bordered table-hover">
                     <thead>
