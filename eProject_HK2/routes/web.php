@@ -39,9 +39,9 @@ Route::get('/DecreaseCart/{id}','User\CartController@decreaseQuantity');
 
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
 Route::get('/ListCart','User\CartController@viewListCart');
-Route::get('/Checkout','User\CheckoutController@checkLoginWhenCheckout');
+Route::get('/Payment','User\CheckoutController@checkLoginWithCheckout');
 Route::get('/Goback','User\CheckoutController@goBack');
-Route::get('/GotoBill','User\CheckoutController@goBill');
+Route::get('/Checkout','User\CheckoutController@checkoutWithBill');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
 Route::get('/Update-Quantity','User\CartController@updateQuantity');
 Route::get('/Comment/{id}','Admin\CommentController@comment');

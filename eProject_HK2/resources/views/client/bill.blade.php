@@ -177,7 +177,9 @@
   $('#gamePrice').(function(){
     $game->getShortSalePrice())*($game->getGameQuantity($cart->id)
     });
-</script>
+    </script>
+
+
 </body>
 
 </html>
