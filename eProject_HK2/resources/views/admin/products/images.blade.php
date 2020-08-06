@@ -39,11 +39,13 @@
                             </td>
                         <td class="text-center">{{$img->COVER==1?'Yes':'No'}}</td>
                             <td class="text-center">
+                                <a class="btn btn-info btn-sm" title="Edit" href="{{ url('admin/products/updateImage/'.$img->ID) }}">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
                                 <a class="btn btn-danger btn-sm" title="Delete" onclick="removeNotify()" href="{{url("admin/products/deleteImage/".$img->ID)}}" >
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>
-
                         </tr>
                         @endforeach
                     </tbody>

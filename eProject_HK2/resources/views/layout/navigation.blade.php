@@ -101,7 +101,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <h3 class="white-color text-uppercase"><a href="{{ url('/products') }}">VIEW ALL</a></h3>
+                                <h3 class="white-color text-uppercase text-center"><a href="{{ url('/products') }}">VIEW ALL</a></h3>
                             </div>
                         </div>
                     </li>

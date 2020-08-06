@@ -10,9 +10,12 @@ use App\game_category;
 use App\game_image;
 use App\game_producer;
 use App\game_publisher;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\Null_;
 
 class ProductController extends Controller
@@ -100,23 +103,72 @@ class ProductController extends Controller
             $newImage = new game_image();
             $newImageID = $newImage->nextID();
 
-            $newName = $game->ID."_".$newImageID."_".$file->getClientOriginalName();
+            $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
             $file->move('img',$newName);
             $newImage->URL = '/img/'.$newName;
+
+            if($cover == '1'){
+                // foreach($images as $img){
+                //     $img->update(['COVER'=>'0']);
+                // }
+                game_image::where('GAME_ID','=',$id)->update(['COVER'=>'0']);
+            }
             $newImage->COVER = $cover;
             $newImage->GAME_ID = $id;
             $newImage->created_at = time();
             $newImage->ID = $newImageID;
             $newImage->save();
 
-
             $images = game_image::where('GAME_ID','=',$id)->get();
             return redirect()->action('Admin\ProductController@image', ["id"=>$id,"images"=>$images]);
         }
     }
 
+    public function updateImage($id){
+        $image = game_image::find($id);
+        return view('admin.products.updateImage')->with('image', $image);
+    }
+
+    public function postUpdateImage(Request $request, $id){
+        $image = game_image::find($id);
+        $images = game_image::where('GAME_ID','=',$image->GAME_ID)->get();
+        $cover = $request['COVER'];
+        $newURL = "";
+        if ($request->hasFile('IMAGE')) {
+            $file = $request['IMAGE'];
+            //Delete Old Image
+            $path_file = "img/".baseName($image->URL);
+            if(File::exists($path_file)) {
+                File::delete($path_file);
+            }
+
+            $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
+            $file->move('img',$newName);
+            $newURL = '/img/'.$newName;
+
+        }else{
+            $newURL = $image->URL;
+        }
+
+        if($cover == '1'){
+            game_image::where('GAME_ID','=',$image->GAME_ID)->update(['COVER'=>'0']);
+        }
+
+          $success = $image->where('ID',$id)
+                    ->update(['URL'=>$newURL, 'COVER'=>$cover]);
+        return redirect()->action('Admin\ProductController@image', ["id"=>$image->GAME_ID,"images"=>$images]);
+    }
+
     public function deleteImage($id){
+        // dd(File::get("img/".baseName(game_image::find($id)->URL)));
+        $path_file = "img/".baseName(game_image::find($id)->URL);
+        if(File::exists($path_file)) {
+            File::delete($path_file);
+        }
+        //dd($imgFile);
+
         game_image::where("ID",$id)->delete();
+
         return redirect()->back();
     }
 

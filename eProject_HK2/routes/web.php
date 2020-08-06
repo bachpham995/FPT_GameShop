@@ -83,6 +83,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('products/createImage/{id}','Admin\ProductController@createImage');
         Route::post('products/postCreateImage/{id}','Admin\ProductController@postCreateImage');
         Route::get('products/deleteImage/{id}','Admin\ProductController@deleteImage');
+        Route::get('products/updateImage/{id}','Admin\ProductController@updateImage');
+        Route::post('products/postUpdateImage/{id}','Admin\ProductController@postUpdateImage');
 
         //producer
         Route::get('producer/home','Admin\ProducerController@home');
