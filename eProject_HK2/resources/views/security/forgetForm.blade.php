@@ -8,6 +8,10 @@
     <p class="text-center">Please enter your email to reset password</p>
     <form action="getForgotPassword" class="form-login" method="POST">
         @csrf
+        @if ($errors->has('emailForget'))
+            <span class="pull-right" style="color: red">{{ $errors->first('emailForget') }}</span>
+        @endif
+        <div class="clearfix"></div>
         <input type="text" class="form-control" name="emailForget" placeholder="Email">
         <input type="submit" class="btn btn-primary" style="margin-top: 10px" value="Reset password">
     </form>

@@ -11,25 +11,27 @@
         </div>
     @endif
 
-    {{-- {{ dd($results) }} --}}
     <form action="{{ url('/newPass') }}" method="POST" class="form-login">
         @csrf
         <input type="text" name="token" value="{{ $results->RESET_TOKEN }}" hidden>
         <input type="text" name="userId" value="{{ $results->ID }}" hidden>
+        @if ($errors->has('password'))
+            <span class="pull-right" style="color: red">{{ $errors->first('password') }}</span>
+        @endif
+        <div class="clearfix"></div>
         <div class="input-group custom-input">
             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
             <input id="password" type="password" class="form-control" name="password" placeholder="New Password">
         </div>
-        {{-- @if ($errors->has('passwordLogin'))
-            <p class="text-right" style="color: red;">{{ $errors->first('passwordLogin') }}</p>
-        @endif --}}
+        @if ($errors->has('confirmPassword'))
+            <span class="pull-right" style="color: red">{{ $errors->first('confirmPassword') }}</span>
+        @endif
+        <div class="clearfix"></div>
         <div class="input-group custom-input">
             <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
-            <input id="passwordConfirm" type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+            <input id="passwordConfirm" type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
         </div>
-        {{-- @if ($errors->has('passwordLogin'))
-            <p class="text-right" style="color: red;">{{ $errors->first('passwordLogin') }}</p>
-        @endif --}}
+        
         <button type="submit" class="btn btn-block btn-primary">Reset Password <i class="fa fa-sign-in"></i></button>
     </form>
     <div class="clearfix"></div>
