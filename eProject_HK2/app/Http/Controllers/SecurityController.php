@@ -8,6 +8,7 @@ use App\Http\Requests\RegisterRequests;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\user;
+use Illuminate\Contracts\Session\Session;
 
 class SecurityController extends Controller
 {
@@ -73,7 +74,17 @@ class SecurityController extends Controller
     		return redirect()->back()->with('message','Email does not exist!');
     	}
     }
+
     public function resetPassword($token){
-        $result = user::where('RESET_TOKEN', $token)->first();
+        $result = user::where('RESET_TOKEN',$token)->first();
+        if($result){
+    		return view('security.newPass',['results'=>$result]);
+    	} else {
+    		return "Wrong!!!";
+    	}
+    }
+
+    public function newPass(Request $request){
+        $result = user::where('ID',$request->userId)->update(['PASSWORD'=>Hash::make($request->password),'RESET_TOKEN'=>null]);
     }
 }

@@ -29,6 +29,8 @@ Route::post('/postRegister','SecurityController@postRegister');
 Route::get('/logout','SecurityController@logout');
 Route::get('/forget','SecurityController@forgetPassword');
 Route::post('/getForgotPassword','SecurityController@getForgotPassword');
+Route::get('/resetPassword/{token}','SecurityController@resetPassword');
+Route::post('/newPass','SecurityController@newPass');
 /*=========================================================================*/
 
 /*=============================Cart======================================*/
