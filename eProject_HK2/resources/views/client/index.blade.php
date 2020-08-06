@@ -158,7 +158,7 @@
 												<span>New</span>
 											</div>
 											<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-											<img src="{{asset('img/product/anno1404.jpg')}}" alt="">
+											<img src="{{asset('img/product/header.jpg')}}" alt="">
 										</div>
 										<div class="product-body product-body-cust">
 											<h2 class="product-name"><a href="#">anno 1404</a></h2>
@@ -705,7 +705,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#1</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -728,7 +728,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#2</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -751,7 +751,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#3</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -774,7 +774,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#4</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -797,7 +797,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#5</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -820,7 +820,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#6</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -843,7 +843,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#7</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -866,7 +866,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#8</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -889,7 +889,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#9</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
@@ -912,7 +912,7 @@
 						<div class="product product-single product-single-cust">
 							<div>
 								<span class="float-left" style="padding: 5px; margin-top:15px;">#10</span>
-								<div class="product-thumb product-thumb-cust float-left">
+								<div class="product-thumb mb-0 float-left">
 									<div class="product-label">
 									</div>
 									{{-- <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button> --}}
