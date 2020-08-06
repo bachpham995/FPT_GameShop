@@ -63,7 +63,7 @@ class SecurityController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('user');
-        return redirect('login');
+        return redirect('index');
     }
     public function getForgotPassword(EmailForgetRequest $request)
     {
