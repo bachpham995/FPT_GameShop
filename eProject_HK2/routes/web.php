@@ -66,6 +66,9 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         //Comments
         Route::get('products/comment/{id}','Admin\ProductController@comment');
         Route::get('products/deleteComment/{id}','Admin\ProductController@deleteComment');
+        //Images
+        Route::get('products/image/{id}','Admin\ProductController@image');
+        Route::get('products/deleteImage/{id}','Admin\ProductController@deleteImage');
 
         //producer
         Route::get('producer/home','Admin\ProducerController@home');

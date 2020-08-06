@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\game;
 use App\game_category;
+use App\game_image;
 use App\game_producer;
 use App\game_publisher;
 
@@ -81,6 +82,15 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function image($id){
+        $images = game_image::where('GAME_ID','=',$id)->get();
+        return view('admin.products.images')->with(["images"=>$images]);
+    }
+
+    public function deleteImage($id){
+        game_image::where("ID",$id)->delete();
+        return redirect()->back();
+    }
 
     public function update($id){
         $product = game::find($id);

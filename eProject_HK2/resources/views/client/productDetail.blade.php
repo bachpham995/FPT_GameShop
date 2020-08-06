@@ -104,39 +104,42 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="product-reviews">
-                                                @foreach ($game->gridComments()[0] as $cmt)
-                                                    <div class="single-review">
-                                                        <div class="review-heading">
-                                                            <b><a ><i class="fa fa-user-o"></i> {{$cmt->User()}}</a></b>
-                                                            <div><a ><i class="fa fa-clock-o"></i> {{$cmt->created_at}}</a></div>
-                                                            <div class="review-rating pull-right">
-                                                                @for($i = 1;$i <= $cmt->RATING;$i++)
-                                                                    <i class="fa fa-star"></i>
-                                                                @endfor
-                                                                @for($i = 1;$i <= 5-$cmt->RATING;$i++)
-                                                                    <i class="fa fa-star-o empty"></i>
-                                                                @endfor
+                                                @if ($game->gridComments()->count()>0)
+                                                    @foreach ($game->gridComments()[0] as $cmt)
+                                                        <div class="single-review">
+                                                            <div class="review-heading">
+                                                                <b><a ><i class="fa fa-user-o"></i> {{$cmt->USER_ID}}</a></b>
+                                                                <div><a ><i class="fa fa-clock-o"></i> {{$cmt->created_at}}</a></div>
+                                                                <div class="review-rating pull-right">
+                                                                    @for($i = 1;$i <= $cmt->RATING;$i++)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @endfor
+                                                                    @for($i = 1;$i <= 5-$cmt->RATING;$i++)
+                                                                        <i class="fa fa-star-o empty"></i>
+                                                                    @endfor
+                                                                </div>
+                                                            </div>
+                                                            <div class="review-body">
+                                                                <p>{{$cmt->DESCRIPTION}}</p>
                                                             </div>
                                                         </div>
-                                                        <div class="review-body">
-                                                            <p>{{$cmt->DESCRIPTION}}</p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
 
-												<ul class="reviews-pages">
-                                                    @for ($i = 1; $i <= $game->commentsPageNum();$i++)
-                                                        @if ($i == 1)
-                                                            <li class="active"><u>{{$i}}</u></li>
-                                                        @else
-                                                            <li><u><a href="javascript:" onclick="goToPage({{$game->ID}},{{$i}})">{{$i}}</a></u></li>
-                                                        @endif
-                                                    @endfor
-													{{-- <li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li> --}}
-													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-												</ul>
+                                                    <ul class="reviews-pages">
+                                                        @for ($i = 1; $i <= $game->commentsPageNum();$i++)
+                                                            @if ($i == 1)
+                                                                <li class="active"><u>{{$i}}</u></li>
+                                                            @else
+                                                                <li><u><a href="javascript:" onclick="goToPage({{$game->ID}},{{$i}})">{{$i}}</a></u></li>
+                                                            @endif
+                                                        @endfor
+                                                        <li><a
+                                                            @if($game->commentsPageNum() > 1)
+                                                                href="javascript"
+                                                                onclick="goToPage({{$game->ID}},{{2}})"
+                                                            @endif><i class="fa fa-caret-right"></i></a></li>
+                                                    </ul>
+                                                @endif
 											</div>
 										</div>
 										<div class="col-md-6">
