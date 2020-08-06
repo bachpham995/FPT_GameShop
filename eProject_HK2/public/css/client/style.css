@@ -457,9 +457,14 @@ textarea.input {
 
 .header-btns .dropdown-toggle {
   display: block;
+  min-height: 40px;
   cursor: pointer;
 }
-
+.custom-name{
+  margin-top: 10px;
+  position: relative;
+  top: 10px;
+}
 .header-account.dropdown .custom-menu>li>a>i {
   margin-right: 15px;
   color: #F8694A;

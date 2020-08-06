@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailForgetRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\RegisterRequests;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -63,7 +65,7 @@ class SecurityController extends Controller
         $request->session()->forget('user');
         return redirect('login');
     }
-    public function getForgotPassword(Request $request)
+    public function getForgotPassword(EmailForgetRequest $request)
     {
         $result = user::where('EMAIL', $request->emailForget)->first();
     	if($result){
@@ -84,7 +86,7 @@ class SecurityController extends Controller
     	}
     }
 
-    public function newPass(Request $request){
+    public function newPass(PasswordResetRequest $request){
         $result = user::where('ID',$request->userId)->update(['PASSWORD'=>Hash::make($request->password),'RESET_TOKEN'=>null]);
     }
 }

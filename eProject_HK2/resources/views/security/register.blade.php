@@ -45,10 +45,10 @@
             <label for="inputPassword">Confirm Password:</label>
             <input type="password" class="form-control" id="inputPassword" name="confirmPassword">
         </div>
-        <a class="pull-right" href="#">Or login >>></a>
         <button type="submit" class="btn btn btn-primary">
             Register
         </button>
+        <a href="{{ url('/index') }}" class="btn btn-default">Cancel</a>
     </form>
     @if(Session::has('message'))
         <div class="alert alert-danger mt-2" role="alert">

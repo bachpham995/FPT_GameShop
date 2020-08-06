@@ -34,8 +34,8 @@
     </form>
     <div class="clearfix"></div>
     <div class="text-center">
-        <p >Don't you have an account? <a href="#" class="text-primary">Sign up</a></p>
-        <p><a href="#" class="text-primary">Forgot your password?</a></p>
+        <p >Don't you have an account? <a href="{{ url('/register') }}" class="text-primary">Sign up</a></p>
+        <p><a href="{{ url('/forget') }}" class="text-primary">Forgot your password?</a></p>
     </div>
 </div>
 
