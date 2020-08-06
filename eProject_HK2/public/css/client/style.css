@@ -1796,7 +1796,12 @@ textarea.input {
 .product-thumb-cust {
   margin-bottom: 0 !important;
 }
-
+.mb-0{
+  margin-bottom: 0 !important;
+}
+.product-thumb-cust>img {
+  min-height: 147px;
+}
 
 .contact-header h1 {
   padding: 50px;
