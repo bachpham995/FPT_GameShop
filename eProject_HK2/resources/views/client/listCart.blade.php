@@ -58,34 +58,7 @@
     </div>
 
     <div class="pull-right">
-        <a class="primary-btn" onclick="beforeCheckout()" href="javescript:">Checkout<i
+        <a href="{{ url('/Checkout') }}" class="primary-btn">Checkout<i
                 class="fa fa-arrow-circle-right"></i></a>
     </div>
 </div>
-<script src="{{ asset('js/client/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/client/slick.min.js') }}"></script>
-        <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
-        <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
-        <script src="{{ asset('js/client/main.js') }}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-        <!-- Default theme -->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
-        <!-- Semantic UI theme -->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
-        <!-- Bootstrap theme -->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
-        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-<script>
-    function beforeCheckout() {
-        $.ajax({
-            url: 'Checkout',
-            type: 'GET',
-            data: {
-                url: '/ListCart'
-            }
-        })
-    }
-
-</script>

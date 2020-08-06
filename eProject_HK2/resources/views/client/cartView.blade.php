@@ -39,7 +39,7 @@
         </div>
         <!-- /BREADCRUMB -->
         <!-- section -->
-        <div class="section"  id="order">
+        <div class="section" id="order">
             <!-- container -->
             <div class="container">
                 <!-- row -->
@@ -64,30 +64,30 @@
                                         </thead>
                                         <tbody>
                                             <div>
-                                                @if(Session::has('Cart') != null)
-                                                    @foreach(Session::get('Cart')
-                                                        ->game as $game)
+                                                @if (Session::has('Cart') != null)
+                                                    @foreach (Session::get('Cart')->game as $game)
                                                         <tr>
                                                             <td class="thumb"><img src="{{ $game['img'] }}" alt=""></td>
                                                             <td class="text-center">{{ $game['gameInfor']->NAME }}</td>
                                                             <td class="price text-center">
-                                                                <strong>{{$game['gameInfor']->getShortSalePrice() }}</strong><br><del
-                                                                    class="font-weak"><small>{{$game['gameInfor']->getShortPrice()}}</small></del></td>
+                                                                <strong>{{ $game['gameInfor']->getShortSalePrice() }}</strong><br><del
+                                                                    class="font-weak"><small>{{ $game['gameInfor']->getShortPrice() }}</small></del>
+                                                            </td>
 
                                                             <td class="qty text-center">
                                                                 <input class="btn btn-success btn-btn" type="button"
-                                                                    onclick ="remove({{ $game['gameInfor']->ID }})"
+                                                                    onclick="remove({{ $game['gameInfor']->ID }})"
                                                                     value="-">
                                                                 <input class="input" type="button"
-                                                                    id="{{ $game['gameInfor']->ID }}" value="{{ $game['quanty'] }}">
+                                                                    id="{{ $game['gameInfor']->ID }}"
+                                                                    value="{{ $game['quanty'] }}">
                                                                 <input class="btn btn-success btn-btn" type="button"
-                                                                    onclick ="add({{ $game['gameInfor']->ID }})"
-                                                                    value="+">
+                                                                    onclick="add({{ $game['gameInfor']->ID }})" value="+">
                                                             </td>
 
                                                             <td class="total text-center">
                                                                 <strong id="gamePrice"
-                                                                    class="primary-color">{{ $game['price']}}$
+                                                                    class="primary-color">{{ $game['price'] }}$
                                                                 </strong>
                                                             </td>
                                                             <td class="text-right">
@@ -102,8 +102,9 @@
                                             <tr>
                                                 <th class="empty" colspan="3"></th>
                                                 <th>TOTAL</th>
-                                                @if(Session::has('Cart') != null)
-                                                    <th colspan="2" class="sub-total">{{ Session::get('Cart')->totalPrice }}$
+                                                @if (Session::has('Cart') != null)
+                                                    <th colspan="2" class="sub-total">
+                                                        {{ Session::get('Cart')->totalPrice }}$
                                                     </th>
                                                 @else
                                                     <th colspan="2" class="sub-total">0.0</th>
@@ -114,8 +115,15 @@
                                 </div>
                             </div>
                             <div class="pull-right">
-                                <button class="primary-btn" onclick="beforeCheckout()" href="javascript:">Checkout<i
-                                        class="fa fa-arrow-circle-right"></i></button>
+                                @if (Session::has('user') != null)
+                                    {{-- {{dd(Session::get('user'))}} --}}
+                                    <input hidden id="hdnSession" data-value="0">
+                                @else
+                                    {{-- {{dd(Session::get('user'))}} --}}
+                                    <input hidden id="hdnSession" data-value="1">
+                                @endif
+                                <a id="goToCheckout" href="{{url('/Checkout')}}" class="primary-btn">Checkout<i
+                                        class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </form>
@@ -145,9 +153,28 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
         <!-- Bootstrap theme -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
         <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
         <script>
+            $('#goToCheckout').click(function() {
+                var sessionCheck = $("#hdnSession").data('value');
+                console.log(sessionCheck);
+                if (confirm('Do you want to pay this shit???')) {
+                    if (sessionCheck == 1) {
+                        if (confirm('You should be login frist')) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                        return true;
+                    }
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
             function DeleteItemListCart(id) {
                 $.ajax({
                     url: 'Delete-Item-List-Cart/' + id,
@@ -157,36 +184,30 @@
                     alertify.success('Success Remove Item');
                 });
             }
-            function beforeCheckout(){
-                $.ajax({
-                    url: 'Checkout',
-                    type:'GET',
-                    data:{
-                        url:'/ListCart'
-                    }
-                })
-            }
+
             function RenderListCart(response) {
                 $("#checkout-form").load(" #checkout-form");
                 $("#total-quanty").load(" #total-quanty");
                 $("#total-price-show").load(" #total-price-show");
                 $("#change-item-cart").load(" #change-item-cart");
             }
-            function add(id){
+
+            function add(id) {
                 $.ajax({
-                    url:'AddCart/'+id,
+                    url: 'AddCart/' + id,
                     type: 'GET',
-                }).done(function(response){
+                }).done(function(response) {
                     RenderListCart(response);
                     alertify.success('Success Add Quantity');
                 });
             }
 
-            function remove(id){
+
+            function remove(id) {
                 $.ajax({
-                    url:'DecreaseCart/'+id,
+                    url: 'DecreaseCart/' + id,
                     type: 'GET',
-                }).done(function(response){
+                }).done(function(response) {
                     RenderListCart(response);
                     alertify.success('Success Remove Quantity');
                 });
@@ -195,15 +216,14 @@
 
             function something(id) {
                 $.ajax({
-                    url: '/Update-Quantity', // gửi ajax đến file result.php
-                    type: "GET", // chọn phương thức gửi là post
-                    // dataType: "json", // dữ liệu trả về dạng text
-                    data:{
-                            "id": id,
-                            "quantity": $("#"+id).val()
-                        },
+                    url: '/Update-Quantity',
+                    type: "GET",
+                    data: {
+                        "id": id,
+                        "quantity": $("#" + id).val()
+                    },
                     success: function(response) {
-                        $("#"+id).html(response);
+                        $("#" + id).html(response);
                     }
                 });
             }
