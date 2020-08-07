@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->integer('RATING')->nullable();
             $table->string('DESCRIPTION',255)->nullable();
             $table->timestamps();
+            $table->bigInteger('REPLY_ID')->nullable();
         });
         Schema::table('comment', function(Blueprint $table) {
             $table->foreign('GAME_ID')->references('ID')->on('game')->onDelete('CASCADE')->onUpdate('RESTRICT');

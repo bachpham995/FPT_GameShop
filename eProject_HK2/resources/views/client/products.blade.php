@@ -24,16 +24,17 @@
                         <span class="sale">{{$product->getSale()}}</span>
                     </div>
                     <a href="{{url('productDetail/'.$product->ID)}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</a>
-                    <img height="320px" width="150px" src="{{$product->getIntroduceImageDirectory()}}" alt="">
+                    <img src="{{$product->getIntroduceImageDirectory()}}" alt="">
                 </div>
 
                 <div class="product-body product-body-cust">
                     <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o empty"></i>
+                        @for($i = 1;$i <= $product->Rating();$i++)
+                            <i class="fa fa-star"></i>
+                        @endfor
+                        @for($i = 1;$i <= 5-$product->Rating();$i++)
+                            <i class="fa fa-star-o empty"></i>
+                        @endfor
                     </div>
                     <div class="clearfix"></div>
                     <h2 class="product-name"><a href="#">{{$product->NAME}}</a></h2>
@@ -69,6 +70,7 @@
         $.ajax({
             url:'AddCart/'+id,
             type: 'GET',
+            data:{ qty : 1}
         }).done(function(response){
             RenderCart(response)
            alertify.success('Success Add');
@@ -86,4 +88,6 @@
         }
     }
 </script>
+
+
 @endsection

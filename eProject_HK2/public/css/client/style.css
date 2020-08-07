@@ -1347,9 +1347,28 @@ textarea.input {
   padding: 7.5px;
 }
 
-.product-view>img {
-  width: 50%;
+.product-view {
+  width: 100%;
 }
+.video{
+  height: 310px !important;
+}
+
+.suggest-product{
+    height: 25% !important;
+}
+
+.product-view>img {
+    width: 100%;
+  }
+
+.product-view>iframe {
+    width: 100%;
+    height: 75px;
+}
+
+
+
 
 /*----------------------------*\
 	Product details
