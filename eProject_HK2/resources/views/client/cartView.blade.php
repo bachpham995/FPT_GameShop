@@ -75,8 +75,13 @@
                                                             </td>
 
                                                             <td class="qty text-center">
-                                                                <input class="btn btn-success btn-btn" type="button"
-                                                                    onclick="remove({{ $game['gameInfor']->ID }})"
+                                                                <input type="button"
+                                                                    @if($game['quanty'] > 0)
+                                                                        class="btn btn-success btn-btn"
+                                                                        onclick="remove({{ $game['gameInfor']->ID }})"
+                                                                    @else
+                                                                        class="btn btn-danger btn-btn"
+                                                                    @endif
                                                                     value="-">
                                                                 <input class="input" type="button"
                                                                     id="{{ $game['gameInfor']->ID }}"
@@ -201,6 +206,7 @@
                 $.ajax({
                     url: 'AddCart/' + id,
                     type: 'GET',
+                    data:{ qty : 1 }
                 }).done(function(response) {
                     RenderListCart(response);
                     alertify.success('Success Add Quantity');

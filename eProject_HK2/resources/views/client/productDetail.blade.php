@@ -1,6 +1,10 @@
 
 @extends('layout.layout')
 @section('content')
+{{-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+// Add the new slick-theme.css if you want the default styling
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> --}}
+
 
 <body>
     <!-- section -->
@@ -11,25 +15,34 @@
 			<div class="row">
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
-				    <div hidden>{{$images = App\game_image::where('GAME_ID', $game->ID)->get()}}</div>
 					<div class="col-md-6">
 						<div  id="product-main-view">
-                            @foreach ($images as $img)
+                            @foreach (App\game_image::where('GAME_ID', $game->ID)->get() as $img)
                                 <div class="product-view">
-                                    <img src="{{$img->URL}}" alt="" style="vertical-align: middle">
+                                    <img src="{{$img->URL}}" alt="" ">
                                 </div>
                             @endforeach
-							{{-- <div class="product-view">
-								<img id="product_cover" src="{{$game->getIntroduceImageDirectory()}}" style="" alt="">
-							</div> --}}
+                            @if ($game->LINKDEMO != null)
+                                <div class="product-view video">
+                                    <iframe class="video"src="{{$game->LINKDEMO}}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            @endif
 						</div>
 						<div id="product-view">
-                            @foreach ($images as $img)
+                            @foreach (App\game_image::where('GAME_ID', $game->ID)->get() as $img)
                                 <div class="product-view">
-                                    <img height="160px" width="80px" src="{{$img->URL}}" style="vertical-align: middle" alt="">
+                                    <img src="{{$img->URL}}" alt="">
                                 </div>
                             @endforeach
-						</div>
+                            @if ($game->LINKDEMO != null)
+                                <div class="product-view">
+                                    <iframe id="video-view" src="{{$game->LINKDEMO}}"
+                                        allowfullscreen>
+                                        </iframe>
+                                </div>
+                            @endif
+
+                        </div>
 					</div>
 					<div class="col-md-6">
 						<div class="product-body">
@@ -39,7 +52,7 @@
 							</div>
                             <h1 class="product-name">{{$game->NAME}}</h1>
                             <h2 class="product-price">{{$game->getShortSalePrice()}}<del class="product-old-price"> {{$game->getShortPrice()}}</del></h2>
-                            <div>
+                            <div id="product_rating">
                                 <strong>Rating:</strong>
 								<div class="product-rating">
                                     @for($i = 1;$i <= $game->Rating();$i++)
@@ -48,14 +61,8 @@
                                     @for($i = 1;$i <= 5-$game->Rating();$i++)
                                         <i class="fa fa-star-o empty"></i>
                                     @endfor
-
-									{{-- <i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o empty"></i> --}}
 								</div>
-								<a href="#">3 Review(s) / Add Review</a>
+								<a href="">{{$game->Comments()->count()}} Comments(s)</a>
 							</div>
                             <p><strong>Status:</strong> {{$game->getStatus()}}</p>
                             <p><strong>Categories(s):</strong> {{$game->getCategories()}}</p>
@@ -63,25 +70,13 @@
                             <p><strong>Producer(s):</strong> {{$game->getProducers()}}</p>
                         <p><strong>Features:</strong>{{$game->FEATURE}}</p>
 							<div class="product-options">
-								{{-- <ul class="size-option">
-									<li><span class="text-uppercase">Size:</span></li>
-									<li class="active"><a href="#">S</a></li>
-									<li><a href="#">XL</a></li>
-									<li><a href="#">SL</a></li>
-								</ul> --}}
-								{{-- <ul class="color-option">
-									<li><span class="text-uppercase">Color:</span></li>
-									<li class="active"><a href="#" style="background-color:#475984;"></a></li>
-									<li><a href="#" style="background-color:#8A2454;"></a></li>
-									<li><a href="#" style="background-color:#BF6989;"></a></li>
-									<li><a href="#" style="background-color:#9A54D8;"></a></li>
-								</ul> --}}
+
 							</div>
 
 							<div class="product-btns">
 								<div class="qty-input">
 									<span class="text-uppercase">QTY: </span>
-									<input class="input" type="number">
+									<input id="product_quantity" value="1" class="input" type="number">
 								</div>
 							<a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
 								<div class="pull-right">
@@ -116,7 +111,7 @@
                                                     @foreach ($game->gridComments()[0] as $cmt)
                                                         <div class="single-review">
                                                             <div class="review-heading">
-                                                                <b><a ><i class="fa fa-user-o"></i> {{$cmt->USER_ID}}</a></b>
+                                                                <b><a ><i class="fa fa-user-o"></i> {{$cmt->User()}}</a></b>
                                                                 <div><a ><i class="fa fa-clock-o"></i> {{$cmt->created_at}}</a></div>
                                                                 <div class="review-rating pull-right">
                                                                     @for($i = 1;$i <= $cmt->RATING;$i++)
@@ -143,9 +138,10 @@
                                                         @endfor
                                                         <li><a
                                                             @if($game->commentsPageNum() > 1)
-                                                                href="javascript"
+                                                                href="javascript:"
                                                                 onclick="goToPage({{$game->ID}},{{2}})"
-                                                            @endif><i class="fa fa-caret-right"></i></a></li>
+                                                            @endif><i class="fa fa-caret-right"></i></a>
+                                                        </li>
                                                     </ul>
                                                 @endif
 											</div>
@@ -172,7 +168,9 @@
 											</div>
 										</div>
 									</div>
-								</div>
+                                </div>
+                                <div id="tab3" class="tab-pane fade in">
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -192,49 +190,83 @@
 			<!-- row -->
 			<div class="row">
 				<!-- section title -->
-				<div class="col-md-12">
+				{{-- <div class="col-md-12"> --}}
 					<div class="section-title">
 						<h2 class="title">Picked For You</h2>
 					</div>
-				</div>
-				<!-- section title -->
+                {{-- </div> --}}
+            </div>
 
-				<!-- Product Single -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="product product-single">
-						<div class="product-thumb">
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="" alt="">
-						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50</h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /Product Single -->
-			</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="autoplay">
+                        @foreach ($game->getRandomGames() as $rd)
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="product product-single product-single-cust" style="min-height: 252px">
+                                    <div>
+                                        <div class="product-thumb product-thumb-cust">
+                                            <div class="product-label">
+                                                <span>New</span>
+                                                <span class="sale">{{$rd->getSale()}}</span>
+                                            </div>
+                                            <a href="{{url('productDetail/'.$rd->ID)}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> View</a>
+                                            <img height="160px" src="{{$rd->getIntroduceImageDirectory()}}" alt="">
+                                        </div>
+
+                                        <div class="product-body product-body-cust">
+                                            <div class="product-rating">
+                                                @for($i = 1;$i <= $rd->Rating();$i++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+                                                @for($i = 1;$i <= 5-$rd->Rating();$i++)
+                                                    <i class="fa fa-star-o empty"></i>
+                                                @endfor
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <h2 class="product-name"><a href="#">{{$rd->NAME}}</a></h2>
+                                            @if ($rd->SALE > 0)
+                                                <p  class="product-price product-price-cust">{{$rd->getShortSalePrice()}}<del class="product-old-price"> {{$rd->getShortPrice()}}</del></p>
+                                            @else
+                                                <p  class="product-price product-price-cust">{{$rd->getShortSalePrice()}}</p>
+                                            @endif
+                                        {{-- <a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a> --}}
+                                            <a onclick="AddCartFromSuggest({{$rd->ID}})" href="javascript:" class="btn btn-sm primary-btn add-to-cart float-right">
+                                                <i class="fa fa-shopping-cart"></i> ADD TO CART</a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+                <!-- section title -->
+
+                <!-- Product Single -->
+
 			<!-- /row -->
 		</div>
 		<!-- /container -->
 	</div>
-	<!-- /section -->
+    <!-- /section -->
+    <br>
 
 </body>
 
 <script>
+    $(document).ready(function(){
+        $('#autoplay').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000
+        });
+    });
+
+
+    document.getElementById("video-view").style.pointerEvents = "none";
     function goToPage(id,pageID){
         $data = {page : pageID};
         $.ajax({
@@ -246,18 +278,36 @@
             $("#informations").empty();
             $("#informations").html(response);
             $('.tab-nav a[href="#tab2"]').tab('show');
-            alertify.success('Success Add');
         });
     }
 
     function AddCart(id){
+        $productQty = document.getElementById("product_quantity").value
+        if($productQty > 0){
+            $.ajax({
+                url:'/AddCart/'+id,
+                type: 'GET',
+                data:{ qty : $productQty }
+            }).done(function(response){
+                RenderCart(response)
+                alertify.success('Success Add');
+            });
+        }else{
+            alertify.error('Quantity must be higher than 0');
+        }
+    }
+
+    function AddCartFromSuggest(id){
+        $productQty = 1;
         $.ajax({
             url:'/AddCart/'+id,
-            type: 'GET'
+            type: 'GET',
+            data:{ qty : $productQty }
         }).done(function(response){
             RenderCart(response)
             alertify.success('Success Add');
         });
+
     }
     function RenderCart(response){
         $("#change-item-cart").empty();
@@ -295,6 +345,7 @@
             }).done(function(response){
                 $("#informations").empty();
                 $("#informations").html(response);
+                $("#product_rating").load(" #product_rating");
                 $('.tab-nav a[href="#tab2"]').tab('show');
                 alertify.success('Your comment has been published successfully');
             });

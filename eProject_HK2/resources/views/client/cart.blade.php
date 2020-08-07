@@ -1,8 +1,7 @@
 
 
-@if (Session::has('Cart') != null)
-@foreach(Session::get('Cart')->game as
-    $game)
+@if (Session::has('Cart') != null and Session::get('Cart')->game != null)
+@foreach(Session::get('Cart')->game as $game)
     <div class="product product-widget">
         <div class="product-thumb">
             <img src="{{ $game['img'] }}" alt="">

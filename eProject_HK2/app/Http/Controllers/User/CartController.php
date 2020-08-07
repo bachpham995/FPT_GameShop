@@ -16,7 +16,10 @@ class CartController extends Controller
         if ($game != null) {
             $oldCart = session('Cart') ? session('Cart') : null;
             $newCart = cart::newItem($oldCart);
-            $newCart->AddCartItem($game, $id);
+            for ($i=1; $i <= $request['qty']; $i++) {
+                $newCart->AddCartItem($game, $id);
+            }
+
             $request->session()->put('Cart', $newCart);
         }
         return view('client/cart', compact('newCart'));

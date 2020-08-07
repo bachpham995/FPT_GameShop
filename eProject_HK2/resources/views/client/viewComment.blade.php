@@ -21,7 +21,7 @@
                             @foreach ($game->gridComments()[$page?($page-1):0] as $cmt)
                                 <div class="single-review">
                                     <div class="review-heading">
-                                        <b><a ><i class="fa fa-user-o"></i> {{$cmt->USER_ID}}</a></b>
+                                        <b><a ><i class="fa fa-user-o"></i> {{$cmt->User()}}</a></b>
                                         <div><a ><i class="fa fa-clock-o"></i> {{$cmt->created_at}}</a></div>
                                         <div class="review-rating pull-right">
                                             @for($i = 1;$i <= $cmt->RATING;$i++)
@@ -48,7 +48,7 @@
                                 @endfor
                                 <li><a
                                     @if($page < $game->commentsPageNum())
-                                        href="javascript"
+                                        href="javascript:"
                                         onclick="goToPage({{$game->ID}},{{$page + 1}})"
                                     @endif><i class="fa fa-caret-right"></i></a></li>
                             </ul>
@@ -76,6 +76,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="tab3" class="tab-pane fade in">
             </div>
         </div>
     </div>

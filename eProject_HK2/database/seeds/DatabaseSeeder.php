@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
         $this->call(producerSeeder::class);
         $this->call(publisherSeeder::class);
         $this->call(osSeeder::class);
-    } 
+    }
 }
 
 class userSeeder extends Seeder {
@@ -26,7 +26,7 @@ class userSeeder extends Seeder {
             ['TYPE'=>'1','FNAME'=>'Hóa','LNAME'=>'Nguyễn Vũ Hoàng','EMAIL'=>'nguyenvuhoanghoa95@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận Bình Thạnh','PHONE'=>'0123456789'],
             ['TYPE'=>'2','FNAME'=>'Someone','LNAME'=>'Nguyễn','EMAIL'=>'someone@gmail.com','PASSWORD'=>Hash::make('User12345'),'ADDRESS'=>'Somewhere','PHONE'=>'0123456789'],
         ]);
-    } 
+    }
 }
 class categorySeeder extends Seeder {
     public function run()
@@ -95,7 +95,7 @@ class osSeeder extends Seeder {
 class gameSeeder extends Seeder {
     public function run()
     {
-        
+
     }
 }
 class commentSeeder extends Seeder {
