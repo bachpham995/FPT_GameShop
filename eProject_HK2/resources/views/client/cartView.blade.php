@@ -115,16 +115,19 @@
                                 </div>
                             </div>
 
-                            <div class="pull-right">
+                            <div class="pull-right" id="checkout-button">
                                 @if (Session::has('user') != null)
-                                    {{-- {{dd(Session::get('user'))}} --}}
                                     <input hidden id="hdnSession" data-value="0">
                                 @else
-                                    {{-- {{dd(Session::get('user'))}} --}}
                                     <input hidden id="hdnSession" data-value="1">
                                 @endif
-                                <a id="goToCheckout" href="{{url('/Checkout')}}" class="primary-btn">Checkout<i
-                                        class="fa fa-arrow-circle-right"></i></a>
+                                @if (Session::has('Cart') != null)
+                                    <a id="goToCheckout" href="{{ url('/Checkout') }}" class="primary-btn">Checkout<i
+                                            class="fa fa-arrow-circle-right"></i></a>
+                                @else
+                                    <a href="{{ url('/index') }}" class="primary-btn">Go To Index Page<i
+                                            class="fa fa-arrow-circle-right"></i></a>
+                                @endif
                             </div>
                         </div>
                     </form>
@@ -161,9 +164,9 @@
             $('#goToCheckout').click(function() {
                 var sessionCheck = $("#hdnSession").data('value');
                 console.log(sessionCheck);
-                if (confirm('Do you want to pay this shit???')) {
+                if (confirm('Do you want to pay this ?')) {
                     if (sessionCheck == 1) {
-                        if (confirm('You should be login frist')) {
+                        if (confirm('You should be login frist !')) {
                             return true;
                         } else {
                             return false;
@@ -191,6 +194,7 @@
                 $("#total-quanty").load(" #total-quanty");
                 $("#total-price-show").load(" #total-price-show");
                 $("#change-item-cart").load(" #change-item-cart");
+                $("#checkout-button").load(" #checkout-button");
             }
 
             function add(id) {
