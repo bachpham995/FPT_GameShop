@@ -88,6 +88,8 @@ class game extends Model
                 break;
         }
     }
+
+
     public function nextID(){
         $all = game::all();
         if(sizeof($all) == 0){
@@ -95,6 +97,7 @@ class game extends Model
         }
         return game::all()->pluck("ID")->max() + 1;
     }
+
     public function getGameQuantity($id){
         $gameId = 0;
         $arrayGameId = cart_item::where("CART_ID",'=',$id)->pluck("GAME_ID");
@@ -107,6 +110,7 @@ class game extends Model
         $gameQuantity = cart_item::where([["CART_ID",'=',$id],["GAME_ID",'=',$gameId]])->pluck("GAME_QUANTITY");
         return  $gameQuantity[0] ? $gameQuantity[0] : null;
     }
+
     public function  getTotal($quantity){
         $total = 0;
         $priceOfGame = $this->PRICE;
@@ -151,5 +155,9 @@ class game extends Model
         }
 
         return intval(ceil($amount/$pageLenght));
+    }
+
+    public function getRandomGames(){
+        return game::inRandomOrder()->where('ID','!=',$this->ID)->limit(10)->get();
     }
 }

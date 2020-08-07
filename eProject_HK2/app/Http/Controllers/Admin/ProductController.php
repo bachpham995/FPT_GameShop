@@ -104,13 +104,10 @@ class ProductController extends Controller
             $newImageID = $newImage->nextID();
 
             $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
-            $file->move('img',$newName);
-            $newImage->URL = '/img/'.$newName;
+            $file->move('img/product',$newName);
+            $newImage->URL = '/img/product/'.$newName;
 
             if($cover == '1'){
-                // foreach($images as $img){
-                //     $img->update(['COVER'=>'0']);
-                // }
                 game_image::where('GAME_ID','=',$id)->update(['COVER'=>'0']);
             }
             $newImage->COVER = $cover;
@@ -143,8 +140,8 @@ class ProductController extends Controller
             }
 
             $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
-            $file->move('img',$newName);
-            $newURL = '/img/'.$newName;
+            $file->move('img/product',$newName);
+            $newURL = '/img/product/'.$newName;
 
         }else{
             $newURL = $image->URL;

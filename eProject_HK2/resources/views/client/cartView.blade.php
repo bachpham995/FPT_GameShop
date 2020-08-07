@@ -64,9 +64,8 @@
                                         </thead>
                                         <tbody>
                                             <div>
-                                                @if(Session::has('Cart') != null)
-                                                    @foreach(Session::get('Cart')
-                                                        ->game as $game)
+                                                @if (Session::has('Cart') != null)
+                                                    @foreach(Session::get('Cart')->game as $game)
                                                         <tr>
                                                             <td class="thumb"><img src="{{ $game['img'] }}" alt=""></td>
                                                             <td class="text-center">{{ $game['gameInfor']->NAME }}</td>
@@ -75,8 +74,13 @@
                                                                     class="font-weak"><small>{{$game['gameInfor']->getShortPrice()}}</small></del></td>
 
                                                             <td class="qty text-center">
-                                                                <input class="btn btn-success btn-btn" type="button"
-                                                                    onclick ="remove({{ $game['gameInfor']->ID }})"
+                                                                <input type="button"
+                                                                    @if($game['quanty'] > 0)
+                                                                        class="btn btn-success btn-btn"
+                                                                        onclick="remove({{ $game['gameInfor']->ID }})"
+                                                                    @else
+                                                                        class="btn btn-danger btn-btn"
+                                                                    @endif
                                                                     value="-">
                                                                 <input class="input" type="button"
                                                                     id="{{ $game['gameInfor']->ID }}" value="{{ $game['quanty'] }}">
@@ -169,7 +173,8 @@
                 $.ajax({
                     url:'AddCart/'+id,
                     type: 'GET',
-                }).done(function(response){
+                    data:{ qty : 1 }
+                }).done(function(response) {
                     RenderListCart(response);
                     alertify.success('Success Add Quantity');
                 });
