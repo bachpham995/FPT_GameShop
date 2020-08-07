@@ -457,9 +457,14 @@ textarea.input {
 
 .header-btns .dropdown-toggle {
   display: block;
+  min-height: 40px;
   cursor: pointer;
 }
-
+.custom-name{
+  margin-top: 10px;
+  position: relative;
+  top: 10px;
+}
 .header-account.dropdown .custom-menu>li>a>i {
   margin-right: 15px;
   color: #F8694A;
@@ -1796,7 +1801,12 @@ textarea.input {
 .product-thumb-cust {
   margin-bottom: 0 !important;
 }
-
+.mb-0{
+  margin-bottom: 0 !important;
+}
+.product-thumb-cust>img {
+  min-height: 147px;
+}
 
 .contact-header h1 {
   padding: 50px;

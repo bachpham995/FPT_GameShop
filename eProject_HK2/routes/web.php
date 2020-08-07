@@ -12,30 +12,42 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Cart
+
+/*==============================Main=====================================*/
+Route::get('/demoIndex','User\HomeController@index');
+Route::get('/index','GameShopController@index');
+Route::get('/login','GameShopController@login');
+Route::get('/products','GameShopController@products');
+Route::get('/productDetail/{id}','GameShopController@viewProductdetail');
+Route::get('/About','GameShopController@viewAbout');
+Route::get('/contact','GameShopController@contact');
+Route::get('/support','GameShopController@support');
+Route::get('/register','GameShopController@register');
+/*==========================Security=========================================*/
+Route::post('/checkLog','SecurityController@checkLog');
+Route::post('/postRegister','SecurityController@postRegister');
+Route::get('/logout','SecurityController@logout');
+Route::get('/forget','SecurityController@forgetPassword');
+Route::post('/getForgotPassword','SecurityController@getForgotPassword');
+Route::get('/resetPassword/{token}','SecurityController@resetPassword');
+Route::post('/newPass','SecurityController@newPass');
+/*=========================================================================*/
+
+/*=============================Cart======================================*/
 Route::get('/AddCart/{id}','User\CartController@addCart');
 Route::get('/DecreaseCart/{id}','User\CartController@decreaseQuantity');
 
 Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
 Route::get('/ListCart','User\CartController@viewListCart');
 Route::get('/Checkout','User\CheckoutController@checkLoginWhenCheckout');
-Route::get('/GoBack','User\CheckoutController@goBack');
+Route::get('/Goback','User\CheckoutController@goBack');
 Route::get('/GotoBill','User\CheckoutController@goBill');
-Route::get('/About','Admin\GameShopController@viewAbout');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
 Route::get('/Update-Quantity','User\CartController@updateQuantity');
-Route::get('/productDetail/{id}','Admin\GameShopController@viewProductdetail');
 Route::get('/Comment/{id}','Admin\CommentController@comment');
 Route::get('/ToCommentPage/{id}','Admin\CommentController@goToPage');
-//Cart
-Route::get('/demoIndex','User\HomeController@index');
-Route::get('/index','Admin\GameShopController@index');
-Route::get('/login','Admin\GameShopController@login');
-Route::get('/products','Admin\GameShopController@products');
-Route::post('/checkLog','Admin\GameShopController@checkLog');
-Route::get('/contact','Admin\GameShopController@contact');
-Route::get('/support','Admin\GameShopController@support');
-Route::get('/register','Admin\GameShopController@register');
+/*=========================================================================*/
+
 //------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
     ->group(function(){
@@ -68,6 +80,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('products/deleteComment/{id}','Admin\ProductController@deleteComment');
         //Images
         Route::get('products/image/{id}','Admin\ProductController@image');
+        Route::get('products/createImage/{id}','Admin\ProductController@createImage');
+        Route::post('products/postCreateImage/{id}','Admin\ProductController@postCreateImage');
         Route::get('products/deleteImage/{id}','Admin\ProductController@deleteImage');
 
         //producer
@@ -108,17 +122,3 @@ Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')
         Route::get('member/update/{id}','Supervisor\MemberController@update');
         Route::post('member/postUpdate/{id}','Supervisor\MemberController@postUpdate');
     });
-
-//------------------USER---------------------------------------------------------------------------
-Route::prefix('user')->name('user')->middleware('CheckLogin')
-    ->group(function(){
-        // Route::get('details/{accountid}','GameShopController@details');
-        Route::get('register','UserController@register');
-        Route::post('postRegister', 'UserController@postRegister');
-        Route::get('myAccount','UserController@myAccount');
-        Route::get('signin','UserController@signin');
-        Route::post('checkSignin','UserController@checkSignin');
-        Route::get('userList', 'UserController@userList');
-    });
-
-/* -------------------User ------------------------------------------------------*/

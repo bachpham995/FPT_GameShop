@@ -53,7 +53,7 @@
     </div>
 
     <div class="pull-right">
-        <a class="primary-btn" href="{{ url('/Payment') }}">Checkout<i
+        <a href="{{ url('/Checkout') }}" class="primary-btn">Checkout<i
                 class="fa fa-arrow-circle-right"></i></a>
     </div>
 </div>

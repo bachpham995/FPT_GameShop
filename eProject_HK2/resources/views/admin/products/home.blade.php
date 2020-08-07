@@ -78,7 +78,7 @@
                             <td>{{$prd->getCategories() }}</td>
                             <td>{{$prd->getPublishers()}}</td>
                             <td>{{$prd->getProducers()}}</td>
-                            <td>...</td>
+                            <td title="{{$prd->DESCRIPTION}}">...</td>
                             <td>{{$prd->getStatus()}}</td>
                             <td>{{ $prd->PRICE." $"}}</td>
 

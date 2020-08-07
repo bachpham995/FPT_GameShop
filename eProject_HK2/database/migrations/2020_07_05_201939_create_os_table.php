@@ -15,7 +15,7 @@ class CreateOsTable extends Migration
     {
         Schema::create('os', function (Blueprint $table) {
             $table->unsignedBigInteger('ID')->autoIncrement();
-            $table->string('NAME',100)->nullable();
+            $table->string('NAME',150)->nullable();
             $table->timestamps();
         });
     }
