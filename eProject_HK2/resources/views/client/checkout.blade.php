@@ -15,6 +15,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/style.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/login.css') }}" />
+
 </head>
 
 <body>
@@ -64,24 +65,60 @@
 							</div>
 							<div class="input-checkbox">
 								<input type="radio" name="payments" id="payments-1" checked>
-								<label for="payments-1">Pay by bank account</label>
+								<label for="payments-1">Buy with another way</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-										<p>
+                                  <p>If you want to purchase another way, please contact email bachpham995@gmail.com or contact phone number 0123456789<p>
 								</div>
 							</div>
 							<div class="input-checkbox">
 								<input type="radio" name="payments" id="payments-2">
 								<label for="payments-2">Pay with Visa cart/Credit card</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-										<p>
+                                    <div class="creditCardForm">
+                                        <div class="payment">
+                                            <form>
+                                                <div class="form-group owner">
+                                                    <label for="owner">Card Number</label>
+                                                    <input type="text" class="form-control" id="owner">
+                                                </div>
+                                                <div class="form-group" id="card-number-field">
+                                                    <label for="cardNumber">CVC/CVV</label>
+                                                    <input type="text" class="form-control" id="cardNumber">
+                                                </div>
+                                                <div class="form-group" id="expiration-date">
+                                                    <label>Expiry date</label>
+                                                    <select>
+                                                        <option value="01">January</option>
+                                                        <option value="02">February </option>
+                                                        <option value="03">March</option>
+                                                        <option value="04">April</option>
+                                                        <option value="05">May</option>
+                                                        <option value="06">June</option>
+                                                        <option value="07">July</option>
+                                                        <option value="08">August</option>
+                                                        <option value="09">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <select>
+                                                        <option value="16"> 2016</option>
+                                                        <option value="17"> 2017</option>
+                                                        <option value="18"> 2018</option>
+                                                        <option value="19"> 2019</option>
+                                                        <option value="20"> 2020</option>
+                                                        <option value="21"> 2021</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
 								</div>
 							</div>
 						</div>
                     </div>
                     <div class="pull-right">
-                        <a class="primary-btn" href="{{url('/GotoBill')}}">GO BILL</a>
+                        <a class="primary-btn" href="{{url('GotoBill/'.$user->ID)}}">GO BILL</a>
                     </div>
                 </form>
             </div>
@@ -90,7 +127,6 @@
         <!-- /container -->
     </div>
     <!-- /section -->
-
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER -->
@@ -102,6 +138,7 @@
     <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
+
 
 
 </body>

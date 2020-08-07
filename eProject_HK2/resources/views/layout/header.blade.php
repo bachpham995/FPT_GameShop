@@ -159,6 +159,7 @@
         $("#change-item-cart").empty();
         $("#change-item-cart").html(response);
         $("#cart-view").load(" #cart-view");
+        $("#checkout-button").load(" #checkout-button");
         if ((($("#total-quanty-cart").val()) && ($("#total-price-cart").val())) != null) {
             $("#total-quanty-show").text($("#total-quanty-cart").val());
             $("#total-price-show").text($("#total-price-cart").val());

@@ -11,12 +11,32 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick-theme.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/nouislider.min.css') }}" />
-    {{-- <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> --}}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/style.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/login.css') }}" />
-</head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+</head>
+<style>
+    .invoice-title h2,
+    .invoice-title h3 {
+        display: inline-block;
+    }
+
+    .table>tbody>tr>.no-line {
+        border-top: none;
+    }
+
+    .table>thead>tr>.no-line {
+        border-bottom: none;
+    }
+
+    .table>tbody>tr>.thick-line {
+        border-top: 2px solid;
+    }
+</style>
 <body>
     <!-- HEADER -->
     @include('layout.header')
@@ -24,149 +44,139 @@
     <!-- NAVIGATION -->
     @include('layout.navigation')
     <!-- /NAVIGATION -->
-    <!-- BREADCRUMB -->
-    <div id="breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Checkout</li>
-            </ul>
-        </div>
-    </div>
-    <!-- /BREADCRUMB -->
     <!-- section -->
     <div class="section">
-        <!-- container -->
         <div class="container">
-            <!-- row -->
             <div class="row">
-                <form id="checkout-form" class="clearfix">
-                    <div class="col-md-6">
-                        {{-- <p>Already a customer ? <a href="#">Login</a></p> --}}
-                        <div class="billing-details">
-                            <div class="section-title">
-                                <h4 class="title">Billing Details</h4>
-                            </div>
-                            <div class="input-checkbox">
-                                @if($user != null)
-                                <label>NAME:</label>
-                                <label for="name">{{ $user->LNAME }} {{ $user->FNAME }}</label><br>
-                                <label>Email:</label>
-                                <label for="email">{{ $user->EMAIL }}</label><br>
-                                <label>Adress:</label>
-                                <label for="address">{{ $user->ADDRESS }}</label><br>
-                                <label>Phone:</label>
-                                <label for="phone">{{ $user->PHONE }}</label><br>
-                                @endif
+                <div class="col-xs-12">
+                    <div class="invoice-title">
+                        <h2>Bill DevilShop</h2>
+                        <h3 class="pull-right">Order # 12345</h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="billing-details">
+                                <div>
+                                    <h4 class="title">Billing Details</h4>
+                                </div>
+                                <div class="input-checkbox">
+                                    @if ($user != null)
+                                        <label>NAME:</label>
+                                        <label for="name">{{ $user->LNAME }} {{ $user->FNAME }}</label><br>
+                                        <label>Email:</label>
+                                        <label for="email">{{ $user->EMAIL }}</label><br>
+                                        <label>Adress:</label>
+                                        <label for="address">{{ $user->ADDRESS }}</label><br>
+                                        <label>Phone:</label>
+                                        <label for="phone">{{ $user->PHONE }}</label><br>
+                                    @endif
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <div class="payments-methods">
+                                <div>
+                                    <h4 class="title">Cart detail</h4>
+                                </div>
+                                <div class="input-checkbox">
+                                    <label>Orders Code:</label>
+                                    <label for="ID">
+                                        @if ($cart != null)
+                                            {{ $cart->id }}
+                                        @endif
+                                    </label><br>
+                                    <label>Order Day:</label>
+                                    <label for="ORDER_DATE">
+                                        @if ($cart != null)
+                                            {{ $cart->ORDER_DATE }}
+                                        @endif
+                                    </label><br>
+                                    <label>Status:</label>
+                                    <label for="status">
+                                        @if ($cart != null)
+                                            @if ($cart->PAID != 0)
+                                                Paid
+                                            @else
+                                                Waiting
+                                            @endif
+                                        @endif
+                                    </label><br>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="payments-methods">
-							<div class="section-title">
-								<h4 class="title">Cart detail</h4>
-							</div>
-                            <div class="input-checkbox">
-                                <label>Orders Code:</label>
-                                <label for="ID">
-                                    @if($cart != null)
-                                    {{$cart->id}}
-                                    @endif
-                                </label><br>
-                                <label>Order Day:</label>
-                                <label for="ORDER_DATE">
-                                    @if($cart != null)
-                                    {{$cart->ORDER_DATE}}
-                                    @endif
-                                </label><br>
-                                <label>Status:</label>
-                                <label for="status">
-                                    @if($cart != null)
-                                    @if($cart->PAID != 0)
-                                         Paid
-                                    @else
-                                        Waiting
-                                    @endif
-                                    @endif
-                                </label><br>
-                            </div>
-						</div>
-                    </div>
-                    <div class="col-md-12">
-                        <div>
-                            <div class="order-summary clearfix">
-                                <div class="section-title">
-                                    <h3 class="title">Bill Review</h3>
-                                </div>
-                                <table class="shopping-cart-table table">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Order summary</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed">
                                     <thead>
                                         <tr>
-                                            <th>IMG</th>
-                                            <th class="text-center">GAME NAME</th>
-                                            <th class="text-center">Price</th>
-                                            <th class="text-center">Quantity</th>
-                                            <th class="text-center">Total</th>
-                                            <th class="text-right"></th>
+                                            <td><strong>Item</strong></td>
+                                            <td class="text-center" ><strong>Name</strong></td>
+                                            <td class="text-center"><strong>Price</strong></td>
+                                            <td class="text-center"><strong>Quantity</strong></td>
+                                            <td class="text-right"><strong>Totals</strong></td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <div>
-                                            @if($cart != null)
-                                                @foreach($cart->getGame($cart->id) as $game)
-                                                    <tr>
-                                                        <td class="thumb"><img src="{{ $game->getIntroduceImageDirectory() }}" alt=""></td>
-                                                        <td class="text-center">{{ $game->NAME }}</td>
-                                                        <td class="price text-center">
-                                                            <strong>{{$game->getShortSalePrice() }}</strong><br><del
-                                                                class="font-weak"><small>{{$game->getShortPrice()}}</small></del></td>
-
-                                                        <td class="qty text-center">
-                                                            <label id="{{ $game->ID }}">{{ $game->getGameQuantity($cart->id) }}</label><br>
-                                                        </td>
-                                                        <td class="total text-center">
-                                                            <strong id="gamePrice"
-                                                                class="primary-color">
-                                                                    {{$game->getTotal($game->getGameQuantity($cart->id))}}
-                                                            </strong>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                           @endif
+                                        @if ($cart != null)
+                                            @foreach ($cart->getGame($cart->id) as $game)
+                                                <tr>
+                                                    <td>{{ $game->ID }}</td>
+                                                    <td class="text-center">{{ $game->NAME }}</td>
+                                                    <td class="price text-center">
+                                                        <strong>{{ $game->getShortSalePrice() }}</strong>
+                                                    </td>
+                                                    <td class="qty text-center">
+                                                        <label
+                                                            id="{{ $game->ID }}">{{ $game->getGameQuantity($cart->id) }}</label><br>
+                                                    </td>
+                                                    <td class="total text-right">
+                                                        <strong id="gamePrice" class="primary-color">
+                                                            {{ $game->getTotal($game->getGameQuantity($cart->id)) }}
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line text-right"><strong>Subtotal</strong></td>
+                                    @if ($cart != null)
+                                        <td colspan="2" class="thick-line text-right">
+                                            {{ $cart->getTotalPrice($cart->id) }}
+                                        </td>
+                                    @else
+                                        <td colspan="2" class="thick-line text-right">0.0</td>
+                                    @endif
+                                    </tr>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th class="empty" colspan="3"></th>
-                                            <th>TOTAL</th>
-                                            @if($cart != null)
-                                                <th colspan="2" class="sub-total">
-                                                   {{$cart->getTotalPrice($cart->id)}}
-                                                </th>
-                                            @else
-                                                <th colspan="2" class="sub-total">0.0</th>
-                                            @endif
-                                        </tr>
-                                    </tfoot>
                                 </table>
-                                <div class="pull-right">
-                                    <a class="primary-btn" href="{{url('/GoBack')}}">Go Back</a>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-            <!-- /row -->
         </div>
         <!-- /container -->
     </div>
     <!-- /section -->
-
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER -->
-
     <!-- jQuery Plugins -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="{{ asset('js/client/jquery.min.js') }}"></script>
     <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/client/3slick.min.js') }}"></script>
@@ -174,10 +184,11 @@
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
     <script>
-  $('#gamePrice').(function(){
-    $game->getShortSalePrice())*($game->getGameQuantity($cart->id)
-    });
-</script>
+        $('#gamePrice').(function() {
+            $game - > getShortSalePrice()) * ($game - > getGameQuantity($cart - > id)
+        });
+
+    </script>
 </body>
 
 </html>

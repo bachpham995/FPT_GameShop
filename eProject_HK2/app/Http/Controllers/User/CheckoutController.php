@@ -6,6 +6,7 @@ use App\cart;
 use App\cart_item;
 use App\game;
 use App\Http\Controllers\Controller;
+use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -13,25 +14,26 @@ class CheckoutController extends Controller
 {
 
     public function checkLoginWhenCheckout(Request $request)
-    {   
-        // $request->session()->forget('user');
+    {
         $user = session('user');
-        // dd($user);
         if ($user == null) {
             $request->session()->put('redirect','/ListCart');
             return view('security/login');
         }
-        return view('client/checkout')->with(["user" => $user]);
+        if($user->TYPE == 2){
+             return view('client/checkout')->with(["user" => $user]);
+        }
+        return view('client/index');
     }
     public function checkout()
     {
         return view('client/checkout');
     }
 
-    public function goBill(Request $request)
+    public function goBill(Request $request,$id)
     {
         $t = time();
-        $user = session('user')->get()->first();
+        $user = user::find($id);
         $cartNow = session('Cart') ? session('Cart') : null;
         $cart = cart::newItem($cartNow);
         $cart->USER_ID = $user->ID;
@@ -52,7 +54,6 @@ class CheckoutController extends Controller
                 $cartItem->CART_ID = $cart->id;
                 $cartItem->save();
             }
-            // dd(DB::table('cart_item')->where('CART_ID',31)->get());
             $request->session()->forget('Cart');
             return view('client/bill')->with(["user" => $user, "cart" => $cart]);
         }
