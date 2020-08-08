@@ -41,13 +41,12 @@ Route::get('/DeleteItemCart/{id}','User\CartController@deleteItemCart');
 Route::get('/ListCart','User\CartController@viewListCart');
 Route::get('/Checkout','User\CheckoutController@checkLoginWhenCheckout');
 Route::get('/Goback','User\CheckoutController@goBack');
-Route::get('/GotoBill','User\CheckoutController@goBill');
+Route::get('/GotoBill/{id}','User\CheckoutController@goBill');
 Route::get('/Delete-Item-List-Cart/{id}','User\CartController@deleteItemListCart');
 Route::get('/Update-Quantity','User\CartController@updateQuantity');
 Route::get('/Comment/{id}','Admin\CommentController@comment');
 Route::get('/ToCommentPage/{id}','Admin\CommentController@goToPage');
 /*=========================================================================*/
-
 //------------ADMIN-----------------------------------------------------------------------------
 Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
     ->group(function(){
@@ -114,8 +113,6 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
 //------------SUPERVISOR-------------------------------------------------------------------------
 Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')
     ->group(function(){
-        //admin
-        Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
         //member
         Route::get('member/home','Supervisor\MemberController@home');
         Route::get('member/delete/{id}','Supervisor\MemberController@delete');
