@@ -113,8 +113,6 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
 //------------SUPERVISOR-------------------------------------------------------------------------
 Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')
     ->group(function(){
-        //admin
-        Route::get('resetPassword/{accountid}','Admin\GameShopController@resetPassword');
         //member
         Route::get('member/home','Supervisor\MemberController@home');
         Route::get('member/delete/{id}','Supervisor\MemberController@delete');
