@@ -114,8 +114,7 @@
                         </ul>
                     </li>
                     <li><a href="{{url('/About')}}">About</a></li>
-                    <li><a href="#">Contact</a></li>
-
+                    <li><a href="{{url('/contact')}}">Contact</a></li>
                 </ul>
             </div>
             <!-- menu nav -->
