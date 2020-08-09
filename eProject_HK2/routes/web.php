@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*==============================Main=====================================*/
-Route::get('/demoIndex','User\HomeController@index');
 Route::get('/index','GameShopController@index');
 Route::get('/login','GameShopController@login');
 Route::get('/products','GameShopController@products');

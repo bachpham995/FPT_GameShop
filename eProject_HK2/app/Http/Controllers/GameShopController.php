@@ -90,28 +90,21 @@ class GameShopController extends Controller
 
         // $id = $request->session()->get('client')->ID;
         $id = $request->input('txtId');
-
-
         $customer = DB::table('user')->where('ID', $id)->first();
 
         $check = Hash::check($curPass, $customer->PASSWORD);
-
         if(!$check) {
             return redirect()->back()->with('wrongPass', '*Wrong password!');
         }
-
         if($newPass == $curPass) {
             return redirect()->back()->with('samePass', '*Your new password is the same as current passoword, please change different password!');
         }
-
         if($newPass != $conPass) {
             return redirect()->back()->with('wrongConfirm', '*Your confirm password is not meet!');
         }
-
         DB::table('user')->where('ID', $id)->update([
-            'PASSWORD' => $newPass
+            'PASSWORD' =>  Hash::make($newPass)
         ]);
-
         return redirect()->action('GameShopController@myAccount');
     }
 

@@ -42,7 +42,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ url('postChangePassword') }}" method="post" enctype="multipart/form-data">
+                    <form  role="form" action="{{ url('postChangePassword') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
                             {{-- <div class="form-group">
@@ -51,15 +51,15 @@
                             </div> --}}
                             <div class="form-group" style="display: none;">
                                 <label for="txt-name">Current Password</label>
-                                <input type="text" class="form-control" id="txt-id" name="txtId" placeholder="First Name" value="{{ $user->ID }}" required>
+                                <input  type="password" class="form-control" id="txt-id" name="txtId" placeholder="First Name" value="{{ $user->ID }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="txt-name">Current Password</label>
-                                <input type="text" class="form-control"  name="txtPassword" placeholder="CURRENT PASSWORD" required>
+                                <input type="password" class="form-control"  name="txtPassword" placeholder="CURRENT PASSWORD" required>
                             </div>
                             <div class="form-group">
                                 <label for="txt-price">New Password</label>
-                                <input type="text" class="form-control" name="txtNewPassword" placeholder="NEW PASSWORD"  required>
+                                <input type="password" class="form-control" name="txtNewPassword" placeholder="NEW PASSWORD"  required>
                             </div>
                             <div class="form-group">
                                 <label>Confirm New Password</label>
@@ -78,9 +78,6 @@
         </div>
     </div>
 </section>
-
-
-
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER-->
