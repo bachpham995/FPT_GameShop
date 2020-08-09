@@ -11,12 +11,12 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick-theme.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/nouislider.min.css') }}" />
-    {{--
-    <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> --}}
+  
+    <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/style.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/login.css') }}" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 
 </head>
 <style>
@@ -36,7 +36,14 @@
     .table>tbody>tr>.thick-line {
         border-top: 2px solid;
     }
+
+    .logo-custom {
+        width: 300px;
+        height: 100px;
+    }
+
 </style>
+
 <body>
     <!-- HEADER -->
     @include('layout.header')
@@ -50,8 +57,12 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="invoice-title">
-                        <h2>Bill DevilShop</h2>
-                        <h3 class="pull-right">Order # 12345</h3>
+                        <img class="logo-custom" src="/img/logo.png">
+                        <h3 class="pull-right">Order #
+                            @if ($cart != null)
+                            {{ $cart->id }}
+                            @endif
+                        </h3>
                     </div>
                     <hr>
                     <div class="row">
@@ -122,7 +133,7 @@
                                     <thead>
                                         <tr>
                                             <td><strong>Item</strong></td>
-                                            <td class="text-center" ><strong>Name</strong></td>
+                                            <td class="text-center"><strong>Name</strong></td>
                                             <td class="text-center"><strong>Price</strong></td>
                                             <td class="text-center"><strong>Quantity</strong></td>
                                             <td class="text-right"><strong>Totals</strong></td>
@@ -149,17 +160,17 @@
                                                 </tr>
                                             @endforeach
                                         @endif
-                                    <td class="thick-line"></td>
-                                    <td class="thick-line"></td>
-                                    <td class="thick-line text-right"><strong>Subtotal</strong></td>
-                                    @if ($cart != null)
-                                        <td colspan="2" class="thick-line text-right">
-                                            {{ $cart->getTotalPrice($cart->id) }}
-                                        </td>
-                                    @else
-                                        <td colspan="2" class="thick-line text-right">0.0</td>
-                                    @endif
-                                    </tr>
+                                        <td class="thick-line"></td>
+                                        <td class="thick-line"></td>
+                                        <td class="thick-line text-right"><strong>Subtotal</strong></td>
+                                        @if ($cart != null)
+                                            <td colspan="2" class="thick-line text-right " >
+                                                {{ $cart->getTotalPrice($cart->id) }}
+                                            </td>
+                                        @else
+                                            <td colspan="2" class="thick-line text-right">0.0</td>
+                                        @endif
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -183,12 +194,12 @@
     <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
-    <script>
+    {{-- <script>
         $('#gamePrice').(function() {
-            $game - > getShortSalePrice()) * ($game - > getGameQuantity($cart - > id)
-        });
+                    $game - > getShortSalePrice() * ($game - > getGameQuantity($cart - > id)
+                    });
 
-    </script>
+    </script> --}}
 </body>
 
 </html>

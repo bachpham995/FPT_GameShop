@@ -18,12 +18,12 @@ class CheckoutController extends Controller
         $user = session('user');
         if ($user == null) {
             $request->session()->put('redirect','/ListCart');
-            return view('security/login');
+            return redirect('security/login');
         }
         if($user->TYPE == 2){
-             return view('client/checkout')->with(["user" => $user]);
+             return redirect('index')->with(["user" => $user]);
         }
-        return view('client/index');
+        return redirect('index');
     }
     public function checkout()
     {
