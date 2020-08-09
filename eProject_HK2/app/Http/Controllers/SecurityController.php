@@ -30,15 +30,8 @@ class SecurityController extends Controller
                     return redirect("supervisor/member/home");
                 } else if ($user->TYPE == 1) {
                     return redirect("admin/products/home");
-                } else {
-                    $request->session()->put('client', $user);
-
-                    $check = session('redirect');
-                    if ($check != null) {
-                        return redirect()->action('User\CartController@viewListCart');
-                    } else {
-                        return redirect("index");
-                    }
+                }else{
+                    return redirect()->action('User\CheckoutController@checkLogin');
                 }
             } else {
                 return redirect()->back()->with('message', 'Wrong email or password!');
