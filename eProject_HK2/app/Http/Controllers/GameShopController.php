@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\feedback;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\game;
+use App\Http\Requests\ContactRequest;
 use App\user;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -43,6 +46,18 @@ class GameShopController extends Controller
     public function contact(){
         return view('client.contact');
     }
+
+    public function postMessage(ContactRequest $request){
+        $message = $request->all();
+        $feedback = new feedback();
+        $feedback->NAME = $message['name'];
+        $feedback->EMAIL = $message['email'];
+        $feedback->SUBJECT = $message['subject'];
+        $feedback->MESSAGE = $message['message'];
+        $feedback->save();
+        return redirect('contact')->with('success','Your message was sent success');
+    }
+
     public function support(){
         return view('client.support');
     }
@@ -101,7 +116,6 @@ class GameShopController extends Controller
         $newPass = $request->input('txtNewPassword');
         $conPass = $request->input('txtConPassword');
 
-        // $id = $request->session()->get('client')->ID;
         $id = $request->input('txtId');
         $customer = DB::table('user')->where('ID', $id)->first();
 

@@ -20,6 +20,7 @@ Route::get('/products','GameShopController@products');
 Route::get('/productDetail/{id}','GameShopController@viewProductdetail');
 Route::get('/About','GameShopController@viewAbout');
 Route::get('/contact','GameShopController@contact');
+Route::post('/postMessage','GameShopController@postMessage');
 Route::get('/support','GameShopController@support');
 Route::get('/register','GameShopController@register');
 Route::get('/myAccount','GameShopController@myAccount');

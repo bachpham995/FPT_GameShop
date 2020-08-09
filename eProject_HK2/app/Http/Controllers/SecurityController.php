@@ -32,13 +32,11 @@ class SecurityController extends Controller
                     return redirect("admin/products/home");
                 } else {
                     $request->session()->put('client', $user);
-                    
+
                     $check = session('redirect');
                     if ($check != null) {
                         return redirect()->action('User\CartController@viewListCart');
                     } else {
-                        
-
                         return redirect("index");
                     }
                 }
@@ -83,29 +81,31 @@ class SecurityController extends Controller
     public function getForgotPassword(EmailForgetRequest $request)
     {
         $result = user::where('EMAIL', $request->emailForget)->first();
-    	if($result){
-            user::where('EMAIL', $request->emailForget)->update(['RESET_TOKEN'=> Str::random(60)]);
+        if ($result) {
+            user::where('EMAIL', $request->emailForget)->update(['RESET_TOKEN' => Str::random(60)]);
             $user = user::where('EMAIL', $request->emailForget)->first();
             //Send email reset password.
-            EmailController ::sendChangePasswordEmail($user, url('resetPassword')."/".$user->RESET_TOKEN);
+            EmailController::sendChangePasswordEmail($user, url('resetPassword') . "/" . $user->RESET_TOKEN);
 
             return redirect('/index');
-    	} else {
-    		return redirect()->back()->with('message','Email does not exist!');
-    	}
+        } else {
+            return redirect()->back()->with('message', 'Email does not exist!');
+        }
     }
 
-    public function resetPassword($token){
-        $result = user::where('RESET_TOKEN',$token)->first();
-        if($result){
-    		return view('security.newPass',['results'=>$result]);
-    	} else {
-    		return "Wrong!!!";
-    	}
+    public function resetPassword($token)
+    {
+        $result = user::where('RESET_TOKEN', $token)->first();
+        if ($result) {
+            return view('security.newPass', ['results' => $result]);
+        } else {
+            return "Wrong!!!";
+        }
     }
 
-    public function newPass(PasswordResetRequest $request){
-        $result = user::where('ID',$request->userId)->update(['PASSWORD'=>Hash::make($request->password),'RESET_TOKEN'=>null]);
+    public function newPass(PasswordResetRequest $request)
+    {
+        $result = user::where('ID', $request->userId)->update(['PASSWORD' => Hash::make($request->password), 'RESET_TOKEN' => null]);
         return redirect('/index');
     }
 }
