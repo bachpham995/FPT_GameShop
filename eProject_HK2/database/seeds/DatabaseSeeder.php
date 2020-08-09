@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(categoryGameSeeder::class);
         $this->call(producerGameSeeder::class);
         $this->call(publisherGameSeeder::class);
+        $this->call(orderGameSeeder::class);
+        $this->call(orderItemGameSeeder::class);
     } 
 }
 
@@ -415,6 +418,46 @@ class producerGameSeeder extends Seeder {
             ['GAME_ID' => '48','PRODUCER_ID' => '4'],
             ['GAME_ID' => '49','PRODUCER_ID' => '3'],
             ['GAME_ID' => '50','PRODUCER_ID' => '2'],
+        ]);
+    }
+}
+class orderGameSeeder extends Seeder {
+    public function run()
+    {
+        $mytime = Carbon::now()->format('d-m-Y');
+        DB::table('cart')->insert([
+            ['USER_ID' => '5','ORDER_DATE' => '2020-10-08','PAID' => '1'],
+            ['USER_ID' => '5','ORDER_DATE' => '2020-10-09','PAID' => '1'],
+            ['USER_ID' => '5','ORDER_DATE' => '2020-10-10','PAID' => '1'],
+            ['USER_ID' => '5','ORDER_DATE' => '2020-10-11','PAID' => '1'],
+            ['USER_ID' => '5','ORDER_DATE' => '2020-11-11','PAID' => '1'],
+        ]);
+    }
+}
+class orderItemGameSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('cart_item')->insert([
+            ['CART_ID' => '1', 'GAME_ID' => '1', 'GAME_QUANTITY' => '20'],
+            ['CART_ID' => '1', 'GAME_ID' => '21', 'GAME_QUANTITY' => '5'],
+            ['CART_ID' => '1', 'GAME_ID' => '32', 'GAME_QUANTITY' => '3'],
+            ['CART_ID' => '1', 'GAME_ID' => '40', 'GAME_QUANTITY' => '2'],
+            ['CART_ID' => '2', 'GAME_ID' => '2', 'GAME_QUANTITY' => '10'],
+            ['CART_ID' => '2', 'GAME_ID' => '23', 'GAME_QUANTITY' => '5'],
+            ['CART_ID' => '2', 'GAME_ID' => '30', 'GAME_QUANTITY' => '3'],
+            ['CART_ID' => '2', 'GAME_ID' => '45', 'GAME_QUANTITY' => '2'],
+            ['CART_ID' => '3', 'GAME_ID' => '10', 'GAME_QUANTITY' => '10'],
+            ['CART_ID' => '3', 'GAME_ID' => '12', 'GAME_QUANTITY' => '5'],
+            ['CART_ID' => '3', 'GAME_ID' => '42', 'GAME_QUANTITY' => '3'],
+            ['CART_ID' => '3', 'GAME_ID' => '16', 'GAME_QUANTITY' => '2'],
+            ['CART_ID' => '4', 'GAME_ID' => '17', 'GAME_QUANTITY' => '10'],
+            ['CART_ID' => '4', 'GAME_ID' => '33', 'GAME_QUANTITY' => '5'],
+            ['CART_ID' => '4', 'GAME_ID' => '27', 'GAME_QUANTITY' => '3'],
+            ['CART_ID' => '4', 'GAME_ID' => '4', 'GAME_QUANTITY' => '2'],
+            ['CART_ID' => '5', 'GAME_ID' => '1', 'GAME_QUANTITY' => '20'],
+            ['CART_ID' => '5', 'GAME_ID' => '21', 'GAME_QUANTITY' => '5'],
+            ['CART_ID' => '5', 'GAME_ID' => '32', 'GAME_QUANTITY' => '3'],
+            ['CART_ID' => '5', 'GAME_ID' => '40', 'GAME_QUANTITY' => '2'],
         ]);
     }
 }
