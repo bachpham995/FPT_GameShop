@@ -94,7 +94,7 @@
                                                 <div class="product-thumb">
                                                     <img src="{{ $game['img'] }}" alt="">
                                                 </div>
-                                                <a href=""  >
+                                                <a href="{{url('productDetail/'.$game['gameInfor']->ID)}}"  >
                                                     <div class="product-body cust-hover">
                                                         <div>
                                                             <b class="product-name">
@@ -117,7 +117,6 @@
                                                     {{--onclick="deleteCartItem({{ $game['gameInfor']->ID }})"> --}}
                                                     <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
                                                 </button>
-
                                             </div>
                                         @endforeach
                                     @endif

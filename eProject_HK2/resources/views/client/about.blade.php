@@ -43,15 +43,26 @@
     .image-user {
         vertical-align: middle;
         border-radius: 50%;
-        width:200px;
-        height:200px;
-        
+        width: 200px;
+        height: 200px;
+
     }
-    .displayTable{
-        margin-top:30px;
+
+    .displayTable {
+        margin-top: 30px;
     }
-    .displayTableCell{
+
+    .displayTableCell {
         font-size: 18px;
+    }
+
+    .backgound {
+        background-image: url('./img/1065466.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 80%;
+        margin-left: 200px;
     }
 
 </style>
@@ -63,8 +74,7 @@
     <!-- NAVIGATION -->
     @include('layout.navigation')
     <!-- /NAVIGATION -->
-    <div
-        style="background-image: url('./img/1065466.png');background-size: cover; background-repeat: no-repeat;background-attachment: fixed;">
+    <div class="backgound">
         <div class="container text-center">
             <img src="./img/logo.png" style="margin-right:70px" alt="">
             <h3>Fun is the main</h3>
@@ -98,7 +108,7 @@
                         --}}
                         <h4>Product variety</h4>
                         <p class="company-icons-subtext hidden-xs">With tens of thousands of products on Website
-                            Divineshop.vn we confidently bring you all that you need in the world of copyrighted games.
+                            Devilshop.vn we confidently bring you all that you need in the world of copyrighted games.
                         </p>
                     </div>
                 </div>
@@ -187,9 +197,10 @@
                 </div>
             </div>
         </div>
+        <img src="./img/banner-2020.png" style="width: 100%;height:500px" alt="">
     </div>
 
-    <img src="./img/banner-2020.png" style="width: 100%;height:80hv" alt="">
+
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER -->

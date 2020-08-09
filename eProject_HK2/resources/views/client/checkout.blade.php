@@ -118,7 +118,7 @@
 						</div>
                     </div>
                     <div class="pull-right">
-                        <a class="primary-btn" href="{{url('client/GotoBill/'.$user->ID)}}">GO BILL</a>
+                        <a class="primary-btn" href="{{url('GotoBill/'.$user->ID)}}">GO BILL</a>
                     </div>
                 </form>
             </div>

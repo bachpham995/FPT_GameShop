@@ -10,7 +10,7 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">
-                    Order Detail 
+                    Order Detail
                     #{{$item->first()->CART_ID." ".$item->first()->cart()->getNameOfUser()." ".$item->first()->cart()->ORDER_DATE}}
                 </h3>
             </div>
@@ -25,7 +25,7 @@
                         <tr>
                             <th class="text-center">Name</th>
                             <th class="text-center">Quantity</th>
-                            <th class="text-center">Discount</th>
+                            {{-- <th class="text-center">Discount</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{$item->game()->NAME}}</td>
                             <td>{{$item->GAME_QUANTITY}}</td>
-                            <td>{{$item->DISCOUNT}}</td>
+                            {{-- <td>{{$item->DISCOUNT}}</td> --}}
                         </tr>
                         @endforeach
                     </tbody>
