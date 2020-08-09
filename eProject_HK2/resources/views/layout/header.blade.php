@@ -22,20 +22,15 @@
 
             <!-- Search -->
             <div class="header-search">
-                <form>
-                    <input class="input search-input" type="text" placeholder="Enter your keyword">
-                    <select class="input search-categories">
-                        <option value="0">All Categories</option>
-                        <option value="1">Action</option>
-                        <option value="2">Adventure</option>
-                        <option value="3">Indie</option>
-                        <option value="4">RPG</option>
-                        <option value="5">Shooter</option>
-                        <option value="6">Simulation</option>
-                        <option value="7">Sport & Racing</option>
-                        <option value="8">Strategy</option>
+                <form id="category-form" method="GET">
+                    <input class="input search-input" name="product-name" type="text" placeholder="Enter product name">
+                    <select id="category-nav-fil" class="input search-categories">
+                        <option value="all">All Categories</option>
+                        @foreach (App\category::all() as $cate)
+                            <option value="{{$cate->ID}}">{{$cate->NAME}}</option>
+                        @endforeach
                     </select>
-                    <button class="search-btn"><i class="fa fa-search"></i></button>
+                    <button id="cate-submit"  class="search-btn"><i class="fa fa-search"></i></button>
                 </form>
             </div>
             <!-- /Search -->
@@ -144,6 +139,29 @@
 </div>
 <!-- container -->
 <script>
+    function searchAsCategory(){
+        var categoryID = document.getElementById("category-nav-fil").value;
+        var link = ""
+        if(categoryID == "all"){
+            link = "products";
+        }else{
+            link = "productsByCtg/"+categoryID;
+        }
+
+        ajax
+    }
+
+    $("#cate-submit").click(function() {
+        var categoryID = document.getElementById("category-nav-fil").value;
+        var link = ""
+        if(categoryID == "all"){
+            link = "/products";
+        }else{
+            link = "/productsByCtg/"+categoryID;
+        }
+        document.getElementById("category-form").setAttribute('action',link);
+    });
+
     $("#change-item-cart").on('click', '.cancel-btn i', function() {
         $.ajax({
             url: '/DeleteItemCart/' + $(this).data("id"),

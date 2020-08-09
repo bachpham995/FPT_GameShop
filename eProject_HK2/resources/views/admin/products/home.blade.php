@@ -122,7 +122,7 @@
             "info": true,
             "autoWidth": true,
             "sScrollX": "300%",
-            "bScrollCollapse": true
+            "bScrollCollapse": true,
 
         });
     });
