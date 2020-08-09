@@ -14,7 +14,17 @@ class GameShopController extends Controller
     public function index(){
         $new_product = game::orderByDesc('created_at')->limit(10)->get();
         $sale_product = game::whereRaw('SALE <> 0',array(10))->get();
-        return view('client.index')->with(['newProduct' => $new_product, 'saleProduct' => $sale_product]);
+        $top10Product = game::join(DB::raw(
+            '(SELECT A.GAME_ID, sum(A.GAME_QUANTITY)
+             FROM cart_item A join cart B on A.CART_ID = B.ID join game C on A.GAME_ID = C.ID
+             GROUP BY A.GAME_ID
+             ORDER BY sum(A.GAME_QUANTITY) desc
+             limit 10) TopProduct')
+        ,function($join){
+            $join->on('game.Id','=','TopProduct.GAME_ID');
+        })->get();
+        
+        return view('client.index')->with(['newProduct' => $new_product, 'saleProduct' => $sale_product,'topProduct' => $top10Product]);
     }
 
     public function login(){
