@@ -22,29 +22,29 @@
                             </div>
                             <div class="form-group">
                                 <label for="txt-name">First Name</label>
-                                <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="First Name" value="{{ $member->FNAME }}">
+                                <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="First Name" value="{{ $member->FNAME }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="txt-price">Last Name</label>
-                                <input type="text" class="form-control" id="txt-price" name="LNAME" placeholder="1" value="{{ $member->LNAME }}">
+                                <input type="text" class="form-control" id="txt-price" name="LNAME" placeholder="1" value="{{ $member->LNAME }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" rows="3" name="EMAIL" placeholder="EMAIL" value="{{ $member->EMAIL }}">
+                                <input class="form-control" rows="3" name="EMAIL" placeholder="EMAIL" value="{{ $member->EMAIL }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>ADDRESS</label>
-                                <input class="form-control" rows="3" name="ADDRESS" placeholder="ADDRESS" value="{{ $member->ADDRESS }}">
+                                <input class="form-control" rows="3" name="ADDRESS" placeholder="ADDRESS" value="{{ $member->ADDRESS }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>PHONE</label>
-                                <input class="form-control" rows="3" name="PHONE" placeholder="PHONE" value="{{ $member->PHONE }}">
+                                <input class="form-control" rows="3" name="PHONE" placeholder="PHONE" value="{{ $member->PHONE }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>TYPE</label>
                                 <select name="TYPE" id="TYPE">
-                                    <option value="1">Admin</option>
-                                    <option value="2">Client</option>
+                                    <option @if($member->TYPE==1) selected @endif value="1">Admin</option>
+                                    <option @if($member->TYPE==2) selected @endif value="2">Client</option>
                                   </select>
                                 {{-- <input class="form-control" rows="3" name="TYPE" placeholder="TYPE" value="{{ $member->TYPE }}"> --}}
                             </div>
