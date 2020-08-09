@@ -7,9 +7,9 @@
                 <span class="category-header">Categories <i class="fa fa-list"></i></span>
                 <ul class="category-list">
                     @foreach (App\category::all()->take(5) as $cate)
-                        <li><a href="#">{{$cate->NAME}}</a></li>
+                        <li><a href="{{url('productsByCtg/'.$cate->ID)}}">{{$cate->NAME}}</a></li>
                     @endforeach
-                    <li><a href="#">VIEW ALL</a></li>
+                    <li><a href="{{url('products')}}">VIEW ALL</a></li>
                 </ul>
             </div>
             <!-- /category nav -->
@@ -25,7 +25,6 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            {{-- <img src="./img/banner08.jpg" alt=""> --}}
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Accessories</h3>
                                             </div>
@@ -43,7 +42,6 @@
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            {{-- <img src="./img/banner07.jpg" alt=""> --}}
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Men’s</h3>
                                             </div>
@@ -55,14 +53,13 @@
                                             <h3 class="list-links-title">Platform</h3>
                                         </li>
                                         @foreach (App\os::all()->take(5) as $os)
-                                            <li><a href="#">{{$os->NAME}}</a></li>
+                                            <li><a href="{{url('productsByOs/'.$os->ID)}}">{{$os->NAME}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="hidden-sm hidden-xs">
                                         <a class="banner banner-1" href="#">
-                                            {{-- <img src="./img/banner09.jpg" alt=""> --}}
                                             <div class="banner-caption text-center">
                                                 <h3 class="white-color text-uppercase">Bags</h3>
                                             </div>
@@ -74,7 +71,7 @@
                                             <h3 class="list-links-title">Publisher</h3>
                                         </li>
                                         @foreach (App\publisher::all()->take(5) as $publisher)
-                                            <li><a href="#">{{$publisher->NAME}}</a></li>
+                                            <li><a href="{{url('productsByPbl/'.$publisher->ID)}}">{{$publisher->NAME}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -94,7 +91,7 @@
                                             <h3 class="list-links-title">Producer</h3>
                                         </li>
                                         @foreach (App\producer::all()->take(5) as $producer)
-                                            <li><a href="#">{{$producer->NAME}}</a></li>
+                                            <li><a href="{{url('productsByPrdc/'.$producer->ID)}}">{{$producer->NAME}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

@@ -9,13 +9,17 @@ use App\game;
 use App\Http\Requests\ContactRequest;
 use App\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class GameShopController extends Controller
 {
-    public function index()
-    {
+    public function getPageLength(){
+        return 10;
+    }
+
+    public function index(){
         $new_product = game::orderByDesc('created_at')->limit(10)->get();
         $sale_product = game::whereRaw('SALE <> 0', array(10))->get();
         $top10Product = game::join(DB::raw(
@@ -36,15 +40,116 @@ class GameShopController extends Controller
         return view('security.login');
     }
 
-    public function register()
-    {
+    public function register(){
         return view('security.register');
     }
 
-    public function products()
-    {
-        $products = game::all();
-        return view('client.products', ['products' => $products]);
+    public function products(Request $request){
+        $products = game::query();
+        if($request->has('product-name')){
+            $products->where('NAME','LIKE',"%".$request["product-name"]."%");
+        }
+        $productsArr = $products->get('*')->toArray();
+        $pagesProduct = $this->productPagination($productsArr, $this->getPageLength());
+
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+
+    public function productsByPublisher($id){
+        $products = game::join('game_publisher','game.ID','=','game_publisher.GAME_ID')
+                ->where('PUBLISHER_ID', $id)->get('game.*')->toArray();
+        $pagesProduct = $this->productPagination($products, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+
+    public function productsByProducer($id){
+        $products = game::join('game_producer','game.ID','=','game_producer.GAME_ID')
+                ->where('PRODUCER_ID', $id)->get('game.*')->toArray();
+        $pagesProduct = $this->productPagination($products, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+
+    public function productsByCategory(Request $request, $id){
+        $products = game::query();
+        if($request->has("product-name")){
+            $products->where('NAME','LIKE',"%".$request["product-name"]."%");
+        }
+        $productsArr = $products->join('game_category','game.ID','=','game_category.GAME_ID')
+                ->where('CATEGORY_ID', $id)->get('game.*')->toArray();
+        $pagesProduct = $this->productPagination($productsArr, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+
+    public function productsByOs($id){
+        $products = game::where('OS', $id)->get('*')->toArray();
+        $pagesProduct = $this->productPagination($products, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+
+
+
+    public function productPagination($products, $pageLength){
+        if(count($products)>0){
+            $pagesProduct = new Collection();
+            foreach(array_chunk($products, $pageLength) as $games){
+                $a = new Collection();
+                foreach($games as $game){
+                    $a->add(new game($game));
+                }
+                $pagesProduct->add($a);
+            }
+            return $pagesProduct;
+        }
+        return new Collection();
+    }
+
+    public function filterProduct(Request $request){
+        $pageLength = 5;
+        if($request['isFilter'] == "true"){
+            $productsID = game::query();
+            if($request->has('name')){
+                $productsID->where('NAME','LIKE',"%".$request['name']."%");
+            }
+
+            if($request->has('min')){
+                $productsID->where('PRICE','>=', $request['min']);
+            }
+            if($request->has('max')){
+                $productsID->where('PRICE','<=', $request['max']);
+            }
+
+            if($request->has('category')){
+                $productsID->join('game_category','game.ID','=','game_category.GAME_ID')
+                ->whereIn('CATEGORY_ID', $request['category'])
+                ->orderBy('game.ID')->groupBy('game.ID');
+            }
+
+            if($request->has('publisher')){
+                $productsID->join('game_publisher','game.ID','=','game_publisher.GAME_ID')
+                ->whereIn('PUBLISHER_ID', $request['publisher'])
+                ->orderBy('game.ID')->groupBy('game.ID');
+            }
+
+            if($request->has('producer')){
+                $productsID->join('game_producer','game.ID','=','game_producer.GAME_ID')
+                ->whereIn('PRODUCER_ID', $request['producer'])
+                ->orderBy('game.ID')->groupBy('game.ID');
+            }
+
+            $products = game::whereIn('ID', $productsID->pluck('ID'))->get()->toArray();
+            $pagesProduct = $this->productPagination($products, $this->getPageLength());
+
+            return view('client/filterProducts', ['products'=>$pagesProduct, 'page'=>0,'pageAmount'=>$pagesProduct->count()]);
+        }
+
+        $products = new Collection();
+        for($i = 0; $i < count($request['ids']); $i++){
+            $products->add(game::find($request['ids'][$i]));
+        }
+        $productsArr = $products->toArray();
+        $pagesProduct = $this->productPagination($productsArr, $this->getPageLength());
+
+        return view('client/filterProducts',['products'=>$pagesProduct, 'page'=>$request['page'], 'pageAmount'=>$pagesProduct->count()]);
     }
 
     public function contact()
@@ -154,7 +259,7 @@ class GameShopController extends Controller
     public function orderHistory(Request $request)
     {
         $user = $request->session()->get('user');
-    
+
             $orders = DB::table('cart')->where('USER_ID', $user->ID)->get();
             return view('client/orderHistory')->with(["orders" => $orders]);
     }

@@ -12,7 +12,7 @@ use ReflectionClass;
 class game extends Model
 {
     protected $table = "game";
-    protected $fillable = ['NAME','DESCRIPTION','STATUS','PRICE','SALE','AGE_REQ','CPU','GPU','STORAGE','OS','RAM','LINKDOWNLOAD','LINKDEMO', 'FEATURE','created_at','updated_at'];
+    protected $fillable = ['ID','NAME','DESCRIPTION','STATUS','PRICE','SALE','AGE_REQ','CPU','GPU','STORAGE','OS','RAM','LINKDOWNLOAD','LINKDEMO', 'FEATURE','created_at','updated_at'];
     protected $guarded = [];
     public $timestamps = true;
 
