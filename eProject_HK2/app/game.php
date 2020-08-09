@@ -12,8 +12,9 @@ use ReflectionClass;
 class game extends Model
 {
     protected $table = "game";
-    // protected $fillable = ['NAME','DESCRIPTION','STATUS','PRICE','SALE','AGE_REQ','CPU','GPU','STORAGE','OS','RAM','LINKDOWNLOAD','LINKDEMO', 'FEATURE','created_at','updated_at'];
+    protected $fillable = ['NAME','DESCRIPTION','STATUS','PRICE','SALE','AGE_REQ','CPU','GPU','STORAGE','OS','RAM','LINKDOWNLOAD','LINKDEMO', 'FEATURE','created_at','updated_at'];
     protected $guarded = [];
+    public $timestamps = true;
 
     public function getCategories(){
         $game_categories = game_category::where("GAME_ID", "=", $this->ID)->pluck("CATEGORY_ID")->all();

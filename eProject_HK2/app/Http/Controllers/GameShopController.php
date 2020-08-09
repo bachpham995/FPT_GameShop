@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Hash;
 class GameShopController extends Controller
 {
     public function index(){
-        return view('client.index');
+        $new_product = game::orderByDesc('created_at')->limit(10)->get();
+        $sale_product = game::whereRaw('SALE <> 0',array(10))->get();
+        return view('client.index')->with(['newProduct' => $new_product, 'saleProduct' => $sale_product]);
     }
 
     public function login(){
@@ -59,6 +61,7 @@ class GameShopController extends Controller
     }
 
     public function postAccountUpdate(Request $request){
+        // noted - user instance of client...
         $id = $request->session()->get('client')->ID;
 
         $mb = user::where('ID', $id);

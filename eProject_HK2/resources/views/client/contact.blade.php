@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="title" autocomplete="off" id="title" placeholder="Title">
+                    <input type="text" class="form-control" name="title" autocomplete="off" id="title" placeholder="Subject">
                 </div>
             </div>
         </div>

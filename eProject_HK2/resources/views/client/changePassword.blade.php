@@ -45,10 +45,9 @@
                     <form  role="form" action="{{ url('postChangePassword') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
-                            {{-- <div class="form-group">
-                                <label for="txt-id">Id</label>
-                                <input type="text" class="form-control" id="txt-id" name="ID" placeholder="1"  readonly>
-                            </div> --}}
+                        
+                                <input type="text" class="form-control" id="txt-id" name="ID" placeholder="1"  hidden>
+                            
                             <div class="form-group" style="display: none;">
                                 <label for="txt-name">Current Password</label>
                                 <input  type="password" class="form-control" id="txt-id" name="txtId" placeholder="First Name" value="{{ $user->ID }}" required>
