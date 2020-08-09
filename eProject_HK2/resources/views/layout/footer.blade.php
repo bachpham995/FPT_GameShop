@@ -8,14 +8,12 @@
                 <div class="footer">
                     <!-- footer logo -->
                     <div class="footer-logo">
-                        <a class="logo" href="#">
-                            <img src="./img/logo.png" alt="">
+                        <a class="logo" href="{{ url('/index') }}">
+                            <img src="/img/logo.png" alt="">
                         </a>
                     </div>
                     <!-- /footer logo -->
-
                     <p>We care about games, we care about people.</p>
-
                     <!-- footer social -->
                     <ul class="footer-social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -34,10 +32,12 @@
                 <div class="footer">
                     <h3 class="footer-header">My Account</h3>
                     <ul class="list-links">
-                        <li><a href="{{ url('/myAccountUpdate') }}">My Account</a></li>
+                        @if(Session::has('user') != null)
+                        <li><a href="{{ url('/myAccount') }}">My Account</a></li>
+                        @endif
                         <li><a href="{{url('/ListCart')}}">My cart</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,15 +50,12 @@
                 <div class="footer">
                     <h3 class="footer-header">Customer Service</h3>
                     <ul class="list-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Shiping & Return</a></li>
-                        <li><a href="#">Shiping Guide</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="{{url('/About')}}">About Us</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <!-- /footer widget -->
-
             <!-- footer subscribe -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
