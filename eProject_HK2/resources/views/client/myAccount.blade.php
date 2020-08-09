@@ -68,7 +68,7 @@
                 <!-- /.card -->
                 <a href="{{ url('/myAccountUpdate') }}"><i class="fa fa-cogs" ></i> Update</a>
                 <a href="{{ url('/changePassword') }}"><i class="fa fa-unlock-alt" style="margin-left: 120px"></i> Change pasword</a>
-                <a href="{{ url('/orderHistory') }}"><i class="fa fa-history" style="margin-left: 100px"></i> Order history</a>
+                <a href="{{ url('/orderHistory') }}"><i class="fa fa-history" style="margin-left: 80px"></i> Order history</a>
             </div>
         </div>
     </div>

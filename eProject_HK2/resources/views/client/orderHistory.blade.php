@@ -48,7 +48,7 @@
                                 <td>{{ $order->ID }}</td>
                                 <td>{{ $order->ORDER_DATE }}</td>
                                 <td>{{ $order->PAID }}</td>
-                                <th><a href="{{url("/orderDetail/{$order->ID}")}}"><i class="fa fa-unlock-alt"></i>Details</a></th>
+                                <th><a href="{{url("/orderDetail/{$order->ID}")}}"><i class="fa fa-list"></i> Details</a></th>
                             </tr>
                             <?php $count++ ?>
                         @endforeach

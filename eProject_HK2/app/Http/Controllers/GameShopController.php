@@ -110,7 +110,7 @@ class GameShopController extends Controller
             return redirect()->back()->with('wrongPass', '*Wrong password!');
         }
         if($newPass == $curPass) {
-            return redirect()->back()->with('samePass', '*Your new password is the same as current passoword, please change different password!');
+            return redirect()->back()->with('samePass', '*Your new password is the same as current password. Please change different password!');
         }
         if($newPass != $conPass) {
             return redirect()->back()->with('wrongConfirm', '*Your confirm password is not meet!');
