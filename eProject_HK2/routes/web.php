@@ -23,6 +23,15 @@ Route::get('/About','GameShopController@viewAbout');
 Route::get('/contact','GameShopController@contact');
 Route::get('/support','GameShopController@support');
 Route::get('/register','GameShopController@register');
+Route::get('/myAccount','GameShopController@myAccount');
+Route::get('/myAccountUpdate','GameShopController@myAccountUpdate');
+Route::post('/postAccountUpdate','GameShopController@postAccountUpdate');
+Route::get('/changePassword','GameShopController@changePassword');
+Route::post('/postChangePassword','GameShopController@postChangePassword');
+Route::get('/orderHistory','GameShopController@orderHistory');
+Route::get('/orderDetail/{id}','GameShopController@orderDetail');
+
+
 /*==========================Security=========================================*/
 Route::post('/checkLog','SecurityController@checkLog');
 Route::post('/postRegister','SecurityController@postRegister');

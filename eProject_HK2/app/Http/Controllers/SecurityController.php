@@ -31,11 +31,14 @@ class SecurityController extends Controller
                 } else if ($user->TYPE == 1) {
                     return redirect("admin/products/home");
                 } else {
-                    // $request->session()->forget('user');
+                    $request->session()->put('client', $user);
+                    
                     $check = session('redirect');
                     if ($check != null) {
                         return redirect()->action('User\CartController@viewListCart');
                     } else {
+                        
+
                         return redirect("index");
                     }
                 }
@@ -72,6 +75,9 @@ class SecurityController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('user');
+
+        $request->session()->forget('client');
+
         return redirect('index');
     }
     public function getForgotPassword(EmailForgetRequest $request)
