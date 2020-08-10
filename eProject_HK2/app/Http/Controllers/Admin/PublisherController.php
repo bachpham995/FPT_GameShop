@@ -10,8 +10,8 @@ class PublisherController extends Controller
 {
     public function home()
     {
-        $publisher = publisher::all();
-        return view('admin.publisher.home')->with(["publisher" => $publisher]);
+        $publishers = publisher::where('RETIRED','0')->get();
+        return view('admin.publisher.home')->with(["publisher" => $publishers]);
     }
     public function create()
     {
@@ -31,7 +31,8 @@ class PublisherController extends Controller
     }
     public function delete($id)
     {
-        publisher::where("ID", $id)->delete();
+        $pls = publisher::where('ID', $id);
+        $pls->update(['RETIRED' => '1']);
         return redirect()->action('Admin\PublisherController@home');
     }
     public function update($id)

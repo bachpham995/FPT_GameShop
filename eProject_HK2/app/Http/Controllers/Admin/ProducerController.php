@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProducerController extends Controller
 {
     public function home(){
-        $producer = producer::all();
+        $producer = producer::where('RETIRED','0')->get();
         return view('admin.producer.home')->with(["producer"=>$producer]);
     }
     public function create()
@@ -47,7 +47,8 @@ class ProducerController extends Controller
     }
     public function delete($id)
     {
-        producer::where("ID", $id)->delete();
+        $producer = producer::where('ID', $id);
+        $producer->update(['RETIRED' => '1']);
         return redirect()->action('Admin\ProducerController@home');
     }
 }
