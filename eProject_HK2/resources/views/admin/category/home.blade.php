@@ -51,9 +51,9 @@
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
 
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/category/delete/'.$ctgr->ID) }}">
+                                {{-- <a class="btn btn-danger btn-sm" href="{{ url('admin/category/delete/'.$ctgr->ID) }}">
                                     <i class="fas fa-trash"></i> Delete
-                                </a>
+                                </a> --}}
                             </td>
                         </tr>
                         @endforeach
