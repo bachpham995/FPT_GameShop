@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(publisherGameSeeder::class);
         $this->call(orderGameSeeder::class);
         $this->call(orderItemGameSeeder::class);
+        $this->call(commentSeeder::class);
     }
 }
 
@@ -28,11 +29,11 @@ class userSeeder extends Seeder {
     public function run()
     {
         DB::table('user')->insert([
-            ['TYPE'=>'0','FNAME'=>'Thịnh','LNAME'=>'Đỗ','EMAIL'=>'thinhdo@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận 10','PHONE'=>'0123456789'],
-            ['TYPE'=>'1','FNAME'=>'Phát','LNAME'=>'Lưu Trọng','EMAIL'=>'phatltuit@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Hóc Môn','PHONE'=>'0123456789'],
-            ['TYPE'=>'1','FNAME'=>'Bách','LNAME'=>'Phạm Xuân','EMAIL'=>'bachpham995@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận 12','PHONE'=>'0123456789'],
-            ['TYPE'=>'1','FNAME'=>'Hóa','LNAME'=>'Nguyễn Vũ Hoàng','EMAIL'=>'nguyenvuhoanghoa95@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận Bình Thạnh','PHONE'=>'0123456789'],
-            ['TYPE'=>'2','FNAME'=>'Someone','LNAME'=>'Nguyễn','EMAIL'=>'someone@gmail.com','PASSWORD'=>Hash::make('User12345'),'ADDRESS'=>'Somewhere','PHONE'=>'0123456789'],
+            ['TYPE'=>'0','FNAME'=>'Thịnh','LNAME'=>'Đỗ','EMAIL'=>'thinhdo@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận 10','PHONE'=>'0123456789','AVATAR'=>'/img/1.jpg'],
+            ['TYPE'=>'1','FNAME'=>'Phát','LNAME'=>'Lưu Trọng','EMAIL'=>'phatltuit@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Hóc Môn','PHONE'=>'0123456789','AVATAR'=>'/img/2.jpg'],
+            ['TYPE'=>'1','FNAME'=>'Bách','LNAME'=>'Phạm Xuân','EMAIL'=>'bachpham995@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận 12','PHONE'=>'0123456789','AVATAR'=>'/img/3.jpg'],
+            ['TYPE'=>'1','FNAME'=>'Hóa','LNAME'=>'Nguyễn Vũ Hoàng','EMAIL'=>'nguyenvuhoanghoa95@gmail.com','PASSWORD'=>Hash::make('Admin12345'),'ADDRESS'=>'Quận Bình Thạnh','PHONE'=>'0123456789','AVATAR'=>'/img/4.jpg'],
+            ['TYPE'=>'2','FNAME'=>'Random','LNAME'=>'User','EMAIL'=>'someone@gmail.com','PASSWORD'=>Hash::make('User12345'),'ADDRESS'=>'Somewhere','PHONE'=>'0123456789','AVATAR'=>null],
         ]);
     }
 }
@@ -299,11 +300,9 @@ class imageSeeder extends Seeder {
 class commentSeeder extends Seeder {
     public function run()
     {
-        DB::table('game_producer')->insert([
-            ['GAME_ID'=>'1', 'USER_ID' => '1', 'DESCRIPTION'=>'Game chơi tạm được', 'RATING'=>'3'],
-            ['GAME_ID'=>'1', 'USER_ID' => '2', 'DESCRIPTION'=>'Gameplay hay, đồ họa đẹp', 'RATING'=>'5'],
-            ['GAME_ID'=>'1', 'USER_ID' => '3', 'DESCRIPTION'=>'Game xàm vãi', 'RATING' => '1']
-        ]);
+        foreach (App\game::pluck('ID')->toArray() as $id) {
+            DB::table('comment')->insert(['GAME_ID'=>$id, 'USER_ID' => '5', 'DESCRIPTION'=>'', 'RATING'=>rand(1,5)]);
+        }
     }
 }
 

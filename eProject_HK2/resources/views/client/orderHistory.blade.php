@@ -30,48 +30,58 @@
         <div class="row" style=" margin-left: 400px">
             <div class="offset-md-3 col-md-6">
                 <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Order History </h3>
-                    </div>
-                    <?php $count = 0; ?>
-                <table class="table table-bordered table-hover"> 
-                    <div>
-                        <tr>
-                            <th>Order Code</th>
-                            <th>Order Date</th>
-                            <th>Total Amount</th>
-                            <th>Action</th>
-                        </tr>
-                        @foreach($orders as $order)
+                <div class="main-login">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Order History </h3>
+                        </div>
+                        <?php $count = 0; ?>
+                    <table class="table table-bordered table-hover">
+                        <div>
                             <tr>
-                                <td>{{ $order->ID }}</td>
-                                <td>{{ $order->ORDER_DATE }}</td>
-                                <td>{{ $order->PAID }}</td>
-                                <th><a href="{{url("/orderDetail/{$order->ID}")}}"><i class="fa fa-list"></i> Details</a></th>
+                                <th>Order Code</th>
+                                <th>Order Date</th>
+                                <th>Total Amount</th>
+                                <th>Action</th>
                             </tr>
-                            <?php $count++ ?>
-                        @endforeach
-                        
-                        @if($count == 0)
-                            <div>You have not made any order yet!</div>
-                        @endif
-                    </div>
-                </table>
+                            @foreach($orders as $order)
+                                <tr>
+                                    <td>{{ $order->ID }}</td>
+                                    <td>{{ $order->ORDER_DATE }}</td>
+                                    <td>{{ $order->PAID }}</td>
+                                    <th><a href="{{url("/orderDetail/{$order->ID}")}}"><i class="fa fa-list"></i> Details</a></th>
+                                </tr>
+                                <?php $count++ ?>
+                            @endforeach
+
+                            @if($count == 0)
+                                <div>You have not made any order yet!</div>
+                            @endif
+                        </div>
+                    </table>
+                    <a href="{{ url('/myAccount') }}"><i class="fa fa-chevron-left"></i> Back to my account</a>
+                </div>
             </div>
-            
+
                 <!-- /.card -->
-                <a href="{{ url('/myAccount') }}"><i class="fa fa-chevron-left"></i> Back to my account</a>
+
             </div>
         </div>
     </div>
 </section>
+
+    <script src="{{ asset('js/client/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/client/slick.min.js') }}"></script>
+    <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+    <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('js/client/main.js') }}"></script>
 
 
 
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER-->
-    
+
 </body>
 </html>

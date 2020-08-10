@@ -48,9 +48,9 @@
                     <form  role="form" action="{{ url('postChangePassword') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
-                        
+
                                 {{-- <input type="text" class="form-control" id="txt-id" name="ID" placeholder="1"  hidden> --}}
-                            
+
                             <div class="form-group" style="display: none;">
                                 <label for="txt-name">Check ID</label>
                                 <input  type="password" class="form-control" id="txt-id" name="txtId" placeholder="First Name" value="{{ $user->ID }}" hidden>
@@ -116,4 +116,11 @@
     }
     </script>
 </body>
+
+<script src="{{ asset('js/client/jquery.min.js') }}"></script>
+<script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/client/slick.min.js') }}"></script>
+<script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+<script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+<script src="{{ asset('js/client/main.js') }}"></script>
 </html>

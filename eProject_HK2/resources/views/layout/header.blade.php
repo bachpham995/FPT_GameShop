@@ -40,20 +40,29 @@
                 <!-- Account -->
                 <li class="header-account dropdown default-dropdown">
                     <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
-                        <div class="header-btns-icon">
-                            <i class="fa fa-user-o"></i>
-                        </div>
-                        @if((Session::get('user')) != null)
+
+                        @if(Session::get('user') != null)
+                            <div class="header-btns-icon">
+                                @if(Session::get('user')->AVATAR != null && Session::get('user')->AVATAR != '')
+                                    <img class="user-avatar" src="{{Session::get('user')->AVATAR}}" alt="">
+                                @else
+                                    <i class="fa fa-user-o"></i>
+                                @endif
+                            </div>
                             <strong class="custom-name text-uppercase">{{ Session::get('user')->LNAME." ".Session::get('user')->FNAME }} <i class="fa fa-caret-down"></i></strong>
                         @else
+                            <div class="header-btns-icon">
+                                <i class="fa fa-user-o"></i>
+                            </div>
                             <strong class="custom-name text-uppercase">Login/Join <i class="fa fa-caret-down"></i></strong>
                         @endif
                     </div>
                         @if((Session::get('user')) != null)
                             <ul class="custom-menu">
-                                <li><a href="{{ url('/myAccount') }}"><i class="fa fa-user-o"></i> My Account</a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                                <li><a href="{{ url('/myAccount') }}"><i class="fa fa-cogs"></i>Management</a></li>
+                                @if(Session::get('user')->TYPE == 2)
+                                    <li><a href="{{ url('/orderHistory') }}"><i class="fa fa-shopping-cart"></i>Transactions</a></li>
+                                @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                             </ul>
                         @else
