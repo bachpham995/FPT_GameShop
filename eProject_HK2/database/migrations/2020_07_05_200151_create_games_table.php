@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('ID');
             $table->string('NAME',100)->nullable();
             $table->longText('DESCRIPTION')->nullable();
+            $table->boolean('RETIRED')->default(0);
             $table->integer('STATUS')->nullable();
             $table->float('PRICE')->nullable();
             $table->mediumText('LINKDOWNLOAD')->nullable();
