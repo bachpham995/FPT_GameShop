@@ -91,18 +91,16 @@
 						<div class="product-tab">
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab0">Description</a></li>
-								<li><a data-toggle="tab" href="#tab1">Details</a></li>
+                                <li><a data-toggle="tab" href="#tab1">Requirement</a></li>
                                 <li><a data-toggle="tab" href="#tab2">Comments ({{$game->Comments()->count()}})</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Requirement</a></li>
+
 							</ul>
 							<div class="tab-content">
                                 <div id="tab0" class="tab-pane fade in active">
                                     <p>{{$game->DESCRIPTION}}</p>
-								</div>
-								<div id="tab1" class="tab-pane fade in">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-										irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
+                                </div>
+                                <div id="tab1" class="tab-pane fade in">
+                                </div>
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-6">
@@ -143,6 +141,12 @@
                                                             @endif><i class="fa fa-caret-right"></i></a>
                                                         </li>
                                                     </ul>
+                                                @else
+                                                    <ul>
+                                                        <li>
+                                                            No comment for this product currently.
+                                                        </li>
+                                                    </ul>
                                                 @endif
 											</div>
 										</div>
@@ -168,8 +172,6 @@
 											</div>
 										</div>
 									</div>
-                                </div>
-                                <div id="tab3" class="tab-pane fade in">
                                 </div>
 							</div>
 						</div>
@@ -223,7 +225,7 @@
                                                 @endfor
                                             </div>
                                             <div class="clearfix"></div>
-                                            <h2 class="product-name"><a href="#">{{$rd->NAME}}</a></h2>
+                                            <h2 class="product-name"><a href="{{url('productDetail/'.$rd->ID)}}">{{$rd->NAME}}</a></h2>
                                             @if ($rd->SALE > 0)
                                                 <p  class="product-price product-price-cust">{{$rd->getShortSalePrice()}}<del class="product-old-price"> {{$rd->getShortPrice()}}</del></p>
                                             @else

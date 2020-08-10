@@ -3,8 +3,10 @@
 @section('page-name','Products')
 @section('content')
 
-<!-- MAIN -->
+
+<!-- aside widget -->
 <div id="aside" class="col-md-3">
+
     <div class="aside">
         <h3 class="aside-title">FILTER</h3>
         <ul class="size-option">
@@ -46,8 +48,10 @@
         </ul>
     </div>
 
-    <!-- aside widget -->
+
 </div>
+<!-- end aside widget -->
+<!-- MAIN -->
 <div id="main" class="col-md-9">
     <div class="store-filter clearfix">
         <div class="pull-right">
@@ -92,7 +96,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <h2 class="product-name" title="{{$product->NAME}}">
-                                <a href="#">
+                                <a href="{{url('productDetail/'.$product->ID)}}">
                                     @if (Str::length($product->NAME) >= 25)
                                         {{Str::substr($product->NAME, 0, 25).".." }}
                                     @else
@@ -115,8 +119,8 @@
         @else
             <div><li>No result found.</li></div>
         @endif
-
     </div>
+<!-- end MAIN -->
     <div class="clearfix"></div>
     <hr>
     <div class="store-filter clearfix">

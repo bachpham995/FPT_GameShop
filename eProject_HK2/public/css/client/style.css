@@ -469,6 +469,11 @@ textarea.input {
   border: 1px solid #DADADA;
 }
 
+.user-avatar{
+    width: 40px;
+    height: 45px;
+}
+
 .header-btns .dropdown-toggle {
   display: block;
   min-height: 40px;
