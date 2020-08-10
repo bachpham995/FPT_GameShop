@@ -51,7 +51,7 @@
                                 <a class="btn btn-info btn-sm" href="{{ url('admin/publisher/update/'.$pls->ID) }}">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/publisher/delete/'.$pls->ID) }} " id="delete">
+                                <a class="btn btn-danger btn-sm" href="{{ url('admin/publisher/delete/'.$pls->ID) }}" id="delete">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>

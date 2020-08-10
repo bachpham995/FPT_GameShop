@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OsController extends Controller
 {
     public function home(){
-        $os = os::all();
+        $os = os::where('RETIRED','0')->get();
         return view('admin.os.home')->with(["os"=>$os]);
     }
     public function create(){
@@ -33,7 +33,8 @@ class OsController extends Controller
     }
     public function delete($id)
     {
-        os::where("ID", $id)->delete();
+        $os = os::where('ID', $id);
+        $os->update(['RETIRED' => '1']);
         return redirect()->action('Admin\OsController@home');
     }
 }
