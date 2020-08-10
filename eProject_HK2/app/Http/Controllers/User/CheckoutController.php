@@ -12,24 +12,23 @@ use Illuminate\Support\Collection;
 
 class CheckoutController extends Controller
 {
-
-    public function checkLoginWhenCheckout(Request $request)
+    public function checkLogin(){
+        $check = session('redirect');
+        if ($check  != null) {
+            return redirect('/Checkout');
+        }
+        return redirect("index");
+    }
+    public function goCheckout(Request $request)
     {
+        $request->session()->forget('redirect');
         $user = session('user');
-        if ($user == null) {
-            $request->session()->put('redirect','/ListCart');
-            return view('security/login');
-        }
-        if($user->TYPE == 2){
-             return view('client/checkout')->with(["user" => $user]);
-        }
-        return view('client/index');
+        return view('client/checkout')->with(["user" => $user]);
     }
     public function checkout()
     {
         return view('client/checkout');
     }
-
     public function goBill(Request $request,$id)
     {
         $t = time();

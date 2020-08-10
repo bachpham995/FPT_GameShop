@@ -7,8 +7,9 @@
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/client/bootstrap.min.css') }}" />
-	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick.css') }}" />
-	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick-theme.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/client/slick-theme.css') }}" />
+    {{-- <link type="text/css" rel="stylesheet" href="{{ asset('css/font/slick.woff') }}" /> --}}
 	<link type="text/css" rel="stylesheet" href="{{ asset('css/client/nouislider.min.css') }}" />
     {{-- <link rel="stylesheet" href="{{ asset('css/client/font-awesome.min.css') }}"> --}}
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,7 +21,6 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 </head>
@@ -57,7 +57,7 @@
         <!-- /container -->
     </div>
     <!-- /section -->
-
+    <br>
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER-->
