@@ -21,7 +21,7 @@ use phpDocumentor\Reflection\Types\Null_;
 class ProductController extends Controller
 {
     public function home(){
-        $products = game::all();
+        $products = game::where('RETIRED','0')->get();
         return view('admin.products.home')->with(["products"=>$products]);
     }
     public function create(){
@@ -76,7 +76,7 @@ class ProductController extends Controller
         return redirect()->action('Admin\ProductController@home');
     }
     public function delete($id){
-            game::where("ID",$id)->delete();
+            game::where("ID",$id)->update(['RETIRED'=>'1']);
             return redirect()->action('Admin\ProductController@home');
     }
 
@@ -95,29 +95,34 @@ class ProductController extends Controller
     }
 
     public function postCreateImage(Request $request, $id){
-        if ($request->hasFile('IMAGE')) {
-            $file = $request['IMAGE'];
-            $cover = $request['COVER'];
+        try{
+            if ($request->hasFile('IMAGE')) {
+                $file = $request['IMAGE'];
+                $cover = $request['COVER'];
 
-            $game = game::find($id);
-            $newImage = new game_image();
-            $newImageID = $newImage->nextID();
+                $game = game::find($id);
+                $newImage = new game_image();
+                $newImageID = $newImage->nextID();
 
-            $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
-            $file->move('img/product',$newName);
-            $newImage->URL = '/img/product/'.$newName;
+                $newName = Str::random(30).'.'.$file->getClientOriginalExtension();
+                $file->move('img/product',$newName);
+                $newImage->URL = '/img/product/'.$newName;
 
-            if($cover == '1'){
-                game_image::where('GAME_ID','=',$id)->update(['COVER'=>'0']);
+                if($cover == '1'){
+                    game_image::where('GAME_ID','=',$id)->update(['COVER'=>'0']);
+                }
+                $newImage->COVER = $cover;
+                $newImage->GAME_ID = $id;
+                $newImage->created_at = time();
+                $newImage->ID = $newImageID;
+                $newImage->save();
+
+                $images = game_image::where('GAME_ID','=',$id)->get();
+                return redirect()->action('Admin\ProductController@image', ["id"=>$id,"images"=>$images]);
             }
-            $newImage->COVER = $cover;
-            $newImage->GAME_ID = $id;
-            $newImage->created_at = time();
-            $newImage->ID = $newImageID;
-            $newImage->save();
-
-            $images = game_image::where('GAME_ID','=',$id)->get();
-            return redirect()->action('Admin\ProductController@image', ["id"=>$id,"images"=>$images]);
+        }catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->action('Admin\ProductController@update');
         }
     }
 

@@ -45,7 +45,7 @@ class GameShopController extends Controller
     }
 
     public function products(Request $request){
-        $products = game::query();
+        $products = game::where('RETIRED','0');
         if($request->has('product-name')){
             $products->where('NAME','LIKE',"%".$request["product-name"]."%");
         }
@@ -57,31 +57,39 @@ class GameShopController extends Controller
 
     public function productsByPublisher($id){
         $products = game::join('game_publisher','game.ID','=','game_publisher.GAME_ID')
-                ->where('PUBLISHER_ID', $id)->get('game.*')->toArray();
+                ->where('PUBLISHER_ID', $id)
+                ->where('RETIRED', '0')
+                ->get('game.*')->toArray();
         $pagesProduct = $this->productPagination($products, $this->getPageLength());
         return view('client.products', ['products'=>$pagesProduct]);
     }
 
     public function productsByProducer($id){
         $products = game::join('game_producer','game.ID','=','game_producer.GAME_ID')
-                ->where('PRODUCER_ID', $id)->get('game.*')->toArray();
+                ->where('PRODUCER_ID', $id)
+                ->where('RETIRED', '0')
+                ->get('game.*')->toArray();
         $pagesProduct = $this->productPagination($products, $this->getPageLength());
         return view('client.products', ['products'=>$pagesProduct]);
     }
 
     public function productsByCategory(Request $request, $id){
-        $products = game::query();
+        $products = game::where('RETIRED', '0');
         if($request->has("product-name")){
             $products->where('NAME','LIKE',"%".$request["product-name"]."%");
         }
         $productsArr = $products->join('game_category','game.ID','=','game_category.GAME_ID')
-                ->where('CATEGORY_ID', $id)->get('game.*')->toArray();
+                ->where('CATEGORY_ID', $id)
+                ->where('RETIRED', '0')
+                ->get('game.*')->toArray();
         $pagesProduct = $this->productPagination($productsArr, $this->getPageLength());
         return view('client.products', ['products'=>$pagesProduct]);
     }
 
     public function productsByOs($id){
-        $products = game::where('OS', $id)->get('*')->toArray();
+        $products = game::where('OS', $id)
+                ->where('RETIRED', '0')
+                ->get('*')->toArray();
         $pagesProduct = $this->productPagination($products, $this->getPageLength());
         return view('client.products', ['products'=>$pagesProduct]);
     }
@@ -106,7 +114,7 @@ class GameShopController extends Controller
     public function filterProduct(Request $request){
         $pageLength = 5;
         if($request['isFilter'] == "true"){
-            $productsID = game::query();
+            $productsID = game::where('RETIRED', '0');
             if($request->has('name')){
                 $productsID->where('NAME','LIKE',"%".$request['name']."%");
             }
