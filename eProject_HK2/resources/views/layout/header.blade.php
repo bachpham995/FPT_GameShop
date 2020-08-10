@@ -22,20 +22,15 @@
 
             <!-- Search -->
             <div class="header-search">
-                <form>
-                    <input class="input search-input" type="text" placeholder="Enter your keyword">
-                    <select class="input search-categories">
-                        <option value="0">All Categories</option>
-                        <option value="1">Action</option>
-                        <option value="2">Adventure</option>
-                        <option value="3">Indie</option>
-                        <option value="4">RPG</option>
-                        <option value="5">Shooter</option>
-                        <option value="6">Simulation</option>
-                        <option value="7">Sport & Racing</option>
-                        <option value="8">Strategy</option>
+                <form id="category-form" method="GET">
+                    <input class="input search-input" name="product-name" type="text" placeholder="Enter product name">
+                    <select id="category-nav-fil" class="input search-categories">
+                        <option value="all">All Categories</option>
+                        @foreach (App\category::all() as $cate)
+                            <option value="{{$cate->ID}}">{{$cate->NAME}}</option>
+                        @endforeach
                     </select>
-                    <button class="search-btn"><i class="fa fa-search"></i></button>
+                    <button id="cate-submit"  class="search-btn"><i class="fa fa-search"></i></button>
                 </form>
             </div>
             <!-- /Search -->
@@ -45,20 +40,29 @@
                 <!-- Account -->
                 <li class="header-account dropdown default-dropdown">
                     <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
-                        <div class="header-btns-icon">
-                            <i class="fa fa-user-o"></i>
-                        </div>
-                        @if((Session::get('user')) != null)
+
+                        @if(Session::get('user') != null)
+                            <div class="header-btns-icon">
+                                @if(Session::get('user')->AVATAR != null && Session::get('user')->AVATAR != '')
+                                    <img class="user-avatar" src="{{Session::get('user')->AVATAR}}" alt="">
+                                @else
+                                    <i class="fa fa-user-o"></i>
+                                @endif
+                            </div>
                             <strong class="custom-name text-uppercase">{{ Session::get('user')->LNAME." ".Session::get('user')->FNAME }} <i class="fa fa-caret-down"></i></strong>
                         @else
+                            <div class="header-btns-icon">
+                                <i class="fa fa-user-o"></i>
+                            </div>
                             <strong class="custom-name text-uppercase">Login/Join <i class="fa fa-caret-down"></i></strong>
                         @endif
                     </div>
                         @if((Session::get('user')) != null)
                             <ul class="custom-menu">
-                                <li><a href="{{ url('/myAccount') }}"><i class="fa fa-user-o"></i> My Account</a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                                <li><a href="{{ url('/myAccount') }}"><i class="fa fa-cogs"></i>Management</a></li>
+                                @if(Session::get('user')->TYPE == 2)
+                                    <li><a href="{{ url('/orderHistory') }}"><i class="fa fa-shopping-cart"></i>Transactions</a></li>
+                                @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                             </ul>
                         @else
@@ -144,6 +148,29 @@
 </div>
 <!-- container -->
 <script>
+    function searchAsCategory(){
+        var categoryID = document.getElementById("category-nav-fil").value;
+        var link = ""
+        if(categoryID == "all"){
+            link = "products";
+        }else{
+            link = "productsByCtg/"+categoryID;
+        }
+
+        ajax
+    }
+
+    $("#cate-submit").click(function() {
+        var categoryID = document.getElementById("category-nav-fil").value;
+        var link = ""
+        if(categoryID == "all"){
+            link = "/products";
+        }else{
+            link = "/productsByCtg/"+categoryID;
+        }
+        document.getElementById("category-form").setAttribute('action',link);
+    });
+
     $("#change-item-cart").on('click', '.cancel-btn i', function() {
         $.ajax({
             url: '/DeleteItemCart/' + $(this).data("id"),

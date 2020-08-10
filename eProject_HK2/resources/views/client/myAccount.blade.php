@@ -30,55 +30,66 @@
         <div class="row" style=" margin-left: 400px">
             <div class="offset-md-3 col-md-6">
                 <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">MY INFORMATION </h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-
-                        <div class="card-body">
-
-                            <div class="form-group">
-                                <label for="txt-name">First Name</label>
-                                <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="First Name" value="{{ $user->FNAME }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="txt-price">Last Name</label>
-                                <input type="text" class="form-control" id="txt-price" name="LNAME" placeholder="1" value="{{ $user->LNAME }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" rows="3" name="EMAIL" placeholder="EMAIL" value="{{ $user->EMAIL }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>ADDRESS</label>
-                                <input class="form-control" rows="3" name="ADDRESS" placeholder="ADDRESS" value="{{ $user->ADDRESS }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>PHONE</label>
-                                <input class="form-control" rows="3" name="PHONE" placeholder="PHONE" value="{{ $user->PHONE }}" readonly>
-                            </div>
+                <div class="main-login">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">MY INFORMATION </h3>
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card-header -->
+                        <!-- form start -->
+
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="txt-name">First Name</label>
+                                    <input type="text" class="form-control" id="txt-name" name="FNAME" placeholder="First Name" value="{{ $user->FNAME }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt-price">Last Name</label>
+                                    <input type="text" class="form-control" id="txt-price" name="LNAME" placeholder="1" value="{{ $user->LNAME }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control" rows="3" name="EMAIL" placeholder="EMAIL" value="{{ $user->EMAIL }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>ADDRESS</label>
+                                    <input class="form-control" rows="3" name="ADDRESS" placeholder="ADDRESS" value="{{ $user->ADDRESS }}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>PHONE</label>
+                                    <input class="form-control" rows="3" name="PHONE" placeholder="PHONE" value="{{ $user->PHONE }}" readonly>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
 
 
-                    
+
+                    </div>
+                    <a href="{{ url('/myAccountUpdate') }}"><i class="fa fa-cogs" ></i> Update</a>
+                    <br>
+                    <a href="{{ url('/changePassword') }}"><i class="fa fa-unlock-alt"></i> Change pasword</a>
+                    <br>
+                    <a href="{{ url('/orderHistory') }}"><i class="fa fa-history"></i> Order history</a>
+                    <br>
                 </div>
                 <!-- /.card -->
-                <a href="{{ url('/myAccountUpdate') }}"><i class="fa fa-cogs" ></i> Update</a>
-                <a href="{{ url('/changePassword') }}"><i class="fa fa-unlock-alt" style="margin-left: 120px"></i> Change pasword</a>
-                <a href="{{ url('/orderHistory') }}"><i class="fa fa-history" style="margin-left: 100px"></i> Order history</a>
+
             </div>
         </div>
     </div>
 </section>
 
-
+    <script src="{{ asset('js/client/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/client/slick.min.js') }}"></script>
+    <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+    <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('js/client/main.js') }}"></script>
 
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER-->
-    
+
 </body>
 </html>

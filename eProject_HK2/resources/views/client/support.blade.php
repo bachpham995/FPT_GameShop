@@ -143,11 +143,11 @@
                 <div class="col-sm-12">
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseOne">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#order1">
                                 <i class="fa fa-plus"></i> Locality
                             </a>
                         </div>
-                        <div id="collapseOne" class="accordion-body collapse">
+                        <div id="order1" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -167,11 +167,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseTwo">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#order2">
                                 <i class="fa fa-plus"></i> Property Type
                             </a>
                         </div>
-                        <div id="collapseTwo" class="accordion-body collapse">
+                        <div id="order2" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -190,11 +190,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseThree">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#order3">
                                 <i class="fa fa-plus"></i> Property Budget
                             </a>
                         </div>
-                        <div id="collapseThree" class="accordion-body collapse">
+                        <div id="order3" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -221,11 +221,11 @@
                 <div class="col-sm-12">
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseOne">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#account1">
                                 <i class="fa fa-plus"></i> Locality
                             </a>
                         </div>
-                        <div id="collapseOne" class="accordion-body collapse">
+                        <div id="account1" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -245,11 +245,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseTwo">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#account2">
                                 <i class="fa fa-plus"></i> Property Type
                             </a>
                         </div>
-                        <div id="collapseTwo" class="accordion-body collapse">
+                        <div id="account2" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -268,11 +268,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseThree">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#account3">
                                 <i class="fa fa-plus"></i> Property Budget
                             </a>
                         </div>
-                        <div id="collapseThree" class="accordion-body collapse">
+                        <div id="account3" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -299,11 +299,11 @@
                 <div class="col-sm-12">
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseOne">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#download1">
                                 <i class="fa fa-plus"></i> Locality
                             </a>
                         </div>
-                        <div id="collapseOne" class="accordion-body collapse">
+                        <div id="download1" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -323,11 +323,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseTwo">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#download2">
                                 <i class="fa fa-plus"></i> Property Type
                             </a>
                         </div>
-                        <div id="collapseTwo" class="accordion-body collapse">
+                        <div id="download2" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -346,11 +346,11 @@
     
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#collapseThree">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="toggle" href="#download3">
                                 <i class="fa fa-plus"></i> Property Budget
                             </a>
                         </div>
-                        <div id="collapseThree" class="accordion-body collapse">
+                        <div id="download3" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis,
                                 veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime
@@ -375,7 +375,7 @@
     <script>
         jQuery('.accordion-toggle').click(function () {
             var has = jQuery(this);
-            if (has.hasClass('collapsed')) {
+            if (has.hasClass('collapsed')) {s
                 jQuery(this).find('i').removeClass('fa-plus');
                 jQuery(this).find('i').addClass('fa-minus');
             }

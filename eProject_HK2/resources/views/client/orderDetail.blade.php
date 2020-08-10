@@ -30,41 +30,51 @@
         <div class="row" style=" margin-left: 400px">
             <div class="offset-md-3 col-md-6">
                 <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Order History </h3>
+                <div class="main-login">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Order History </h3>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <tr>
-                            <th>Game</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Discount</th>
-                        </tr>
-                        @foreach($orderLines as $orderLine)
+                    <table class="table table-bordered table-hover">
+                        <div>
                             <tr>
-                                <td>{{ $orderLine['GName'] }}</td>
-                                <td>{{ $orderLine['GPrice'] }}</td>
-                                <td>{{ $orderLine['Quantity'] }}</td>
-                                <td>{{ $orderLine['Discount'] }}</td>
+                                <th>Game</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Discount</th>
                             </tr>
-                            <
-                        @endforeach
+                            @foreach($orderLines as $orderLine)
+                                <tr>
+                                    <td>{{ $orderLine['GName'] }}</td>
+                                    <td>{{ $orderLine['GPrice'] }}</td>
+                                    <td>{{ $orderLine['Quantity'] }}</td>
+                                    <td>{{ $orderLine['Discount'] }}</td>
+                                </tr>
+                            @endforeach
+                        </div>
+                    </table>
+                    <!-- /.card -->
+                    <div>
+                    <a href="{{ url('/orderHistory') }}"><i class="fa fa-chevron-left"></i> Back to my Order History</a>
                     </div>
+                    <a href="{{ url('/myAccount') }}"><i class="fa fa-chevron-left"></i> Back to my Account</a>
                 </div>
-                <!-- /.card -->
-                <a href="{{ url('/myAccount') }}"><i class="fa fa-unlock-alt"></i> Back to my account</a>
             </div>
         </div>
     </div>
 </section>
 
-
+    <script src="{{ asset('js/client/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/client/slick.min.js') }}"></script>
+    <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+    <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('js/client/main.js') }}"></script>
 
     <!-- FOOTER -->
     @include('layout.footer')
     <!-- /FOOTER-->
-    
+
 </body>
 </html>

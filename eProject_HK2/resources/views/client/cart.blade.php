@@ -26,8 +26,7 @@
     <input hidden id="total-price-cart" type="number"
         value="{{ Session::get('Cart')->totalPrice }}">
     <button class="cancel-btn">
-        {{--onclick="deleteCartItem({{ $game['gameInfor']->ID }})"> --}}
-        <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
+    <i class="fa fa-trash" data-id="{{ $game['gameInfor']->ID }}"></i>
     </button>
 </div>
     @endforeach
