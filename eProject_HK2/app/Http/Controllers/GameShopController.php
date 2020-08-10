@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 class GameShopController extends Controller
 {
     public function getPageLength(){
-        return 10;
+        return 5;
     }
 
     public function index(){
