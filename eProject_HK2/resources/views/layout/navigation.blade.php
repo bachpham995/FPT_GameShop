@@ -102,14 +102,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Support <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="#">Game technical issues</a></li>
-                            <li><a href="#">Order and payments</a></li>
-                            <li><a href="#">Account and website</a></li>
-                            <li><a href="#">Downloads</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{url('/support')}}">Support</a></li>
                     <li><a href="{{url('/About')}}">About</a></li>
                     <li><a href="{{url('/contact')}}">Contact</a></li>
                 </ul>

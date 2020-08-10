@@ -129,6 +129,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         // Order
         Route::get('order/home', 'Admin\OrderController@home');
         Route::get('order/detail/{id}', 'Admin\OrderController@viewDetail');
+        //Feedback
+        Route::get('feedback/home', 'Admin\FeedbackController@home');
     });
 //------------SUPERVISOR-------------------------------------------------------------------------
 Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')
