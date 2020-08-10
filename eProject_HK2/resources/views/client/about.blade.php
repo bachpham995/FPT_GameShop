@@ -61,8 +61,8 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        width: 80%;
-        margin-left: 200px;
+        width: 100%;
+        /* margin-left: 200px; */
     }
 
 </style>

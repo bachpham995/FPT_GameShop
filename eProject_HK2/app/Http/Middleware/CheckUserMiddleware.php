@@ -15,11 +15,10 @@ class CheckUserMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $request->session()->put('redirect','redirect');
         if ($request->session()->has('user')) {
             $user = $request->session()->get('user');
-            
             if ($user->TYPE == 2) {
-                $request->session()->put('redirect','redirect');
                 return $next($request);
             } else {
                 return redirect('index');
