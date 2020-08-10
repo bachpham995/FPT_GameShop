@@ -43,8 +43,7 @@
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
-                                <input hidden type="text" class="form-control" id="txt-id" name="ID" placeholder="1"
-                                    readonly>
+                                {{-- <input type="text" class="form-control" id="txt-id" name="ID" placeholder="1" hidden> --}}
                                 <div class="form-group">
                                     <label for="txt-name">First Name</label>
                                     <input type="text" class="form-control" id="txt-name" name="FNAME"

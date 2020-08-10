@@ -34,7 +34,8 @@
                     <div class="card-header">
                         <h3 class="card-title">Order History </h3>
                     </div>
-                    
+                </div>
+                <table class="table table-bordered table-hover">   
                     <div>
                         <tr>
                             <th>Game</th>
@@ -49,12 +50,15 @@
                                 <td>{{ $orderLine['Quantity'] }}</td>
                                 <td>{{ $orderLine['Discount'] }}</td>
                             </tr>
-                            <
                         @endforeach
                     </div>
                 </div>
+                </table>
                 <!-- /.card -->
-                <a href="{{ url('/myAccount') }}"><i class="fa fa-unlock-alt"></i> Back to my account</a>
+                <div>
+                <a href="{{ url('/orderHistory') }}"><i class="fa fa-chevron-left"></i> Back to my Order History</a>
+                </div>
+                <a href="{{ url('/myAccount') }}"><i class="fa fa-chevron-left"></i> Back to my Account</a>
             </div>
         </div>
     </div>
