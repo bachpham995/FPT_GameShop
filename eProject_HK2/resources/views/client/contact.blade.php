@@ -50,9 +50,7 @@
         @if ($errors->has('message'))
             <p class="text-center" style="color: white; background-color:red"">{{$errors->first('message')}}</p>
         @endif
-        @if (Session::has('success'))
-            <p class="text-center" style="color: white; background-color:green"">{{Session::get('success')}}</p>
-        @endif
+        <input id='message' value="{{(Session::has('success'))?(Session::get('success')):'false'}}" hidden>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -84,5 +82,15 @@
         </div>
     </form>
 </div>
+@endsection
 
+@section('script-section')
+    <script>
+        window.onload = function(){
+            var message = document.getElementById('message').value;
+            if(message != 'false'){
+                alertify.success(message);
+            }
+        }
+    </script>
 @endsection

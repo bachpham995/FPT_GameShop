@@ -10,6 +10,7 @@
             <p><i class="fa fa-exclamation-triangle mr-2"></i>{{Session::get('message')}} </p>
         </div>
     @endif
+    <input type="text" id="success" value="{{ (Session::has('success_message'))?(Session::get('success_message')):'false' }}" hidden>
     <form action="{{ url('checkLog') }}" method="POST" class="form-login">
         @csrf
         <div id='email' class="input-group custom-input">
@@ -39,4 +40,15 @@
     </div>
 </div>
 
+@endsection
+
+@section('script-section')
+    <script>
+        window.onload = function (){
+            var message = document.getElementById('success').value;
+            if (message != 'false'){ 
+                alertify.success(message);
+            }
+        }
+    </script>
 @endsection
