@@ -42,7 +42,7 @@
                             <a href="">
                                 <td>{{ $mess->ID }}</td>
                                 <td>{{ $mess->NAME }}</td>
-                                <td><a href="">{{ $mess->EMAIL }}</a></td>
+                                <td><a href="{{ url('admin/feedback/detail/'.$mess->ID) }}">{{ $mess->EMAIL }}</a></td>
                                 <td>{{ $mess->SUBJECT }}</td>
                                 <td class="text-left">
                                     <a class="btn btn-danger btn-sm" href="{{ url('admin/feedback/delete/'.$mess->ID) }}">
