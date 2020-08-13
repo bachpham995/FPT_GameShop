@@ -2,17 +2,21 @@
     <div class="product-tab">
         <ul class="tab-nav">
             <li class="active"><a data-toggle="tab" href="#tab0">Description</a></li>
-            <li><a data-toggle="tab" href="#tab1">Details</a></li>
+            <li><a data-toggle="tab" href="#tab1">Requirement</a></li>
             <li><a data-toggle="tab" href="#tab2">Comments ({{$game->Comments()->count()}})</a></li>
-            <li><a data-toggle="tab" href="#tab3">Requirement</a></li>
+
         </ul>
         <div class="tab-content">
             <div id="tab0" class="tab-pane fade in active">
                 <p>{{$game->DESCRIPTION}}</p>
             </div>
             <div id="tab1" class="tab-pane fade in">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p><strong>Age: </strong>{{$game->AGE_REQ}} years old</p>
+                <p><strong>CPU: </strong>{{$game->CPU}}</p>
+                <p><strong>GPU: </strong>{{$game->GPU}}</p>
+                <p><strong>Memory: </strong>{{$game->STORAGE}} GB</p>
+                <p><strong>Operating System: </strong>{{$game->getOS()}}</p>
+                <p><strong>RAM: </strong>{{$game->RAM}}</p>
             </div>
             <div id="tab2" class="tab-pane fade in">
                 <div class="row">
@@ -77,8 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div id="tab3" class="tab-pane fade in">
-            </div>
+
         </div>
     </div>
 </div>
