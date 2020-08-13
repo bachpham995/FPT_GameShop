@@ -34,9 +34,9 @@
                                     <ul class="list-links">
                                         <li>
                                             <h3 class="list-links-title">Recommend</h3></li>
-                                        <li><a href="#">New realeses</a></li>
-                                        <li><a href="#">Best seller</a></li>
-                                        <li><a href="#">On sale now</a></li>
+                                        <li><a href="{{ url('/newproducts') }}">New realeses</a></li>
+                                        <li><a href="{{url('/topproducts')}}">Best seller</a></li>
+                                        <li><a href="{{url('/saleproducts')}}">On sale now</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-3">

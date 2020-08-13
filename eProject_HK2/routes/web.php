@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/index','GameShopController@index');
 Route::get('/login','GameShopController@login');
 Route::get('/products','GameShopController@products');
+Route::get('/newproducts','GameShopController@productsByNew');
+Route::get('/saleproducts','GameShopController@productsBySale');
+Route::get('/topproducts','GameShopController@productsByTop');
 Route::get('/productsByPbl/{id}','GameShopController@productsByPublisher');
 Route::get('/productsByCtg/{id}','GameShopController@productsByCategory');
 Route::get('/productsByPrdc/{id}','GameShopController@productsByProducer');
@@ -131,6 +134,8 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('order/detail/{id}', 'Admin\OrderController@viewDetail');
         //Feedback
         Route::get('feedback/home', 'Admin\FeedbackController@home');
+        Route::get('feedback/detail/{id}', 'Admin\FeedbackController@detail');
+        Route::post('feedback/reply', 'Admin\FeedbackController@sendmail');
     });
 //------------SUPERVISOR-------------------------------------------------------------------------
 Route::prefix('supervisor')->name('supervisor')->middleware('CheckSupervisor')

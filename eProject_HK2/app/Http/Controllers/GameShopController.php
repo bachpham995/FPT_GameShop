@@ -34,6 +34,28 @@ class GameShopController extends Controller
 
         return view('client.index')->with(['newProduct' => $new_product, 'saleProduct' => $sale_product, 'topProduct' => $top10Product]);
     }
+    public function productsByNew(){
+        $new = game::orderByDesc('created_at')->get()->toArray();
+        $pagesProduct = $this->productPagination($new, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+    public function productsBySale(){
+        $sale = game::whereRaw('SALE <> 0', array())->get()->toArray();
+        $pagesProduct = $this->productPagination($sale, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
+    public function productsByTop(){
+        $products = game::join(DB::raw(
+            '(SELECT A.GAME_ID, sum(A.GAME_QUANTITY)
+             FROM cart_item A join cart B on A.CART_ID = B.ID join game C on A.GAME_ID = C.ID
+             GROUP BY A.GAME_ID
+             ORDER BY sum(A.GAME_QUANTITY) desc) TopProduct')
+            , function ($join) {
+                $join->on('game.Id', '=', 'TopProduct.GAME_ID');
+            })->get()->toArray();
+        $pagesProduct = $this->productPagination($products, $this->getPageLength());
+        return view('client.products', ['products'=>$pagesProduct]);
+    }
 
     public function login()
     {
@@ -201,8 +223,6 @@ class GameShopController extends Controller
         } else {
             return redirect("supervisor/member/home");
         }
-
-        // // User Info
     }
 
     public function myAccountUpdate(Request $request)
@@ -267,9 +287,8 @@ class GameShopController extends Controller
     public function orderHistory(Request $request)
     {
         $user = $request->session()->get('user');
-
-            $orders = DB::table('cart')->where('USER_ID', $user->ID)->get();
-            return view('client/orderHistory')->with(["orders" => $orders]);
+        $orders = DB::table('cart')->where('USER_ID', $user->ID)->get();
+        return view('client/orderHistory')->with(["orders" => $orders]);
     }
 
     public function orderDetail($id)
@@ -286,8 +305,6 @@ class GameShopController extends Controller
                 'Discount' => $detail->DISCOUNT]);
             array_push($orderLines, $orderLine);
         }
-
         return view('client/orderDetail')->with(["orderLines" => $orderLines]);
     }
-
 }
