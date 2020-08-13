@@ -45,7 +45,6 @@
 						<div class="banner-caption text-center banner-cust">
 							<h1 class="white-color">The Last Of Us II</h1>
 							<h3 class="white-color font-weak">Up to 50% Discount</h3>
-							<button class="primary-btn">Shop Now</button>
 						</div>
 					</div>
 					<!-- /banner -->
@@ -55,7 +54,6 @@
 						<img src="{{asset('img/banner-home3.png')}}" alt="">
 						<div class="banner-caption banner-cust">
 							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-							<button class="primary-btn">Shop Now</button>
 						</div>
 					</div>
 					<!-- /banner -->
@@ -65,7 +63,6 @@
 						<img src="{{asset('img/banner-home2.png')}}" alt="">
 						<div class="banner-caption banner-cust">
 							<h1 class="white-color">New Product <br><span>Collection</span></h1>
-							<button class="primary-btn">Shop Now</button>
 						</div>
 					</div>
 					<!-- /banner -->
@@ -147,7 +144,6 @@
 						<img src="{{ asset('img/banner-newproduct.png') }}" class="img-banner-cust" width="auto" alt="">
 						<div class="banner-caption">
 							<h2 class="dark-color">NEW<br>GAMES</h2>
-							<button class="primary-btn">Buy Now</button>
 						</div>
 					</div>
 				</div>
@@ -213,7 +209,6 @@
 						<img src="{{ asset('img/banner-saleproduct.png') }}" class="img-banner-cust" width="auto" alt="">
 						<div class="banner-caption">
 							<h2 class="white-color">SALE<br>GAMES</h2>
-							<button class="primary-btn">Show all</button>
 						</div>
 					</div>
 				</div>
@@ -276,7 +271,6 @@
 						<img src="./img/banner-under1.png" alt="">
 						<div class="banner-caption text-center">
 							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-							<button class="primary-btn">Shop Now</button>
 						</div>
 					</div>
 				</div>
@@ -325,7 +319,6 @@
 						<img src="./img/banner-hotproduct.png" alt="">
 						<div class="banner-caption">
 							<h2 class="white-color">TOP<br>GAMES</h2>
-							<button class="primary-btn">Show all</button>
 						</div>
 					</div>
 				</div>

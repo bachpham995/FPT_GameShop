@@ -56,7 +56,7 @@ class SecurityController extends Controller
             }
         }
         $user->save();
-        return redirect('login');
+        return redirect('login')->with('success_message','Register successfully! You can log in now.');
     }
     public function forgetPassword()
     {
@@ -77,8 +77,7 @@ class SecurityController extends Controller
             $user = user::where('EMAIL', $request->emailForget)->first();
             //Send email reset password.
             EmailController::sendChangePasswordEmail($user, url('resetPassword') . "/" . $user->RESET_TOKEN);
-
-            return redirect('/index');
+            return view('security.messagePage');
         } else {
             return redirect()->back()->with('message', 'Email does not exist!');
         }
@@ -97,6 +96,6 @@ class SecurityController extends Controller
     public function newPass(PasswordResetRequest $request)
     {
         $result = user::where('ID', $request->userId)->update(['PASSWORD' => Hash::make($request->password), 'RESET_TOKEN' => null]);
-        return redirect('/index');
+        return redirect('/login')->with('success_message','Change password successfully!');
     }
 }
