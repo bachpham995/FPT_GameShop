@@ -159,6 +159,10 @@ class game extends Model
         return intval(ceil($amount/$pageLenght));
     }
 
+    public function getOS(){
+        return os::find($this->OS)->NAME;
+    }
+
     public function getRandomGames(){
         return game::inRandomOrder()->where('ID','!=',$this->ID)->limit(10)->get();
     }

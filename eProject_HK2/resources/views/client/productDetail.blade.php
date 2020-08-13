@@ -79,11 +79,11 @@
 									<input id="product_quantity" value="1" class="input" type="number">
 								</div>
 							<a onclick="AddCart({{$game->ID}})" href="javascript:" class="primary-btn add-to-cart" ><i class="fa fa-shopping-cart"></i> ADD TO CART</a>
-								<div class="pull-right">
+								{{-- <div class="pull-right">
 									<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 									<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
 									<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
-								</div>
+								</div> --}}
 							</div>
 						</div>
 					</div>
@@ -100,6 +100,12 @@
                                     <p>{{$game->DESCRIPTION}}</p>
                                 </div>
                                 <div id="tab1" class="tab-pane fade in">
+                                    <p><strong>Age: </strong>{{$game->AGE_REQ}} years old</p>
+                                    <p><strong>CPU: </strong>{{$game->CPU}}</p>
+                                    <p><strong>GPU: </strong>{{$game->GPU}}</p>
+                                    <p><strong>Memory: </strong>{{$game->STORAGE}} GB</p>
+                                    <p><strong>Operating System: </strong>{{$game->getOS()}}</p>
+                                    <p><strong>RAM: </strong>{{$game->RAM}}</p>
                                 </div>
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
