@@ -160,6 +160,7 @@
                                                 </tr>
                                             @endforeach
                                         @endif
+                                    <tr>
                                         <td class="thick-line"></td>
                                         <td class="thick-line"></td>
                                         <td class="thick-line text-right"><strong>Subtotal</strong></td>
@@ -170,12 +171,18 @@
                                         @else
                                             <td colspan="2" class="thick-line text-right">0.0</td>
                                         @endif
-                                        </tr>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
+
+
                         </div>
                     </div>
+                    @if ($cart != null)
+                    <a href="#" onclick="window.print()"><i
+                        class="fa fa-arrow-circle-down"></i> Dowload bill</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -194,12 +201,9 @@
     <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
     <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/client/main.js') }}"></script>
-    {{-- <script>
-        $('#gamePrice').(function() {
-                    $game - > getShortSalePrice() * ($game - > getGameQuantity($cart - > id)
-                    });
+    <script>
 
-    </script> --}}
+    </script>
 </body>
 
 </html>
