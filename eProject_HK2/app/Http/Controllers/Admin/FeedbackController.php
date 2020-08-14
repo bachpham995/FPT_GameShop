@@ -29,4 +29,8 @@ class FeedbackController extends Controller
 
         return redirect()->back()->with('success','Send success!');
     }
+    public function delete($id){
+        feedback::where('ID',$id)->delete();
+        return redirect()->back()->with('success','Delete successfully!');
+    }
 }
