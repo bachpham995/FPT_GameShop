@@ -134,6 +134,7 @@ Route::prefix('admin')->name('admin')->middleware('CheckAdmin')
         Route::get('order/detail/{id}', 'Admin\OrderController@viewDetail');
         //Feedback
         Route::get('feedback/home', 'Admin\FeedbackController@home');
+        Route::get('feedback/delete/{id}', 'Admin\FeedbackController@delete');
         Route::get('feedback/detail/{id}', 'Admin\FeedbackController@detail');
         Route::post('feedback/reply', 'Admin\FeedbackController@sendmail');
     });

@@ -18,7 +18,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
+<input type="text" id="success" value="{{ (Session::has('success'))?(Session::get('success')):'false'}}" hidden>
 <!-- Main content -->
 <section class="content">
 <div class="row">
@@ -34,7 +34,7 @@
                             <th>E-Mail</th>
                             <th>Subject</th>
                             <th>Actions</th>
-                        </tr>
+                        </tr>   
                     </thead>
                     <tbody>
                         @foreach($message as $mess)
@@ -77,5 +77,11 @@
             "autoWidth": false,
         });
     });
+    window.onload = function(){
+        var a = document.getElementById('success').value;
+        if(a != 'false'){
+            alertify.success(a);
+        }
+    }
 </script>
 @endsection
