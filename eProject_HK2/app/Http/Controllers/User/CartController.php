@@ -50,10 +50,8 @@ class CartController extends Controller
     }
     public function deleteItemListCart(Request $request, $id)
     {
-        // dd($id);
         $oldCart = session('Cart') ? session('Cart') : null;
         $newCart = cart::newItem($oldCart);
-        // dd(1);
         $newCart->DeleteItemCart($id);
 
         if (count($newCart->game) > 0) {
