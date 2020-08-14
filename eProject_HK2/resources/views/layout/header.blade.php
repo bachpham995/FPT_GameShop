@@ -85,8 +85,7 @@
                         </div>
                         <strong class="text-uppercase">My Cart:</strong>
                         <br>
-                        <span id="total-price-show">{{ $ss ? $ss->totalPrice."$" : '0.0$' }}</span>
-
+                        <span id="total-price-show">{{ $ss ? $ss->totalPrice : '0.0' }}</span>$
                     </a>
                     <div class="custom-menu cust-dropdown">
                         <div id="shopping-cart">
@@ -150,7 +149,7 @@
 <script>
     function searchAsCategory(){
         var categoryID = document.getElementById("category-nav-fil").value;
-        var link = ""
+        // var link = ""
         if(categoryID == "all"){
             link = "products";
         }else{

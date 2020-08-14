@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="input-checkbox">
                                     @if ($user != null)
-                                        <label>NAME:</label>
+                                        <label>Name:</label>
                                         <label for="name">{{ $user->LNAME }} {{ $user->FNAME }}</label><br>
                                         <label>Email:</label>
                                         <label for="email">{{ $user->EMAIL }}</label><br>
@@ -193,6 +193,12 @@
     @include('layout.footer')
     <!-- /FOOTER -->
     <!-- jQuery Plugins -->
+    <script src="{{ asset('js/client/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/client/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/client/slick.min.js') }}"></script>
+    <script src="{{ asset('js/client/nouislider.min.js') }}"></script>
+    <script src="{{ asset('js/client/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('js/client/main.js') }}"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="{{ asset('js/client/jquery.min.js') }}"></script>

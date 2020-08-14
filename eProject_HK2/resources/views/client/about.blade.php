@@ -96,7 +96,7 @@
                 <div class="col-xs-6 col-md-4">
                     <div class="company-icons-white">
                         <h4>Prestige is on top</h4>
-                        <p class="company-icons-subtext hidden-xs">DeVil Shop is a long-standing name in the Vietnamese
+                        <p class="company-icons-subtext hidden-xs">Devil Shop is a long-standing name in the Vietnamese
                             copyright game community. From the early days when platforms providing international
                             copyrighted games such as Steam, Battle.net, Origin began to be known in Vietnam.
                         </p>
@@ -107,8 +107,8 @@
                         {{-- <i class="fa fa-money" style="" aria-hidden="true"></i>
                         --}}
                         <h4>Product variety</h4>
-                        <p class="company-icons-subtext hidden-xs">With tens of thousands of products on Website
-                            Devilshop.vn we confidently bring you all that you need in the world of copyrighted games.
+                        <p class="company-icons-subtext hidden-xs">
+                            Thousands of products on Website Devilshop.vn we confidently bring you all that you need in the world of copyrighted games.
                         </p>
                     </div>
                 </div>
